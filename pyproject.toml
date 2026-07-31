@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "devoteam-reference-mvp"
+version = "0.1.0"
+description = "Internship-scale multilingual Devoteam reference retrieval MVP"
+requires-python = ">=3.10,<3.12"
+dependencies = [
+  "fastapi==0.116.1",
+  "uvicorn[standard]==0.35.0",
+  "pydantic==2.11.7",
+  "pydantic-settings==2.10.1",
+  "pandas==2.3.3",
+  "pyarrow==23.0.1",
+  "numpy==2.2.6",
+  "torch==2.11.0",
+  "sentence-transformers==3.4.1",
+  "transformers==4.57.6",
+  "PyMuPDF==1.26.4",
+  "Pillow==11.3.0",
+  "pytesseract==0.3.13",
+  "python-multipart==0.0.20",
+  "PyYAML==6.0.3",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest==9.0.3",
+  "pytest-cov==7.0.0",
+  "httpx==0.28.1",
+]
+
+[tool.setuptools]
+packages = ["app", "app.api", "retrieval", "extraction", "evaluation"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.coverage.run]
+source = ["app", "retrieval", "extraction", "evaluation"]

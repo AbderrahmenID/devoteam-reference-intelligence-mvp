@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.tsbuildinfo
+.pytest_cache/
+.coverage
+htmlcov/
+.env
+.runtime/
+app/frontend/node_modules/
+app/frontend/.next/
+app/frontend/out/
+*.log
+.DS_Store

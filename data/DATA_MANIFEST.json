@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "copy_timestamp_utc": "2026-07-31T18:09:47Z",
+  "source_root": "C:\\Users\\abder\\Downloads\\Devoteam_AI_Workspace\\Devoteam_AI_CLEAN_PIPELINE",
+  "destination_root": "C:\\Users\\abder\\Downloads\\Devoteam_AI_Workspace\\devoteam-reference-mvp",
+  "corpus_identity": {
+    "snapshot_id": "20260714T154731Z_129ff982c8",
+    "phase4_pipeline": "phase4_corpus_v1",
+    "phase5_pipeline": "phase5_hybrid_retrieval_v1",
+    "chunks": 1185,
+    "references": 161,
+    "embedding_dimensions": 768
+  },
+  "files": [
+    {
+      "source_path": "data/canonical/20260714T154731Z_129ff982c8/phase4_corpus_v1/chunks.parquet",
+      "destination_path": "data/chunks.parquet",
+      "file_size": 770872,
+      "sha256": "aa6f19e1eddb17505a35b8ff9443ac76385c2d7ed2d7ba414b205cf15e1c9b0e",
+      "row_count": 1185,
+      "schema_fields": ["chunk_id", "page_id", "snapshot_id", "pipeline_version", "document_id", "source_file_name", "source_mime_type", "source_relative_path", "source_sha256", "page_number_1_based", "chunk_index_in_page", "character_start", "character_end", "chunk_character_count", "chunk_word_count", "chunk_text_sha256", "chunk_text", "page_language", "document_language", "document_type", "data_quality_status", "security_classification", "citation_label", "citation_uri", "reference_rows_json", "reference_number_values_json", "country_values_json", "business_unit_values_json", "company_domain_values_json", "client_values_json", "sector_values_json", "service_nature_values_json", "funding_values_json", "offering_values_json", "project_year_values_json", "attestation_available_values_json", "exact_duplicate_count", "duplicate_group_id"],
+      "reason_for_inclusion": "Canonical multilingual evidence chunks with page provenance, citations and hard-filter metadata"
+    },
+    {
+      "source_path": "data/canonical/20260714T154731Z_129ff982c8/phase4_corpus_v1/reference_catalog.parquet",
+      "destination_path": "data/reference_catalog.parquet",
+      "file_size": 87067,
+      "sha256": "13f9605cdd0fd47817e8b4c111a931d61a18413dc67202044e776d4ab4977b30",
+      "row_count": 161,
+      "schema_fields": ["reference_id", "sheet", "row_number", "cell_coordinate", "target_file_id", "canonical_document_id", "snapshot_status", "evidence_available", "target_name", "reference_number", "country", "business_unit", "company_domain", "client", "sector", "service_nature", "funding", "offering", "project_year", "attestation_available", "data_quality_status", "document_retrieval_eligible"],
+      "reason_for_inclusion": "Stable reference IDs and reference-level business metadata"
+    },
+    {
+      "source_path": "data/canonical/20260714T154731Z_129ff982c8/phase4_corpus_v1/corpus_statistics.json",
+      "destination_path": "data/source_metadata/corpus_statistics.json",
+      "file_size": 854,
+      "sha256": "6728b599b05d1d3d56b1fc39685b74b282baf73b58fb547607bca1e7d648cf2c",
+      "row_count": null,
+      "schema_fields": ["JSON metadata"],
+      "reason_for_inclusion": "Auditable corpus counts"
+    },
+    {
+      "source_path": "data/canonical/20260714T154731Z_129ff982c8/phase4_corpus_v1/filter_values.json",
+      "destination_path": "data/source_metadata/filter_values.json",
+      "file_size": 96629,
+      "sha256": "d21131dbc1237347ea6a2a69416cebccf133fbc9ec78f02280bfa02ffe14812e",
+      "row_count": null,
+      "schema_fields": ["JSON metadata"],
+      "reason_for_inclusion": "Known source filter values for diagnostics"
+    },
+    {
+      "source_path": "data/canonical/20260714T154731Z_129ff982c8/phase4_corpus_v1/PHASE_4_MANIFEST.json",
+      "destination_path": "data/source_metadata/PHASE_4_MANIFEST.json",
+      "file_size": 831,
+      "sha256": "219643d0b1fa7ae81ebd041615a1f2c56b8cdca56f782b557a1c84f8aa599104",
+      "row_count": null,
+      "schema_fields": ["JSON metadata"],
+      "reason_for_inclusion": "Canonical corpus provenance and quality gate"
+    },
+    {
+      "source_path": "data/indexes/20260714T154731Z_129ff982c8/phase5_hybrid_retrieval_v1/bm25_index.npz",
+      "destination_path": "data/indexes/bm25_index.npz",
+      "file_size": 175371,
+      "sha256": "a93b29bdb2f0e3b77c16df6066fabb3ae46f5a9bb938de2aa074c08cff6248f1",
+      "row_count": 1185,
+      "schema_fields": ["offsets", "posting_rows", "term_frequencies", "idf", "document_lengths", "average_document_length", "k1", "b"],
+      "reason_for_inclusion": "Tested Unicode BM25 postings"
+    },
+    {
+      "source_path": "data/indexes/20260714T154731Z_129ff982c8/phase5_hybrid_retrieval_v1/bm25_vocabulary.json",
+      "destination_path": "data/indexes/bm25_vocabulary.json",
+      "file_size": 130914,
+      "sha256": "701f9a19753e249dcc253ce6b393d36c6835f345aaed5beac662d5b9062e9d72",
+      "row_count": 12322,
+      "schema_fields": ["schema_version", "tokenizer_version", "document_count", "term_count", "vocabulary"],
+      "reason_for_inclusion": "BM25 vocabulary and tokenizer identity"
+    },
+    {
+      "source_path": "data/indexes/20260714T154731Z_129ff982c8/phase5_hybrid_retrieval_v1/embeddings.npy",
+      "destination_path": "data/indexes/embeddings.npy",
+      "file_size": 3640448,
+      "sha256": "542699ae0621b11dfe3ebdbac389bda4e14a42de9afbd436a93c714cc1f51852",
+      "row_count": 1185,
+      "schema_fields": ["float32[1185,768]", "L2-normalized passage vectors"],
+      "reason_for_inclusion": "Pinned multilingual E5 passage embeddings; avoids regeneration"
+    },
+    {
+      "source_path": "data/indexes/20260714T154731Z_129ff982c8/phase5_hybrid_retrieval_v1/chunk_lookup.parquet",
+      "destination_path": "data/indexes/chunk_lookup.parquet",
+      "file_size": 860844,
+      "sha256": "50f5276fcf514c43866143dc24ee88e09320715179fa6ee5a5b5b4d2a2f3c200",
+      "row_count": 1185,
+      "schema_fields": ["vector_row", "chunk_id", "page_id", "document_id", "source_file_name", "page_number_1_based", "chunk_text", "page_language", "document_language", "document_type", "data_quality_status", "security_classification", "citation_label", "citation_uri", "reference_rows_json", "client_values_json", "sector_values_json", "offering_values_json", "project_year_values_json", "retrieval_text_sha256"],
+      "reason_for_inclusion": "Exact vector-row ordering plus citation and filter metadata"
+    },
+    {
+      "source_path": "data/indexes/20260714T154731Z_129ff982c8/phase5_hybrid_retrieval_v1/PHASE_5_MANIFEST.json",
+      "destination_path": "data/indexes/PHASE_5_MANIFEST.json",
+      "file_size": 1398,
+      "sha256": "2d48709a8e4b6408d99505dc4fe7c075f6f6406970ee0c5cfead93288ed97ec3",
+      "row_count": null,
+      "schema_fields": ["JSON metadata"],
+      "reason_for_inclusion": "Index quality gate and pinned model identity"
+    },
+    {
+      "source_path": "data/indexes/20260714T154731Z_129ff982c8/phase5_hybrid_retrieval_v1/retrieval_runtime.json",
+      "destination_path": "data/indexes/retrieval_runtime.json",
+      "file_size": 1828,
+      "sha256": "73996fb2e264430f408f700a746bf8efe9b7e831d0687c06a609d5e870d69d9e",
+      "row_count": null,
+      "schema_fields": ["bm25", "embedding", "filters", "hybrid", "package_versions", "pipeline_version"],
+      "reason_for_inclusion": "Runtime compatibility settings and E5 provenance"
+    }
+  ],
+  "validation": {
+    "chunk_ids_unique": true,
+    "reference_ids_unique": true,
+    "lookup_order_matches_chunks": true,
+    "reference_row_links_valid": true,
+    "source_pages_present": true,
+    "arabic_chunks_detected": 235,
+    "embedding_shape": [1185, 768],
+    "embedding_norm_min": 1.0,
+    "embedding_norm_max": 1.0
+  }
+}
+

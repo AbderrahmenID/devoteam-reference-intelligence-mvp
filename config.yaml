@@ -1,0 +1,106 @@
+project:
+  name: devoteam-reference-mvp
+  root: .
+  runtime_dir: .runtime
+
+data:
+  chunks: data/chunks.parquet
+  reference_catalog: data/reference_catalog.parquet
+  bm25_index: data/indexes/bm25_index.npz
+  bm25_vocabulary: data/indexes/bm25_vocabulary.json
+  embeddings: data/indexes/embeddings.npy
+  chunk_lookup: data/indexes/chunk_lookup.parquet
+  manifest: data/DATA_MANIFEST.json
+
+model:
+  id: intfloat/multilingual-e5-base
+  revision: a114a4100c6714cf21651971eefe9191a4415dbb
+  local_path: ~/.cache/huggingface/hub/models--intfloat--multilingual-e5-base/snapshots/a114a4100c6714cf21651971eefe9191a4415dbb
+  dimensions: 768
+  query_prefix: "query: "
+  passage_prefix: "passage: "
+  normalize_embeddings: true
+  local_files_only: true
+
+bm25:
+  algorithm: BM25Okapi
+  tokenizer_version: unicode_fold_v1
+  k1: 1.2
+  b: 0.75
+
+dense:
+  enabled: true
+  batch_size_cpu: 8
+  candidate_depth: 100
+
+hybrid:
+  lexical_weight: 0.50
+  dense_weight: 0.50
+  rrf_k: 60
+  candidate_depth: 100
+  evidence_chunks_per_reference: 3
+  maximum_final_results: 3
+
+filters:
+  supported_exact:
+    country: country_values_json
+    business_unit: business_unit_values_json
+    client: client_values_json
+    sector: sector_values_json
+    service_nature: service_nature_values_json
+    offering: offering_values_json
+    project_year: project_year_values_json
+    attestation_available: attestation_available_values_json
+    document_type: document_type
+    data_quality_status: data_quality_status
+  supported_ranges:
+    year_before: project_year_values_json
+    year_after: project_year_values_json
+  allowed_security_classifications: [INTERNAL]
+
+abstention:
+  minimum_query_tokens: 1
+  minimum_best_bm25: 1.20
+  minimum_best_dense: 0.70
+  strong_dense_score: 0.82
+  minimum_semantic_only_dense: 0.76
+  minimum_query_term_coverage: 0.18
+  minimum_mean_top_dense: 0.64
+  minimum_rrf_agreement: 1
+  exact_term_override_bm25: 4.0
+  minimum_independent_passages: 1
+  unsupported_scope_terms:
+    - recette de cuisine
+    - football score
+    - horoscope
+    - diagnostic médical
+    - medical diagnosis
+
+languages:
+  supported: [fr, en, ar, mixed, und]
+  ocr_languages: fra+eng+ara
+
+extraction:
+  digital_text_min_characters: 80
+  digital_text_min_words: 10
+  pdf_render_dpi: 300
+  tesseract_psm: 3
+  blank_ink_ratio_threshold: 0.001
+  preview_max_bytes: 5000000
+  preview_max_pages: 3
+  chunk_max_characters: 900
+  chunk_overlap_characters: 120
+  chunk_min_characters: 120
+
+api:
+  host: 127.0.0.1
+  port: 8000
+  frontend_port: 3000
+  query_length_limit: 1000
+  debug: false
+  cors_origins:
+    - http://127.0.0.1:3000
+    - http://localhost:3000
+
+reranker_enabled: false
+
