@@ -6,7 +6,7 @@ $projectRoot = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot '..')).Path
 $python = Join-Path $projectRoot '.venv\Scripts\python.exe'
 $frontend = Join-Path $projectRoot 'app\frontend'
 
-& (Join-Path $PSScriptRoot 'validate_environment.ps1')
+& (Join-Path $PSScriptRoot 'preflight.ps1')
 if ($LASTEXITCODE -ne 0) { throw 'Environment validation failed.' }
 
 $env:USE_TF = '0'

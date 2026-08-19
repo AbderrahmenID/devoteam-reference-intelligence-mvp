@@ -4,8 +4,8 @@ Generated during Phase 0 on 2026-07-31. The source project is treated as immutab
 
 ## Paths and environment
 
-- Source: `C:\Users\abder\Downloads\Devoteam_AI_Workspace\Devoteam_AI_CLEAN_PIPELINE`
-- MVP: `C:\Users\abder\Downloads\Devoteam_AI_Workspace\devoteam-reference-mvp`
+- Source: external immutable `Devoteam_AI_CLEAN_PIPELINE` project (not required at runtime)
+- MVP: repository root (`.`)
 - Source baseline: 872 files, 177,905,384 bytes, aggregate content-inventory SHA-256 `a2a6c376345acab3ea087d252b1f276121223b84c2582b1bcf3ad2ee2053ad66`
 - Python: 3.10.11 available (3.11 absent; 3.14 also installed but not selected)
 - Node.js/npm: 24.11.1 / 11.10.0
@@ -79,4 +79,3 @@ Not copied: notebooks, ZIP packages, Phase 6–8 opportunity/recommendation/expo
 - Human multilingual qrels do not exist, so no official relevance metric can be claimed.
 - Dense runtime requires the pinned local model plus compatible `sentence-transformers`; startup must not download models.
 - Corpus metadata is predominantly French and may contain source-level inconsistencies; evidence remains unchanged.
-

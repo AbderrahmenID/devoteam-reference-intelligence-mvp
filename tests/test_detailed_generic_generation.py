@@ -383,3 +383,15 @@ def test_production_generator_has_no_named_client_or_reference_branches() -> Non
         assert re.search(forbidden, text) is None
     for forbidden in (r"if\s+client\s*==\s*['\"]", r"if\s+reference_id\s*==\s*['\"]"):
         assert re.search(forbidden, text) is None
+
+
+def test_generated_copy_is_word_safely_fitted_before_schema_validation() -> None:
+    long_subitem = "Mise en place du dispositif de continuite et de gouvernance " * 5
+    copy = DetailedRealisationCopy(
+        text="Pilotage du programme de continuite",
+        subitems=[long_subitem],
+    )
+
+    assert len(copy.subitems[0]) <= 180
+    assert not copy.subitems[0].endswith(" ")
+    assert copy.subitems[0] in long_subitem

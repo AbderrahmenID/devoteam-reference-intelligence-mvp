@@ -6,6 +6,7 @@ import { dirname, join } from "node:path";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const page = readFileSync(join(root, "app", "page.tsx"), "utf8");
+const styles = readFileSync(join(root, "app", "globals.css"), "utf8");
 const compactBar = readFileSync(join(root, "components", "CompactSelectionBar.tsx"), "utf8");
 const drawer = readFileSync(join(root, "components", "SelectionDrawer.tsx"), "utf8");
 const filterPanel = readFileSync(join(root, "components", "FilterPanel.tsx"), "utf8");
@@ -47,12 +48,45 @@ test("filter options do not expose corpus facet counts", () => {
   assert.doesNotMatch(filterPanel, /facet\.count/);
 });
 
-test("application shell exposes the three direct presentation stages", () => {
-  for (const label of ["Find references", "Select references", "Generate presentation"]) {
-    assert.match(page, new RegExp(label));
-  }
-  assert.doesNotMatch(page, /Prepare narrative/);
-  assert.match(page, /workflow-stepper/);
+test("application shell removes decorative workflow chrome and cheap product copy", () => {
+  assert.doesNotMatch(page, /workflow-stepper|Proposal enablement workspace|Devoteam client experience|Turn proven delivery into/);
+  assert.match(page, /Reference Intelligence/);
+  assert.match(page, /Find relevant Devoteam references/);
+  assert.match(page, /Search proven project experience for your commercial opportunity/);
+  assert.match(page, /Describe the opportunity, client need, sector or capability/);
+});
+
+test("filters render as a side panel with one shared accordion state", () => {
+  assert.match(page, /<section className=\{`workspace[\s\S]*?<FilterPanel[\s\S]*?<div className="results-section"/);
+  assert.doesNotMatch(page, /\{response && <FilterPanel/);
+  assert.match(filterPanel, /<div className="filter-shell">/);
+  assert.match(filterPanel, /<aside className=\{`filter-panel/);
+  assert.match(filterPanel, /const \[openGroup, setOpenGroup\]/);
+  assert.match(filterPanel, /current === id \? null : id/);
+  assert.match(filterPanel, /label="More filters"/);
+  assert.match(filterPanel, /className="advanced-filter-groups"/);
+  assert.doesNotMatch(filterPanel, /Additional criteria/);
+  assert.doesNotMatch(filterPanel, /<details className="filter-panel"/);
+  assert.match(styles, /\.search-page > \.workspace \{[\s\S]*?grid-template-columns: minmax\(260px, 280px\) minmax\(0, 1fr\)/);
+  assert.match(styles, /\.filter-shell \{[\s\S]*?position: sticky/);
+});
+
+test("search workspace has restrained empty, results, and reference-card hierarchy", () => {
+  assert.match(page, /Search your reference portfolio/);
+  assert.match(page, /Describe the opportunity above to find the most relevant Devoteam project experience/);
+  assert.match(page, /<p className="eyebrow">References<\/p>/);
+  assert.match(page, /Ranked against your opportunity and active filters/);
+  assert.match(resultCard, /className="result-client"/);
+  assert.match(resultCard, /className="result-summary"/);
+  assert.match(resultCard, /View evidence/);
+  assert.match(resultCard, /Add to selection/);
+});
+
+test("narrow screens use an off-canvas filter drawer instead of a full-page filter wall", () => {
+  assert.match(filterPanel, /filter-mobile-toggle/);
+  assert.match(filterPanel, /filter-drawer-backdrop/);
+  assert.match(filterPanel, /event\.key === "Escape"/);
+  assert.match(styles, /\.filter-panel \{[\s\S]*?position: fixed/);
 });
 
 test("generator offers exactly two styles and exactly three output choices", () => {

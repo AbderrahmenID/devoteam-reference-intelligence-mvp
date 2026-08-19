@@ -23,7 +23,7 @@ The MVP evaluation templates contain no queries and no qrels. The source project
 
 ## Read-only source-project assets
 
-Source root: `C:/Users/abder/Downloads/Devoteam_AI_Workspace/Devoteam_AI_CLEAN_PIPELINE`
+Source root: external immutable `Devoteam_AI_CLEAN_PIPELINE` project (not required at runtime)
 
 | Asset | Rows / scope | Languages | Relevance labels | Reviewers | Human-authored / judged | Synthetic or leakage status | Boundary and allowed use | May tune? |
 |---|---:|---|---|---:|---|---|---|---|

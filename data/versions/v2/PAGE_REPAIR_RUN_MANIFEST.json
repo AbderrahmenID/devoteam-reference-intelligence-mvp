@@ -3,9 +3,9 @@
   "created_at_utc": "2026-08-02T19:51:53.797692+00:00",
   "input_manifest": "data/versions/v2/TARGETED_REPAIR_MANIFEST.csv",
   "input_manifest_sha256": "83c8cee80536f65777438e9b9ff99507c81caefd65a24c111b570c674a5f89cb",
-  "tesseract_executable": "C:\\Program Files\\Tesseract-OCR\\tesseract.exe",
+  "tesseract_executable": "external://local-tesseract/tesseract.exe",
   "tesseract_version": "5.4.0.20240606",
-  "tessdata_prefix": "C:\\Users\\abder\\AppData\\Local\\DevoteamOCR\\tessdata",
+  "tessdata_prefix": "external://local-tesseract/tessdata",
   "ocr_languages": [
     "fra",
     "eng",

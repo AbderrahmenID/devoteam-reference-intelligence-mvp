@@ -253,7 +253,9 @@ def validate() -> dict[str, Any]:
         "",
         "The protected held-out workbook was not opened or compared, preserving the declared test boundary.",
     ]
-    (ROOT / "docs" / "DEVELOPMENT_QUERY_IMPORT_BLOCKER.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    report_path = ROOT / "audit" / "evaluation" / "DEVELOPMENT_QUERY_IMPORT_BLOCKER.md"
+    report_path.parent.mkdir(parents=True, exist_ok=True)
+    report_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(json.dumps({key: validation[key] for key in ("status", "query_count", "language_counts", "query_type_counts", "filter_review_queue_rows", "issues")}, ensure_ascii=True, indent=2))
     return validation
 

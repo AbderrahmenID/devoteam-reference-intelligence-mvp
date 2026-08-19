@@ -24,7 +24,7 @@ def _sha256(path: Path) -> str:
 
 
 def test_v1_runtime_assets_remain_byte_identical() -> None:
-    baseline = json.loads((ROOT / "audit" / "v1_runtime_asset_hashes.json").read_text(encoding="utf-8"))
+    baseline = json.loads((ROOT / "data" / "V1_RUNTIME_ASSET_HASHES.json").read_text(encoding="utf-8"))
     for record in baseline["assets"]:
         path = ROOT / record["path"]
         assert path.is_file()

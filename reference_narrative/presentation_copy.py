@@ -10,7 +10,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Annotated, Any, Callable
 
-from pydantic import BaseModel, ConfigDict, Field, ValidationError, field_validator
+from pydantic import BeforeValidator, BaseModel, ConfigDict, Field, ValidationError, field_validator
 
 from .claim_validator import ClaimValidator
 from .content_sanitizer import sanitize_generation_text
@@ -38,10 +38,29 @@ from .service import ReferenceNarrativeService
 
 LOGGER = logging.getLogger("uvicorn.error")
 ProgressCallback = Callable[[dict[str, object]], None]
-BulletText = Annotated[str, Field(max_length=180)]
-DetailedMainText = Annotated[str, Field(max_length=220)]
-DetailedSubitemText = Annotated[str, Field(max_length=180)]
-OrangeBulletText = Annotated[str, Field(max_length=90)]
+
+
+def _fit_generated_text(value: Any, maximum: int) -> Any:
+    """Keep model/source copy inside the schema boundary without splitting a word."""
+
+    if not isinstance(value, str):
+        return value
+    compact = " ".join(value.split())
+    if len(compact) <= maximum:
+        return compact
+    clipped = compact[:maximum].rstrip()
+    boundary = clipped.rfind(" ")
+    if boundary >= maximum // 2:
+        clipped = clipped[:boundary]
+    return clipped.rstrip(" ,;:-")
+
+
+MissionTitleText = Annotated[str, BeforeValidator(lambda value: _fit_generated_text(value, 110)), Field(max_length=110)]
+OrangeTitleText = Annotated[str, BeforeValidator(lambda value: _fit_generated_text(value, 96)), Field(max_length=96)]
+BulletText = Annotated[str, BeforeValidator(lambda value: _fit_generated_text(value, 180)), Field(max_length=180)]
+DetailedMainText = Annotated[str, BeforeValidator(lambda value: _fit_generated_text(value, 220)), Field(max_length=220)]
+DetailedSubitemText = Annotated[str, BeforeValidator(lambda value: _fit_generated_text(value, 180)), Field(max_length=180)]
+OrangeBulletText = Annotated[str, BeforeValidator(lambda value: _fit_generated_text(value, 90)), Field(max_length=90)]
 
 ORANGE_PROMPT_VERSION = "ORANGE_REFERENCE_COPY-v1"
 DETAILED_PROMPT_VERSION = "DETAILED_REFERENCE_COPY-v5"
@@ -77,7 +96,7 @@ Rewrite only the requested field. Use only the supplied trusted facts. Preserve 
 class OrangeReferenceCopy(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    display_title: str = Field(default="", max_length=96)
+    display_title: OrangeTitleText = ""
     activities: list[OrangeBulletText] = Field(default_factory=list, max_length=6)
 
     @field_validator("display_title", "activities")
@@ -110,7 +129,7 @@ class DetailedRealisationCopy(BaseModel):
 class DetailedReferenceCopy(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    mission_title: str = Field(default="", max_length=110, description="Concise professional mission title")
+    mission_title: MissionTitleText = Field(default="", description="Concise professional mission title")
     challenges: list[BulletText] = Field(
         default_factory=list,
         max_length=3,
@@ -139,7 +158,7 @@ class DetailedReferenceCopy(BaseModel):
 
 class MissionTitleRepair(BaseModel):
     model_config = ConfigDict(extra="forbid")
-    mission_title: str = Field(default="", max_length=110)
+    mission_title: MissionTitleText = ""
 
 
 class ChallengeRepair(BaseModel):
@@ -159,7 +178,7 @@ class BenefitsRepair(BaseModel):
 
 class OrangeTitleRepair(BaseModel):
     model_config = ConfigDict(extra="forbid")
-    display_title: str = Field(default="", max_length=96)
+    display_title: OrangeTitleText = ""
 
 
 class OrangeActivitiesRepair(BaseModel):

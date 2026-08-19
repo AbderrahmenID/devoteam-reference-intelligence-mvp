@@ -8,6 +8,25 @@ $python = Join-Path $projectRoot '.venv\Scripts\python.exe'
 $frontend = Join-Path $projectRoot 'app\frontend'
 $node = (Get-Command node -ErrorAction Stop).Source
 
+$environmentFile = Join-Path $projectRoot '.env'
+if (Test-Path -LiteralPath $environmentFile -PathType Leaf) {
+    foreach ($rawLine in Get-Content -LiteralPath $environmentFile -Encoding utf8) {
+        $line = $rawLine.Trim()
+        if (-not $line -or $line.StartsWith('#')) { continue }
+        if ($line -notmatch '^([A-Za-z_][A-Za-z0-9_]*)=(.*)$') {
+            throw "Invalid .env entry: $rawLine"
+        }
+        $name = $Matches[1]
+        $value = $Matches[2].Trim()
+        if (($value.StartsWith('"') -and $value.EndsWith('"')) -or ($value.StartsWith("'") -and $value.EndsWith("'"))) {
+            $value = $value.Substring(1, $value.Length - 2)
+        }
+        if ([string]::IsNullOrEmpty([Environment]::GetEnvironmentVariable($name, 'Process'))) {
+            [Environment]::SetEnvironmentVariable($name, $value, 'Process')
+        }
+    }
+}
+
 if (-not $env:DEVOTEAM_CONFIG) {
     $env:DEVOTEAM_CONFIG = 'config/baselines/SELECTED_RETRIEVAL_CONFIGURATION.yaml'
 }
@@ -20,7 +39,7 @@ if (-not $env:REFERENCE_NARRATIVE_OLLAMA_URL) {
 if (-not $env:REFERENCE_NARRATIVE_MODEL) {
     $env:REFERENCE_NARRATIVE_MODEL = 'qwen3.5:9b'
 }
-& (Join-Path $projectRoot 'scripts\validate_environment.ps1')
+& (Join-Path $projectRoot 'scripts\preflight.ps1')
 if ($LASTEXITCODE -ne 0) { throw 'Environment validation failed.' }
 
 New-Item -ItemType Directory -Force -Path $runtime | Out-Null

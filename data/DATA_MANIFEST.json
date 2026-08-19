@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "copy_timestamp_utc": "2026-07-31T18:09:47Z",
-  "source_root": "C:\\Users\\abder\\Downloads\\Devoteam_AI_Workspace\\Devoteam_AI_CLEAN_PIPELINE",
-  "destination_root": "C:\\Users\\abder\\Downloads\\Devoteam_AI_Workspace\\devoteam-reference-mvp",
+  "source_root": "external://Devoteam_AI_CLEAN_PIPELINE",
+  "destination_root": ".",
   "corpus_identity": {
     "snapshot_id": "20260714T154731Z_129ff982c8",
     "phase4_pipeline": "phase4_corpus_v1",
@@ -124,4 +124,3 @@
     "embedding_norm_max": 1.0
   }
 }
-

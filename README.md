@@ -1,175 +1,202 @@
-# Devoteam multilingual reference retrieval MVP
+# Devoteam Reference Intelligence
 
-An internship-scale application for multilingual, filtered Devoteam reference retrieval, template-based Word export and deterministic reference-pack generation. The active runtime uses the repaired v2 corpus, field-aware Unicode BM25, exact search with pinned local `intfloat/multilingual-e5-base`, weighted rank fusion, clean reference aggregation and conservative relevance/evidence gates. Hard metadata filters run before ranking, every passing reference is paginated, and insufficient evidence returns zero results. It is a retrieval system, not a chatbot, and it never generates fallback results or export claims.
+Multilingual hybrid reference retrieval and AI-assisted presentation generation for Devoteam commercial opportunities.
 
-The interface provides source-derived facets, multi-select filters, interval-aware periods, relevance and metadata sorting, 10/20/50-result pages, summary and detailed views, an ordered session-persistent stable-ID basket, selected DOCX export and editable PPTX/PDF reference-pack generation with source-lineage manifests.
+## Overview
 
-## Open the project
+Devoteam teams need to find credible past experience quickly, connect every claim to approved project evidence, and turn the selected references into client-ready material. This private internal MVP packages that workflow in one application: multilingual retrieval over a trusted corpus, controlled reference selection, grounded local-AI copy generation, and editable presentation export.
 
-```powershell
-cd C:\Users\abder\Downloads\Devoteam_AI_Workspace\devoteam-reference-mvp
+The processed runtime corpus and indexes are included. A supervisor can clone and run the application without rebuilding the confidential source-document pipeline.
+
+## Features
+
+- Search in French, English, and Arabic.
+- Unicode BM25 lexical retrieval plus `intfloat/multilingual-e5-base` semantic retrieval.
+- Deterministic weighted hybrid ranking, hard metadata filters, reference aggregation, and abstention controls.
+- Evidence-backed results with source lineage and page-level support.
+- Selected-reference review workflow.
+- Local AI generation through Ollama and `qwen3.5:9b`.
+- Detailed Challenges / Réalisations / Bénéfices copy and Compact Orange copy.
+- Grounding, language, evidence-coverage, and template-fit validation.
+- Approved Devoteam source templates, editable PPTX output, and LibreOffice PDF conversion.
+- Python API, retrieval, data-integrity, presentation, PPTX/PDF, and frontend tests.
+
+## Architecture
+
+```text
+Packaged trusted corpus
+          ↓
+Unicode BM25 + multilingual E5
+          ↓
+Weighted hybrid retrieval + filters
+          ↓
+Evidence-backed reference selection
+          ↓
+Local Ollama / qwen3.5:9b
+          ↓
+Template-specific grounded copy
+          ↓
+Approved Devoteam PPTX templates
+          ↓
+Editable PPTX / PDF
 ```
 
-## Recreate the environment manually
+The pipeline produces normalized E5 embeddings and a FAISS index. At the packaged MVP scale of 1,185 chunks, the application deliberately performs the same normalized inner-product search directly over the committed NumPy matrix. This exact search avoids a platform-specific FAISS runtime dependency while preserving deterministic dense retrieval and source-index alignment.
 
-Python 3.11 is not installed on this machine, so the verified environment uses Python 3.10 and inherits the already-installed Torch runtime to avoid a large duplicate download.
+## Technology Stack
 
-```powershell
-py -3.10 -m venv --system-site-packages .venv
-.\.venv\Scripts\python.exe -m pip install --upgrade pip "setuptools<82" wheel
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
-.\.venv\Scripts\python.exe -m pip install -e . --no-deps
-cd app\frontend
-npm install
-cd ..\..
+- Python 3.10 or 3.11, FastAPI, Pydantic, pandas, PyArrow, NumPy
+- Unicode BM25, `multilingual-e5-base`, FAISS-compatible normalized embeddings, weighted rank fusion
+- Next.js 16, React 19, TypeScript
+- Ollama with `qwen3.5:9b`
+- `python-pptx`, PyMuPDF, pypdf, LibreOffice
+- pytest, Node test runner, ESLint
+
+## Repository Structure
+
+```text
+app/api/                 FastAPI application, routes, and settings
+app/frontend/            Next.js user interface and frontend tests
+config/                  Selected retrieval and rollback configurations
+data/                    Required v1 lineage and reviewed v2 runtime artifacts
+retrieval/               BM25, E5, dense scoring, hybrid ranking, filters
+reference_narrative/     Grounded AI copy generation and quality controls
+reference_pack/          Template mapping, PPTX generation, and PDF export
+templates/               Approved source templates and rendering configuration
+evaluation/              Regression queries, judgments, metrics, and reports
+tests/                   Backend, retrieval, integrity, and presentation tests
+scripts/                 Setup, preflight, validation, and test entry points
+docs/                    Focused architecture and operating documentation
 ```
 
-## Validate and test
+See [Project structure](docs/PROJECT_STRUCTURE.md) and [Architecture](docs/ARCHITECTURE.md) for more detail.
+
+## Requirements
+
+- Windows 10 or 11 with PowerShell 5.1 or newer
+- Python 3.10 or 3.11
+- Node.js 20.9 or newer and npm
+- Ollama 0.32.14 (validated) with `qwen3.5:9b`
+- LibreOffice with `soffice` on `PATH` or in its standard Windows installation directory
+- The pinned `intfloat/multilingual-e5-base` revision `a114a4100c6714cf21651971eefe9191a4415dbb` in the current user's Hugging Face cache
+
+Model weights and model caches are external dependencies and are never stored in Git.
+
+## Installation
 
 ```powershell
-.\scripts\validate_environment.ps1
-.\scripts\test.ps1
+git clone https://github.com/AbderrahmenID/devoteam-reference-intelligence-mvp.git
+cd devoteam-reference-intelligence-mvp
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip setuptools wheel
+python -m pip install -e ".[dev]"
+Set-Location app\frontend
+npm ci
+Set-Location ..\..
 ```
 
-The test script runs Python tests (including data integrity and API smoke tests), validates the empty human-evaluation templates, runs frontend lint and produces a frontend build.
+The equivalent automated setup is:
 
-Filter and export documentation:
+```powershell
+.\scripts\setup.ps1
+```
 
-- `docs/FILTERS.md`
-- `docs/TEMPLATE_FIELD_MAPPING.md`
-- `docs/EXPORT.md`
-- `docs/FILTER_AND_EXPORT_RESULTS.md`
+## Ollama and E5 Models
 
-Retrieval-quality hotfix documentation:
+Install the local generation model:
 
-- `docs/RETRIEVAL_QUALITY_HOTFIX.md`
-- `docs/TEXT_FIELD_LINEAGE.md`
-- `docs/RETRIEVAL_QUALITY_HOTFIX_RESULTS.md`
+```powershell
+ollama pull qwen3.5:9b
+```
 
-Current v2 runtime documentation:
+Download the pinned E5 model outside the repository:
 
-- `docs/DIRECT_RETRIEVAL_IMPROVEMENT_RESULTS.md`
-- `docs/RETRIEVAL_RUNTIME_V2.md`
-- `docs/RETRIEVAL_DIAGNOSTIC_GUIDE.md`
-- `docs/SELECTED_RETRIEVAL_CONFIGURATION.md`
-- `docs/REMAINING_LIMITATIONS.md`
+```powershell
+.\.venv\Scripts\hf.exe download intfloat/multilingual-e5-base --revision a114a4100c6714cf21651971eefe9191a4415dbb
+```
 
-Reference-pack documentation:
+Normal startup is offline-only and does not download either model automatically.
 
-- `docs/REFERENCE_PACK_GENERATION.md`
-- `docs/REFERENCE_PACK_API.md`
-- `docs/REFERENCE_PACK_TEMPLATE.md`
-- `docs/REFERENCE_PACK_TEST_RESULTS.md`
-- `docs/REFERENCE_PACK_VISUAL_VALIDATION.md`
+## Configuration
 
-## Start and stop the full application
+```powershell
+Copy-Item .env.example .env
+```
+
+The checked-in example selects the packaged v2 corpus, local FastAPI endpoint, local Ollama endpoint, and approved model. `.env` is ignored and must not be committed.
+
+Validate the complete local runtime before starting:
+
+```powershell
+.\scripts\preflight.ps1
+```
+
+## Running
 
 ```powershell
 .\start.ps1
 ```
 
-This starts `config/baselines/SELECTED_RETRIEVAL_CONFIGURATION.yaml` (corpus v2, field-aware retrieval). Set `DEVOTEAM_CONFIG=config/baselines/V1_ROLLBACK.yaml` before startup for a complete v1 rollback; see `docs/V2_MIGRATION_GUIDE.md`.
+- Application: <http://127.0.0.1:3000>
+- API health: <http://127.0.0.1:8000/health>
+- API documentation: <http://127.0.0.1:8000/docs>
 
-- Frontend: <http://127.0.0.1:3000>
-- Backend: <http://127.0.0.1:8000>
-- API docs: <http://127.0.0.1:8000/docs>
-
-Stop only the two recorded MVP processes:
+Stop only the processes recorded by this project:
 
 ```powershell
 .\stop.ps1
 ```
 
-## Start only the backend
+## Usage
+
+1. Describe the opportunity or expertise required.
+2. Refine results with the sidebar filters.
+3. Select the strongest evidence-backed references.
+4. Review the selection and generate a presentation.
+5. Choose Compact Orange or Detailed Challenges / Réalisations / Bénéfices.
+6. Choose PPTX, PDF, or both.
+7. Download and review the editable deliverable.
+
+## Tests
+
+Run the complete validation suite:
 
 ```powershell
-$env:USE_TF='0'
-$env:TRANSFORMERS_NO_TF='1'
-$env:HF_HUB_OFFLINE='1'
-$env:TRANSFORMERS_OFFLINE='1'
-.\.venv\Scripts\python.exe -m uvicorn app.api.main:app --host 127.0.0.1 --port 8000
+.\scripts\test.ps1
 ```
 
-## Start only the frontend
-
-In a second terminal, after the backend is running:
+Focused commands:
 
 ```powershell
-cd app\frontend
-$env:NEXT_PUBLIC_API_URL='http://127.0.0.1:8000'
-npm run dev -- --hostname 127.0.0.1 --port 3000
+.\.venv\Scripts\python.exe -m pytest
+.\.venv\Scripts\python.exe scripts\run_retrieval_improvement_regression.py
+Set-Location app\frontend
+npm test
+npm run lint
+npm run build
 ```
 
-## Run the live demo checks
+## Data Pipeline
 
-With the application started:
+Data preparation pipeline: [devoteam-reference-data-pipeline](https://github.com/AbderrahmenID/devoteam-reference-data-pipeline)
 
-```powershell
-.\scripts\demo_check.ps1
-```
+The separate private pipeline inventories authorized source documents, performs extraction/OCR and quality repair, constructs evidence lineage, creates the trusted corpus, and builds retrieval artifacts. The MVP consumes reviewed processed artifacts and never needs confidential raw client documents at startup.
 
-These are technical UTF-8 and contract smoke checks, not official relevance judgments.
+## Additional Documentation
 
-## Explain one complete retrieval run
+- [Retrieval runtime](docs/RETRIEVAL_RUNTIME_V2.md)
+- [AI presentation backend](docs/AI_REFERENCE_NARRATIVE_BACKEND.md)
+- [Presentation formats](docs/AI_REFERENCE_PRESENTATION_FORMATS.md)
+- [Template field mapping](docs/TEMPLATE_FIELD_MAPPING.md)
+- [Export requirements](docs/EXPORT.md)
+- [Known limitations](docs/LIMITATIONS.md)
 
-```powershell
-$env:PYTHONIOENCODING='utf-8'
-.\.venv\Scripts\python.exe -m retrieval.diagnose --query 'API Gateway Kong' --json
-```
+## Limitations
 
-The diagnostic includes fields, chunk candidates, aggregation, evidence decisions, rejections and final abstention. Internal scores are diagnostic-only and are not displayed in the UI.
+- This is a private internal MVP without user authentication or document-level authorization.
+- The validated launcher and LibreOffice export workflow are Windows-oriented.
+- E5 and Ollama model weights must be installed separately on each machine.
+- Generated copy remains subject to consultant review and evidence-grounding controls.
 
-## API examples
-
-Search with hard filters and pagination:
-
-```powershell
-$body = @{
-  query = 'PCA banque'
-  filters = @{
-    country = @('Tunisie', 'Maroc')
-    offering = @('PCA/PCI')
-    period = @{ start_year = 2020; end_year = 2022 }
-  }
-  page = 1
-  page_size = 20
-  sort = 'relevance'
-} | ConvertTo-Json -Depth 6
-Invoke-RestMethod -Method Post -Uri http://127.0.0.1:8000/api/search -ContentType application/json -Body $body
-```
-
-Facet values and counts:
-
-```powershell
-Invoke-RestMethod http://127.0.0.1:8000/api/facets
-```
-
-Use `POST /api/export/docx` with the current query/filter context and either `selected_reference_ids` or `export_all_filtered: true`. The server re-runs retrieval and rejects IDs outside the retained result set.
-
-Use `POST /api/reference-packs` with explicitly selected stable IDs and presentation options. The server reloads all facts and display evidence from manifest-pinned v2 data; `GET /api/reference-packs/{generation_id}` and its `/download/pptx`, `/download/pdf` and `/download/manifest` routes return the result.
-
-## Evaluate human-reviewed qrels
-
-Complete the CSV templates under `evaluation/`, then run:
-
-```powershell
-.\.venv\Scripts\python.exe -m evaluation.evaluate
-```
-
-Empty qrels return `HUMAN_JUDGMENTS_REQUIRED` with `metrics: null`; the evaluator never invents labels or quality claims.
-
-## Troubleshooting
-
-- **Pinned E5 model missing:** startup is intentionally offline and will not download it. Restore revision `a114a4100c6714cf21651971eefe9191a4415dbb` under `~/.cache/huggingface/hub/models--intfloat--multilingual-e5-base/snapshots/`, or update `model.local_path` only after building a compatible 768-dimensional index.
-- **TensorFlow/protobuf warning:** the MVP does not use TensorFlow. Keep `USE_TF=0` and `TRANSFORMERS_NO_TF=1`; the scripts set both.
-- **Tesseract missing:** ordinary search and digital-text PDF preview still work. For scanned PDFs, install Tesseract and the `fra`, `eng`, and `ara` language packs, verify `tesseract --list-langs`, then restart.
-- **Node.js/npm missing:** install a current Node.js release, confirm `node --version` and `npm --version`, then run `npm install` in `app/frontend`.
-- **Backend unavailable in the UI:** inspect `.runtime/backend.err.log` when started through `start.ps1`; the UI deliberately shows the real network/API error and never substitutes fake results.
-- **Ports already used:** free ports 8000/3000 or change both ports in the selected runtime configuration and the frontend API URL.
-- **DOCX export rejected:** selections are validated against the current query, filters, sort and evidence gate. Re-run the search and export its stable IDs; do not submit catalog IDs directly.
-- **PDF reference pack unavailable:** the editable PPTX is retained and the API returns a warning. Install LibreOffice at `C:\Program Files\LibreOffice\program\soffice.exe`, then retry.
-- **Word rendering:** runtime export generation does not require Microsoft Word. The test suite validates package integrity and reopens generated files with `python-docx`; see `docs/FILTER_AND_EXPORT_RESULTS.md` for host-specific visual-render validation status.
-
-## Security and scope
-
-The corpus is classified `INTERNAL`. This prototype has no authentication or document-level authorization and must remain in a controlled local demo environment. See `docs/LIMITATIONS.md` before any broader use.
+No open-source license is granted. Devoteam-related code, data, templates, and generated material remain subject to company approval and access controls.

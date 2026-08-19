@@ -54,4 +54,4 @@ Country is never a scoring field. Client has a near-zero lexical weight and cann
 - v2 `config.v2.yaml` SHA-256 remains `97136f15…`.
 - v1 `config.yaml` SHA-256 remains `c64c9cd3…`.
 
-The request named `MIGRATION_MANIFEST.json`, `DATA_QUALITY_REPORT.md`, `INDEX_VALIDATION_REPORT.md` and `V1_V2_TECHNICAL_COMPARISON.md`. The authoritative existing equivalents are `V2_MIGRATION_MANIFEST.json`, `TARGETED_REPAIR_V2_RESULTS.md`, the manifest validation block plus `test_v2_integrity.py`, and `TECHNICAL_V1_V2_COMPARISON.md`; no duplicate audit evidence was fabricated.
+The authoritative migration evidence is `data/versions/v2/V2_MIGRATION_MANIFEST.json`, its validation block, and `tests/test_v2_integrity.py`.

@@ -30,14 +30,14 @@
     },
     "repaired_pages": {
       "path": "data/versions/v2/repaired_pages.parquet",
-      "sha256": "127fac4dad564f70efadf97d385b1c47ecd8afd3348f36e35c60c93aaee4c2bf",
-      "bytes": 134188,
+      "sha256": "28e6c67422adb2496dbfcba894042e42543542d3a1a7e0bc16735ef1f6b4094a",
+      "bytes": 133992,
       "rows": 19
     },
     "repair_run_manifest": {
       "path": "data/versions/v2/PAGE_REPAIR_RUN_MANIFEST.json",
-      "sha256": "e9b7593ec2b822cd3d7d293ef96cc9f4206d6b196c101fdc82b9dc451a09f7e8",
-      "bytes": 1125,
+      "sha256": "238ed41eb3dcd9e2e8d8ef4f59b8d2076c8a7b18e8fadc3cbb292c31c804cc0f",
+      "bytes": 1097,
       "rows": null
     },
     "v1_config_sha256": "c64c9cd3148577e6ec971100aaf3dd0404d402735ace67a795d241ff2faa729b"

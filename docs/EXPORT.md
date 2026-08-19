@@ -70,4 +70,4 @@ Every export must:
 
 The automated test suite covers selected subsets, summary-only output, missing values, empty selections, bad template hashes, invalid API selections and endpoint MIME/package validity.
 
-PDF export is intentionally outside the blocking acceptance path. See `FILTER_AND_EXPORT_RESULTS.md` for render-environment status.
+PDF rendering requirements and validation are documented in `AI_REFERENCE_EVIDENCE_ANNEX_AND_PDF.md` and `FINAL_MVP_END_TO_END_VALIDATION.md`.

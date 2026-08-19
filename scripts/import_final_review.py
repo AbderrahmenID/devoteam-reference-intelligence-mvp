@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import csv
 import hashlib
 import json
@@ -19,7 +20,6 @@ MAIN_NS = "http://schemas.openxmlformats.org/spreadsheetml/2006/main"
 REL_NS = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
 SNAPSHOT_ID = "20260714T154731Z_129ff982c8"
 REVIEW_RELATIVE_PATH = Path("audit/corpus_quality/HUMAN_CHUNK_REVIEW_FINAL.xlsx")
-SOURCE_ROOT = Path(r"C:\Users\abder\Downloads\Devoteam_AI_Workspace\Devoteam_AI_CLEAN_PIPELINE")
 
 FINAL_ACTIONS = {
     "KEEP_RETRIEVAL_AND_DISPLAY",
@@ -136,7 +136,7 @@ def _dangerous_formula_value(value: object) -> bool:
     return bool(text) and text[0] in {"=", "+", "@"}
 
 
-def import_review(root: Path) -> dict[str, Any]:
+def import_review(root: Path, source_root: Path) -> dict[str, Any]:
     root = root.resolve()
     review_path = root / REVIEW_RELATIVE_PATH
     rows, formula_count = read_xlsx_sheet(review_path, "Review")
@@ -156,7 +156,7 @@ def import_review(root: Path) -> dict[str, Any]:
     references = pd.read_parquet(root / "data/reference_catalog.parquet").reset_index(drop=True)
     original_audit = pd.read_csv(root / "audit/corpus_quality/CHUNK_QUALITY_AUDIT.csv", keep_default_na=False)
     canonical_pages_path = (
-        SOURCE_ROOT / "data/canonical" / SNAPSHOT_ID / "phase4_corpus_v1/canonical_pages.parquet"
+        source_root / "data/canonical" / SNAPSHOT_ID / "phase4_corpus_v1/canonical_pages.parquet"
     )
     canonical_pages = pd.read_parquet(canonical_pages_path)
 
@@ -342,7 +342,7 @@ def import_review(root: Path) -> dict[str, Any]:
             ocr_raw = canonical_row["ocr_confidence"]
             ocr_confidence = "" if pd.isna(ocr_raw) else float(ocr_raw)
         source_relative_path = str(first_chunk["source_relative_path"])
-        snapshot_root = SOURCE_ROOT / "data/snapshots" / SNAPSHOT_ID
+        snapshot_root = source_root / "data/snapshots" / SNAPSHOT_ID
         source_path = snapshot_root / source_relative_path
         source_path_resolution = "EXACT_RELATIVE_PATH"
         if not source_path.is_file():
@@ -515,8 +515,14 @@ def import_review(root: Path) -> dict[str, Any]:
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(description="Import the final reviewed corpus decisions.")
+    parser.add_argument("--source-root", type=Path, required=True, help="Path to the external immutable Devoteam_AI_CLEAN_PIPELINE checkout.")
+    args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
-    print(json.dumps(import_review(root), ensure_ascii=False, indent=2))
+    source_root = args.source_root.expanduser().resolve()
+    if not source_root.is_dir():
+        parser.error(f"Source project does not exist: {source_root}")
+    print(json.dumps(import_review(root, source_root), ensure_ascii=False, indent=2))
     return 0
 
 

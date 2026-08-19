@@ -61,7 +61,7 @@ def main() -> int:
         "status": "PASS",
         "assets": records,
     }
-    output = root / "audit/v1_runtime_asset_hashes.json"
+    output = root / "data/V1_RUNTIME_ASSET_HASHES.json"
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(json.dumps(payload, indent=2, ensure_ascii=False))

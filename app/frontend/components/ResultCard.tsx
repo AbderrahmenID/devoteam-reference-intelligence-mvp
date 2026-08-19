@@ -79,9 +79,9 @@ export default function ResultCard({ result, selected, selectionDisabled, onTogg
       <div className="result-content">
         <div className="result-heading">
           <div>
-            <p className="eyebrow">Devoteam experience</p>
+            <p className="result-client" dir="auto">{result.client || result.contracting_authority || "Devoteam client"}</p>
             <h2 dir="auto">{result.display_title || result.project_title}</h2>
-            <p className="result-client-line">{[result.client, result.country, result.period].filter(Boolean).join(" · ")}</p>
+            <p className="result-client-line">{[result.country, result.sector, result.period].filter(Boolean).join(" · ")}</p>
           </div>
           <div className="result-side-actions">
             <label className={`pack-checkbox ${selected ? "is-selected" : ""}`}>
@@ -91,16 +91,17 @@ export default function ResultCard({ result, selected, selectionDisabled, onTogg
                 disabled={selectionDisabled}
                 onChange={() => onToggle(result.reference_id)}
               />
-              <span>{selected ? "Selected" : "Add reference"}</span>
+              <span>{selected ? "Selected" : "Add to selection"}</span>
             </label>
           </div>
         </div>
 
         <div className="metadata-row">
-          <MetadataPill label="Sector" value={result.sector} />
           <MetadataPill label="Offering" value={result.offerings.join(", ")} />
           <MetadataPill label="Service" value={result.service_nature} />
         </div>
+
+        <p className="result-summary" dir="auto">{result.description || result.services_delivered[0] || passage?.text || "No additional project summary is available."}</p>
 
         <div className="commercial-fit" aria-label="Relevant experience signals">
           <strong>Why it fits</strong>
@@ -109,7 +110,7 @@ export default function ResultCard({ result, selected, selectionDisabled, onTogg
 
         <details className="annex-details">
           <summary>
-            <span>View source details</span>
+            <span>View evidence</span>
             <span className="details-toggle-label" aria-hidden="true">Show</span>
           </summary>
           {passage && (

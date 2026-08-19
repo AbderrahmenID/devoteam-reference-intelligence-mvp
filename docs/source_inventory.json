@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-07-31",
-  "source_path": "C:\\Users\\abder\\Downloads\\Devoteam_AI_Workspace\\Devoteam_AI_CLEAN_PIPELINE",
-  "target_path": "C:\\Users\\abder\\Downloads\\Devoteam_AI_Workspace\\devoteam-reference-mvp",
+  "source_path": "external://Devoteam_AI_CLEAN_PIPELINE",
+  "target_path": ".",
   "source_baseline": {
     "file_count": 872,
     "bytes": 177905384,

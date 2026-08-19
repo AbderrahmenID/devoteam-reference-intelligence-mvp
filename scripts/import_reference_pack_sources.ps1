@@ -1,6 +1,7 @@
 [CmdletBinding()]
 param(
-    [string]$SourceRoot = 'C:\Users\abder\Downloads\Devoteam_AI_Workspace\Devoteam_AI_CLEAN_PIPELINE\data\snapshots\20260714T154731Z_129ff982c8\raw\evidence'
+    [Parameter(Mandatory = $true)]
+    [string]$SourceRoot
 )
 
 $ErrorActionPreference = 'Stop'

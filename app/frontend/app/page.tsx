@@ -81,8 +81,12 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    setSelectionBasket(hydrateBasket(window.sessionStorage.getItem(SESSION_KEY)) as SelectedReference[]);
-    setBasketReady(true);
+    const storedBasket = hydrateBasket(window.sessionStorage.getItem(SESSION_KEY)) as SelectedReference[];
+    const hydrationTimer = window.setTimeout(() => {
+      setSelectionBasket(storedBasket);
+      setBasketReady(true);
+    }, 0);
+    return () => window.clearTimeout(hydrationTimer);
   }, []);
 
   useEffect(() => {
@@ -217,45 +221,39 @@ export default function Home() {
   const rangeStart = response?.result_count ? (response.page - 1) * response.page_size + 1 : 0;
   const rangeEnd = response ? rangeStart + response.result_count - 1 : 0;
   const noEligible = response?.abstention_reason === "NO_ELIGIBLE_REFERENCE";
-  const workflowActive = showPresentationGenerator ? 3 : selectedCount > 0 ? 2 : 1;
   const presentationLanguage = "fr" as const;
 
   return (
     <main className={selectedCount ? "has-selection" : ""}>
       <header className="topbar">
-        <div className="brand"><span className="brand-mark" aria-hidden="true">d</span><span><strong>Devoteam</strong><small>Reference Intelligence</small></span></div>
-        <span className="internal-product">Proposal enablement workspace</span>
+        <div className="brand">
+          <span className="brand-mark" aria-hidden="true">d</span>
+          <span className="brand-lockup"><strong>Devoteam</strong><span className="product-name">Reference Intelligence</span></span>
+        </div>
       </header>
 
-      <nav className="workflow-stepper" aria-label="Reference presentation workflow">
-        {["Find references", "Select references", "Generate presentation"].map((label, index) => (
-          <div className={`${workflowActive === index + 1 ? "active" : ""} ${workflowActive > index + 1 ? "complete" : ""}`} key={label} aria-current={workflowActive === index + 1 ? "step" : undefined}>
-            <span>{workflowActive > index + 1 ? "✓" : index + 1}</span><strong>{label}</strong>
-          </div>
-        ))}
-      </nav>
+      <div className="search-page">
+        <section className="search-introduction" aria-labelledby="search-page-title">
+          <p className="eyebrow">Reference Intelligence</p>
+          <h1 id="search-page-title">Find relevant Devoteam references</h1>
+          <p>Search proven project experience for your commercial opportunity.</p>
+        </section>
 
-      <section className="hero compact-hero">
-        <div className="hero-copy">
-          <p className="eyebrow">Devoteam client experience</p>
-          <h1>Find the right references.<br /><em>Generate the presentation.</em></h1>
-          <p className="intro">Select trusted Devoteam experience and generate an editable reference presentation in the real approved format.</p>
-        </div>
         <form className="search-panel" onSubmit={submit}>
-          <label htmlFor="query">What experience do you need for this opportunity?</label>
-          <textarea id="query" dir="auto" rows={3} maxLength={1000} value={query} onChange={(event) => setQuery(event.target.value)} placeholder="e.g. PCA for a retail bank, cloud strategy, data governance" aria-describedby="query-help" />
-          <div className="search-actions"><p id="query-help">Search in French, English or Arabic. You can refine the shortlist afterwards.</p><button type="submit" disabled={loading}>{loading ? <><span className="spinner" aria-hidden="true" /> Searching references…</> : <>Find references <span aria-hidden="true">→</span></>}</button></div>
+          <label htmlFor="query">What expertise will strengthen this opportunity?</label>
+          <textarea id="query" dir="auto" rows={3} maxLength={1000} value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Describe the opportunity, client need, sector or capability..." aria-describedby="query-help" />
+          <div className="search-actions"><p id="query-help">Search in French, English or Arabic.</p><button type="submit" disabled={loading}>{loading ? <><span className="spinner" aria-hidden="true" /> Searching references…</> : <>Find references</>}</button></div>
         </form>
-      </section>
 
-      <section className="workspace">
-        <div className="results-section" aria-live="polite" aria-busy={loading}>
+        <section className={`workspace${response ? " has-results" : ""}`}>
           <FilterPanel facets={facets} filters={filters} period={period} onToggle={toggleFilter} onPeriodChange={setPeriod} onClear={clearFilters} />
+          <div className="results-section" aria-live="polite" aria-busy={loading}>
           {Object.entries(filters).flatMap(([category, values]) => values.map((value) => ({ category, value }))).length > 0 || Object.keys(period).length > 0 ? (
             <div className="active-filters" aria-label="Active filters">
               <span>Active filters</span>
               {Object.entries(filters).flatMap(([category, values]) => values.map((value) => <button type="button" key={`${category}-${value}`} onClick={() => removeFilter(category, value)}>{value} ×</button>))}
               {Object.keys(period).length > 0 && <button type="button" onClick={() => removeFilter("period")}>{period.preset?.replaceAll("_", " ") ?? `${period.start_year ?? "…"}–${period.end_year ?? "…"}`} ×</button>}
+              <button type="button" className="clear-filter-chips" onClick={clearFilters}>Clear all</button>
             </div>
           ) : null}
 
@@ -268,7 +266,7 @@ export default function Home() {
           {response && !response.abstained && (
             <>
               <header className="results-header">
-                <div><p className="eyebrow">Relevant experience</p><h2>{response.total_count} reference{response.total_count === 1 ? "" : "s"}</h2><p className="range-copy">Showing {rangeStart}–{rangeEnd}. Select the examples that best support the opportunity.</p></div>
+                <div><p className="eyebrow">References</p><h2>{response.total_count} match{response.total_count === 1 ? "" : "es"}</h2><p className="range-copy">Ranked against your opportunity and active filters. Showing {rangeStart}–{rangeEnd}.</p></div>
                 <div className="result-controls">
                   <label>Sort<select value={sort} onChange={(event) => { const value = event.target.value as SortMode; setSort(value); void runSearch(1, { sort: value }); }}><option value="relevance">Relevance</option><option value="newest">Newest</option><option value="oldest">Oldest</option><option value="project_title">Project title</option><option value="client">Client</option><option value="country">Country</option></select></label>
                   <label>Page size<select value={pageSize} onChange={(event) => { const value = Number(event.target.value) as 10 | 20 | 50; setPageSize(value); void runSearch(1, { pageSize: value }); }}><option value={10}>10</option><option value={20}>20</option><option value={50}>50</option></select></label>
@@ -295,9 +293,17 @@ export default function Home() {
             </>
           )}
 
-          {!response && !error && !loading && <div className="idle-note">Start with the opportunity, capability, sector or client you need to support.</div>}
-        </div>
-      </section>
+          {!response && !error && !loading && (
+            <div className="search-empty-state">
+              <span aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="presentation"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m15.5 15.5 5 5" /></svg>
+              </span>
+              <div><h2>Search your reference portfolio</h2><p>Describe the opportunity above to find the most relevant Devoteam project experience.</p></div>
+            </div>
+          )}
+          </div>
+        </section>
+      </div>
 
       <footer className="page-footer"><p>Devoteam internal use</p><p>Every presentation remains subject to consultant review and approval.</p></footer>
       <CompactSelectionBar count={selectedCount} onView={() => setShowSelection(true)} onClear={clearSelection} onGenerate={openGeneration} />
