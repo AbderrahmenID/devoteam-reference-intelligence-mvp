@@ -2,7 +2,7 @@
 
 ## Runtime flow
 
-`Next.js UI → FastAPI /api/search → RetrievalService → hard filters → BM25 + multilingual E5 → weighted RRF → reference grouping → abstention → 0–3 cited results`
+`Next.js UI → FastAPI → normalized metadata eligibility → masked BM25 + multilingual E5 → weighted RRF → reference grouping → per-candidate evidence gate → sort → pagination → cited results → optional template DOCX export`
 
 ## Source data
 
@@ -24,13 +24,17 @@ The pickle-free source BM25 index is loaded from NumPy arrays plus a JSON vocabu
 
 The query encoder loads the pinned local `intfloat/multilingual-e5-base` snapshot offline. It preserves the exact `query: ` prefix; the copied passage matrix was created with `passage: `. Query and passage vectors are L2-normalized and scored by cosine-equivalent dot product. No cloud API is called and no model is downloaded at startup.
 
-## Hybrid retrieval and hard filters
+## Normalized metadata and hard filters
 
-BM25 and dense rankings are fused with weighted reciprocal rank fusion. Filters are applied before either score is ranked. Supported exact and year filters live in `config.yaml`; unknown filters fail closed. Document/query language is metadata, never a hard filter, which allows Arabic-to-French and English-to-French matches.
+`retrieval/metadata.py` builds a deterministic in-memory projection over the immutable reference catalog and chunk provenance. It canonicalizes only spelling/case/geography aliases, parses explicit project years into closed intervals, derives `ongoing` only from explicit markers, and attaches source languages, evidence types, controlled technologies and the seven template themes through auditable term rules. The parquet files are never edited.
+
+AND applies across filter categories and OR within a category. Periods use interval overlap; an ongoing record uses the local current year as its runtime end. Unknown categories and unknown facet values fail with HTTP 422. A valid zero-sized eligible set returns `NO_ELIGIBLE_REFERENCE`.
+
+BM25 and dense rankings are fused with weighted reciprocal rank fusion after the hard reference mask is converted to a chunk mask. Candidate depth exceeds the full chunk corpus so the complete eligible universe can be grouped.
 
 ## Reference grouping and citations
 
-Chunk candidates are expanded through their canonical reference rows and grouped by stable `reference_id`. Each reference keeps a bounded set of supporting passages, while its best passage supplies the displayed original evidence, document, page, language and citation URI. The API and UI cap final output at three distinct reference IDs.
+Chunk candidates are expanded through their canonical reference rows and grouped by stable `reference_id`. Each reference keeps a bounded set of supporting passages, while its best passage supplies the displayed original evidence, document, page, language and citation URI. Every grouped candidate passes through the evidence gate independently. All passing references are retained, sorted deterministically and only then paginated at 10, 20 or 50 items.
 
 ## Abstention
 
@@ -38,9 +42,12 @@ The deterministic gate uses lexical score, dense cosine, top dense mean, query-t
 
 ## API and frontend
 
-FastAPI owns validation and exposes health, config summary, search and bounded extraction preview. The Next.js page calls only this API, uses `dir="auto"` or explicit RTL for evidence, and implements real loading, network-error, no-result and cited-result states. It has no generation, login, dashboard, client-side search or synthetic fallback.
+FastAPI owns validation and exposes health, config summary, facets, paginated search, DOCX export and bounded extraction preview. The Next.js page calls only this API, uses `dir="auto"` or explicit RTL for evidence, and implements real loading, network-error, no-eligible, no-relevant and cited-result states. Selection is keyed by stable reference ID and persists across pages.
+
+## Template-based export
+
+`exporting/docx_export.py` verifies the immutable source-template hash, creates a task-local template working copy, validates the audited 18-table source structure and builds a clean Word package using the template's summary-first/table/annex visual system. Exports can include the summary table, detailed annex, source evidence passages and optional retrieval diagnostics. The package is reopened and checked for every selected reference before the API streams it, then the temporary output is deleted.
 
 ## Evaluation
 
-The evaluator calls the same retrieval service, using an internal deeper ranking only for Recall@10/20 and nDCG/MRR. It calculates metrics only after human qrels are supplied. Operational UI/API output remains capped at three.
-
+The evaluator calls the same retrieval service, using an internal deeper ranking only for Recall@10/20 and nDCG/MRR. It calculates metrics only after human qrels are supplied. Operational results are evidence-gated and paginated; there is no fixed top-three cap.

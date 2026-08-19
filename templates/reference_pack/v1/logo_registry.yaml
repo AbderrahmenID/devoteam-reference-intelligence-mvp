@@ -1,0 +1,5 @@
+schema_version: 1
+approved_client_logos: {}
+
+# Client logos are intentionally absent until an authorized local asset is
+# reviewed and registered. The generator uses a clean client-name card.

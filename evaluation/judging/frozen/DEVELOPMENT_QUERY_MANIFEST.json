@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "query_set_version": "development_queries_v1",
+  "status": "FROZEN_PROVISIONAL_DEVELOPMENT_QUERY_SET",
+  "frozen_at_utc": "2026-08-02T20:23:35.590922+00:00",
+  "source_workbook_path": "evaluation/judging/DEVELOPMENT_QUERY_INTAKE_FINAL.xlsx",
+  "source_workbook_sha256": "d651d006b52cb850bbc0ff7bb7a8f201d7cd65d94ca9ea5ea9a7b38f05ab6db3",
+  "approved_filter_overrides_path": "evaluation/judging/APPROVED_FILTER_OVERRIDES.json",
+  "approved_filter_overrides_sha256": "14d837fdad05b3329a5f7f792e8bcf9fc7dbc527dd24cebd0472dbaf75b66db2",
+  "validation_path": "evaluation/judging/DEVELOPMENT_QUERY_IMPORT_VALIDATION.json",
+  "validation_sha256": "da7b99d353e86d327d8f62a16b0ba0c741f4aba8dc1db34e0503894b7ce02a51",
+  "frozen_csv_path": "evaluation/judging/frozen/development_queries_v1.csv",
+  "frozen_csv_sha256": "fd770a2d2c7cde473cacf9e168cf9df7a2120f7500de4c9493008ae2d6f10d4d",
+  "query_count": 50,
+  "language_counts": {
+    "ar": 14,
+    "en": 14,
+    "fr": 17,
+    "mixed": 5
+  },
+  "answerable_count": 35,
+  "no_answer_count": 15,
+  "filter_constrained_count": 3,
+  "cross_language_expected_count": 11,
+  "mixed_script_count": 5,
+  "acronym_heavy_count": 9,
+  "owner_approved_filter_override_count": 3,
+  "direct_corpus_copy_match_count": 0,
+  "protected_held_out_overlap_check": "NOT_ACCESSED_PROTECTED_TEST_BOUNDARY",
+  "allowed_use": [
+    "development diagnostics",
+    "candidate-pool generation",
+    "precision and abstention tuning only after independent qrels are frozen"
+  ],
+  "prohibited_claims": [
+    "official gold set",
+    "held-out test set",
+    "official precision, recall, MRR, or nDCG before independent judgments"
+  ]
+}

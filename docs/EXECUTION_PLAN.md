@@ -39,7 +39,7 @@ Statuses are updated only when the stated acceptance criteria pass.
 
 - Objective: implement one BM25+dense+hybrid reference retrieval pipeline.
 - Files: `retrieval/bm25.py`, `dense.py`, `hybrid.py`, `service.py`, `schemas.py`, `normalization.py`.
-- Acceptance criteria: deterministic rankings, exact E5 prefixes, normalized query vectors, hard filters, citations, reference grouping, max 3.
+- Acceptance criteria: deterministic rankings, exact E5 prefixes, normalized query vectors, hard filters, citations, reference grouping and independent per-reference evidence gates.
 - Commands: focused pytest and manual retrieval probes.
 - Tests: BM25, dense and hybrid test modules.
 - Status: DONE
@@ -83,7 +83,7 @@ Statuses are updated only when the stated acceptance criteria pass.
 
 - Objective: one real multilingual search UI backed only by the API.
 - Files: `app/frontend/*`.
-- Acceptance criteria: health/error/loading/no-result/result states; RTL evidence; citations; max 3; no fake data.
+- Acceptance criteria: health/error/loading/no-eligible/no-relevant/result states; RTL evidence; citations; validated pagination; no fake data.
 - Commands: npm install, lint, build, browser/API smoke.
 - Tests: lint and production build.
 - Status: DONE

@@ -8,8 +8,15 @@ __pycache__/
 htmlcov/
 .env
 .runtime/
+.cache/
+.tmp/
+audit/
+node_modules/
 app/frontend/node_modules/
 app/frontend/.next/
+app/frontend/.next-dev/
 app/frontend/out/
 *.log
 .DS_Store
+generated/reference_packs/
+tmp/

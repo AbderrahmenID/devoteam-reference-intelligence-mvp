@@ -1,0 +1,79 @@
+{
+  "captured_at_utc": "2026-08-14T15:56:05.519984+00:00",
+  "classification": "DEVELOPMENT / NON-PRODUCTION",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "python_version": "3.10.11",
+  "ollama_version": "ollama version is 0.32.9",
+  "ollama_url": "http://127.0.0.1:11434",
+  "disk_total_bytes": 961406111744,
+  "disk_free_bytes": 22617276416,
+  "memory": {
+    "total_bytes": 33412722688,
+    "free_bytes": 15554879488
+  },
+  "gpu_nvidia_smi": "NVIDIA GeForce RTX 5070 Laptop GPU, 8151, 7891, 0, 596.36",
+  "models": {
+    "qwen3.5:9b": {
+      "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+      "size_bytes": 6594474711,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen35",
+        "families": [
+          "qwen35"
+        ],
+        "parameter_size": "9.7B",
+        "quantization_level": "Q4_K_M",
+        "context_length": 262144,
+        "embedding_length": 4096
+      }
+    },
+    "qwen3:8b": {
+      "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "size_bytes": 5225388164,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": [
+          "qwen3"
+        ],
+        "parameter_size": "8.2B",
+        "quantization_level": "Q4_K_M",
+        "context_length": 40960,
+        "embedding_length": 4096
+      }
+    },
+    "qwen2.5-coder:7b-instruct": {
+      "digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+      "size_bytes": 4683087561,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen2",
+        "families": [
+          "qwen2"
+        ],
+        "parameter_size": "7.6B",
+        "quantization_level": "Q4_K_M",
+        "context_length": 32768,
+        "embedding_length": 3584
+      }
+    },
+    "gemma4:latest": {
+      "digest": "c6eb396dbd5992bbe3f5cdb947e8bbc0ee413d7c17e2beaae69f5d569cf982eb",
+      "size_bytes": 9608350718,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "gemma4",
+        "families": [
+          "gemma4"
+        ],
+        "parameter_size": "8.0B",
+        "quantization_level": "Q4_K_M"
+      }
+    }
+  }
+}

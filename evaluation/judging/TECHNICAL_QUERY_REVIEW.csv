@@ -1,0 +1,6 @@
+query_id,query_text,query_language,origin,official_development_query,system_abstained,system_abstention_reason,system_result_count,human_query_approval,human_no_answer_expected,reviewer_id,reviewer_comments
+TECH-FR-001,Références de plan de continuité d’activité pour une banque,fr,EXISTING_TECHNICAL_SMOKE,False,False,SUFFICIENT_EVIDENCE,23,,,,
+TECH-EN-001,Bank business continuity planning references,en,EXISTING_TECHNICAL_SMOKE,False,False,SUFFICIENT_EVIDENCE,20,,,,
+TECH-AR-001,مراجع حول استمرارية الأعمال للبنوك,ar,EXISTING_TECHNICAL_SMOKE,False,False,SUFFICIENT_EVIDENCE,22,,,,
+TECH-MIX-001,PCA للبنوك en Tunisie,mixed,EXISTING_TECHNICAL_SMOKE,False,False,SUFFICIENT_EVIDENCE,14,,,,
+TECH-NEG-001,recette de cuisine pour gâteau au chocolat,fr,EXISTING_TECHNICAL_SMOKE,False,True,UNSUPPORTED_PORTFOLIO_SCOPE,0,,,,

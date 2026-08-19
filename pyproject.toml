@@ -19,9 +19,12 @@ dependencies = [
   "sentence-transformers==3.4.1",
   "transformers==4.57.6",
   "PyMuPDF==1.26.4",
+  "pypdf==6.16.1",
   "Pillow==11.3.0",
   "pytesseract==0.3.13",
   "python-multipart==0.0.20",
+  "python-docx==1.2.0",
+  "python-pptx==1.0.2",
   "PyYAML==6.0.3",
 ]
 
@@ -33,7 +36,7 @@ dev = [
 ]
 
 [tool.setuptools]
-packages = ["app", "app.api", "retrieval", "extraction", "evaluation"]
+packages = ["app", "app.api", "retrieval", "extraction", "evaluation", "exporting", "reference_pack", "reference_narrative"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

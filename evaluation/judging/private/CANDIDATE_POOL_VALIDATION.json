@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "validated_at_utc": "2026-08-02T20:24:04.247586+00:00",
+  "status": "PASS",
+  "query_count": 50,
+  "candidate_count": 1192,
+  "zero_candidate_queries": [
+    "DEV-041"
+  ],
+  "maximum_candidates_per_query": 25,
+  "judgment_fields_blank": true,
+  "public_private_identity_match": true,
+  "evidence_lineage_complete": true,
+  "retrieval_only_evidence_displayed": false,
+  "mandatory_filter_violations": 0,
+  "manifest_hashes_match": true,
+  "issues": []
+}

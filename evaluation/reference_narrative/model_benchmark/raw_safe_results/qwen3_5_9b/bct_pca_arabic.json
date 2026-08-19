@@ -1,0 +1,500 @@
+{
+  "classification": "DEVELOPMENT / NON-PRODUCTION",
+  "case_id": "bct_pca_arabic",
+  "title": "BCT PCA Arabic narrative",
+  "description": "Checks Arabic structured generation against the same trusted French evidence boundary.",
+  "request": {
+    "selected_reference_ids": [
+      "38f6543c913e6155ed935bc93b2eb9adb740b8d292f9afd40065032ca7b62b82"
+    ],
+    "opportunity_title": "تعزيز استمرارية الأعمال في القطاع المصرفي",
+    "opportunity_description": "تحتاج مؤسسة مصرفية إلى مرجع موثق حول تفعيل خطة استمرارية الأعمال.",
+    "requirements": [
+      "عدم اختراع نتائج أو منافع",
+      "الاستناد إلى الأدلة المتاحة فقط"
+    ],
+    "target_language": "ar",
+    "tone": "commercial",
+    "audience": "executive",
+    "detail_level": "medium"
+  },
+  "status": "completed",
+  "provider": "ollama",
+  "model": "qwen3.5:9b",
+  "latency_ms": 19891.040900023654,
+  "schema_failure_count": 0,
+  "structured_output_retry_count": 0,
+  "generation_usage": {
+    "call_count": 2,
+    "prompt_token_count": 1292,
+    "generated_token_count": 168,
+    "calls": [
+      {
+        "prompt_token_count": 946,
+        "generated_token_count": 22,
+        "total_duration_ns": 4258925800,
+        "load_duration_ns": 338070900,
+        "prompt_eval_duration_ns": 1847688000,
+        "eval_duration_ns": 2028754000
+      },
+      {
+        "prompt_token_count": 346,
+        "generated_token_count": 146,
+        "total_duration_ns": 15563167700,
+        "load_duration_ns": 357581400,
+        "prompt_eval_duration_ns": 1313387000,
+        "eval_duration_ns": 13829632000
+      }
+    ]
+  },
+  "narrative": {
+    "section_intro": {
+      "text": "",
+      "support_ids": []
+    },
+    "overall_storyline": {
+      "text": "توثيق تفعيل خطة استمرارية الأعمال في القطاع المصرفي عبر مرجع موثق من تونس.",
+      "support_ids": [
+        "S2",
+        "S5",
+        "S3",
+        "S4",
+        "S6",
+        "S7"
+      ]
+    },
+    "why_these_references": {
+      "text": "تم اختيار هذا المرجع لأنه يربط بين الثقة والأمن السيبراني ضمن إطار عمل الاستمرارية (PCA/PCI) صادر عن بنك مركزي تونسي عام 2022، مما يوفر أساسًا واقعيًا دون افتراض نتائج غير مؤكدة أو منافع لم تُسجل في البيانات المتاحة. يُعد هذا التوثيق ضروريًا للمؤسسات المصرفية التي تسعى لتفعيل خطط استمرارية أعمالها بناءً على أدلة عملية ومعايير قطاعية معتمدة.",
+      "support_ids": [
+        "S2",
+        "S5",
+        "S3",
+        "S4",
+        "S6",
+        "S7"
+      ]
+    },
+    "references": [
+      {
+        "reference_id": "38f6543c913e6155ed935bc93b2eb9adb740b8d292f9afd40065032ca7b62b82",
+        "headline": {
+          "text": "",
+          "support_ids": []
+        },
+        "short_description": {
+          "text": "",
+          "support_ids": []
+        },
+        "challenge": {
+          "text": "",
+          "support_ids": []
+        },
+        "devoteam_contribution": {
+          "text": "",
+          "support_ids": []
+        },
+        "realisations": [],
+        "benefits": [],
+        "why_relevant_to_opportunity": {
+          "text": "",
+          "support_ids": []
+        },
+        "warnings": []
+      }
+    ]
+  },
+  "validation": {
+    "valid": true,
+    "export_blocked": false,
+    "export_eligible": true,
+    "warnings": [
+      {
+        "code": "WEAK_SOURCE_SUPPORT",
+        "message": "The claim is supported only by catalog, proposal, contractual, or unverified evidence.",
+        "severity": "WARNING",
+        "blocking": false,
+        "field_path": "overall_storyline",
+        "reference_id": null,
+        "support_ids": [
+          "S2",
+          "S5",
+          "S3",
+          "S4",
+          "S6",
+          "S7"
+        ]
+      },
+      {
+        "code": "WEAK_SOURCE_SUPPORT",
+        "message": "The claim is supported only by catalog, proposal, contractual, or unverified evidence.",
+        "severity": "WARNING",
+        "blocking": false,
+        "field_path": "why_these_references",
+        "reference_id": null,
+        "support_ids": [
+          "S2",
+          "S5",
+          "S3",
+          "S4",
+          "S6",
+          "S7"
+        ]
+      },
+      {
+        "code": "UNAVAILABLE_FIELD_LEFT_EMPTY",
+        "message": "The unavailable challenge field was intentionally left empty.",
+        "severity": "INFO",
+        "blocking": false,
+        "field_path": null,
+        "reference_id": "38f6543c913e6155ed935bc93b2eb9adb740b8d292f9afd40065032ca7b62b82",
+        "support_ids": []
+      }
+    ]
+  },
+  "warnings": [
+    {
+      "code": "WEAK_SOURCE_SUPPORT",
+      "message": "The claim is supported only by catalog, proposal, contractual, or unverified evidence.",
+      "severity": "WARNING",
+      "blocking": false,
+      "field_path": "overall_storyline",
+      "reference_id": null,
+      "support_ids": [
+        "S2",
+        "S5",
+        "S3",
+        "S4",
+        "S6",
+        "S7"
+      ]
+    },
+    {
+      "code": "WEAK_SOURCE_SUPPORT",
+      "message": "The claim is supported only by catalog, proposal, contractual, or unverified evidence.",
+      "severity": "WARNING",
+      "blocking": false,
+      "field_path": "why_these_references",
+      "reference_id": null,
+      "support_ids": [
+        "S2",
+        "S5",
+        "S3",
+        "S4",
+        "S6",
+        "S7"
+      ]
+    },
+    {
+      "code": "UNAVAILABLE_FIELD_LEFT_EMPTY",
+      "message": "The unavailable challenge field was intentionally left empty.",
+      "severity": "INFO",
+      "blocking": false,
+      "field_path": null,
+      "reference_id": "38f6543c913e6155ed935bc93b2eb9adb740b8d292f9afd40065032ca7b62b82",
+      "support_ids": []
+    }
+  ],
+  "warning_counts": {
+    "INFO": 1,
+    "WARNING": 2,
+    "BLOCKING": 0
+  },
+  "backend_guarantees": {
+    "reference_identity_count": 1,
+    "expected_reference_count": 1,
+    "reference_identity_coverage": 1.0,
+    "eligible_populated_field_count": 2,
+    "deterministically_supported_field_count": 2,
+    "deterministic_support_coverage": 1.0,
+    "unknown_support_id_count": 0,
+    "unselected_support_count": 0,
+    "empty_support_field_violation_count": 0,
+    "blocking_provenance_count": 0
+  },
+  "model_quality": {
+    "populated_field_count": 2,
+    "total_word_count": 70,
+    "maximum_field_word_count": 57,
+    "duplicate_text_count": 0,
+    "conciseness_indicator": "CONCISE",
+    "narrative_usefulness": "HUMAN_REVIEW_REQUIRED",
+    "repetition_review": "NO_EXACT_DUPLICATION_DETECTED",
+    "language_review": "HUMAN_REVIEW_REQUIRED",
+    "target_language": "ar",
+    "latency_ms": 19891.040900023654
+  },
+  "source_supports": [
+    {
+      "support_id": "S1",
+      "reference_id": "38f6543c913e6155ed935bc93b2eb9adb740b8d292f9afd40065032ca7b62b82",
+      "support_types": [
+        "FACT",
+        "STRUCTURED_METADATA"
+      ],
+      "source_label": "Trusted reference fact: mission_title",
+      "page": null
+    },
+    {
+      "support_id": "S2",
+      "reference_id": "38f6543c913e6155ed935bc93b2eb9adb740b8d292f9afd40065032ca7b62b82",
+      "support_types": [
+        "FACT",
+        "STRUCTURED_METADATA"
+      ],
+      "source_label": "Trusted reference fact: client",
+      "page": null
+    },
+    {
+      "support_id": "S3",
+      "reference_id": "38f6543c913e6155ed935bc93b2eb9adb740b8d292f9afd40065032ca7b62b82",
+      "support_types": [
+        "FACT",
+        "STRUCTURED_METADATA"
+      ],
+      "source_label": "Trusted reference fact: country",
+      "page": null
+    },
+    {
+      "support_id": "S4",
+      "reference_id": "38f6543c913e6155ed935bc93b2eb9adb740b8d292f9afd40065032ca7b62b82",
+      "support_types": [
+        "FACT",
+        "STRUCTURED_METADATA"
+      ],
+      "source_label": "Trusted reference fact: period",
+      "page": null
+    },
+    {
+      "support_id": "S5",
+      "reference_id": "38f6543c913e6155ed935bc93b2eb9adb740b8d292f9afd40065032ca7b62b82",
+      "support_types": [
+        "FACT",
+        "STRUCTURED_METADATA"
+      ],
+      "source_label": "Trusted reference fact: sector",
+      "page": null
+    },
+    {
+      "support_id": "S6",
+      "reference_id": "38f6543c913e6155ed935bc93b2eb9adb740b8d292f9afd40065032ca7b62b82",
+      "support_types": [
+        "FACT",
+        "STRUCTURED_METADATA"
+      ],
+      "source_label": "Trusted reference fact: offering",
+      "page": null
+    },
+    {
+      "support_id": "S7",
+      "reference_id": "38f6543c913e6155ed935bc93b2eb9adb740b8d292f9afd40065032ca7b62b82",
+      "support_types": [
+        "FACT",
+        "STRUCTURED_METADATA"
+      ],
+      "source_label": "Trusted reference fact: business_unit",
+      "page": null
+    },
+    {
+      "support_id": "S8",
+      "reference_id": "38f6543c913e6155ed935bc93b2eb9adb740b8d292f9afd40065032ca7b62b82",
+      "support_types": [
+        "STRUCTURED_METADATA",
+        "UNVERIFIED_METADATA"
+      ],
+      "source_label": "Structured catalog scope",
+      "page": null
+    },
+    {
+      "support_id": "S9",
+      "reference_id": "38f6543c913e6155ed935bc93b2eb9adb740b8d292f9afd40065032ca7b62b82",
+      "support_types": [
+        "CLIENT_ATTESTATION",
+        "COMPLETED_WORK_EVIDENCE"
+      ],
+      "source_label": "Opérationnalisation du PCA de la BCT.pdf",
+      "page": 1
+    }
+  ],
+  "support_plan": {
+    "references": [
+      {
+        "reference_id": "38f6543c913e6155ed935bc93b2eb9adb740b8d292f9afd40065032ca7b62b82",
+        "headline": [
+          "S1",
+          "S2"
+        ],
+        "short_description": [
+          "S1",
+          "S2",
+          "S9"
+        ],
+        "challenge": [],
+        "devoteam_contribution": [
+          "S9"
+        ],
+        "realisations": [
+          "S9"
+        ],
+        "benefits": [],
+        "why_relevant_to_opportunity": [
+          "S1",
+          "S6"
+        ]
+      }
+    ],
+    "section": {
+      "section_intro": [
+        "S2",
+        "S5",
+        "S3",
+        "S4",
+        "S6",
+        "S7"
+      ],
+      "overall_storyline": [
+        "S2",
+        "S5",
+        "S3",
+        "S4",
+        "S6",
+        "S7"
+      ],
+      "why_these_references": [
+        "S2",
+        "S5",
+        "S3",
+        "S4",
+        "S6",
+        "S7"
+      ]
+    }
+  },
+  "provenance": {
+    "generated_at_utc": "2026-08-14T16:18:24.264479Z",
+    "provider": "ollama",
+    "model": "qwen3.5:9b",
+    "prompt_version": "reference-narrative-phase2.1-prose-v1",
+    "prompt_sha256": "28af905d5ef76ea1e992b81d21ab8f3e65ae6b58e1a43fe833f0d658c63e9138",
+    "selected_reference_ids": [
+      "38f6543c913e6155ed935bc93b2eb9adb740b8d292f9afd40065032ca7b62b82"
+    ],
+    "source_supports": [
+      {
+        "support_id": "S1",
+        "reference_id": "38f6543c913e6155ed935bc93b2eb9adb740b8d292f9afd40065032ca7b62b82",
+        "support_types": [
+          "FACT",
+          "STRUCTURED_METADATA"
+        ],
+        "source_label": "Trusted reference fact: mission_title",
+        "page": null
+      },
+      {
+        "support_id": "S2",
+        "reference_id": "38f6543c913e6155ed935bc93b2eb9adb740b8d292f9afd40065032ca7b62b82",
+        "support_types": [
+          "FACT",
+          "STRUCTURED_METADATA"
+        ],
+        "source_label": "Trusted reference fact: client",
+        "page": null
+      },
+      {
+        "support_id": "S3",
+        "reference_id": "38f6543c913e6155ed935bc93b2eb9adb740b8d292f9afd40065032ca7b62b82",
+        "support_types": [
+          "FACT",
+          "STRUCTURED_METADATA"
+        ],
+        "source_label": "Trusted reference fact: country",
+        "page": null
+      },
+      {
+        "support_id": "S4",
+        "reference_id": "38f6543c913e6155ed935bc93b2eb9adb740b8d292f9afd40065032ca7b62b82",
+        "support_types": [
+          "FACT",
+          "STRUCTURED_METADATA"
+        ],
+        "source_label": "Trusted reference fact: period",
+        "page": null
+      },
+      {
+        "support_id": "S5",
+        "reference_id": "38f6543c913e6155ed935bc93b2eb9adb740b8d292f9afd40065032ca7b62b82",
+        "support_types": [
+          "FACT",
+          "STRUCTURED_METADATA"
+        ],
+        "source_label": "Trusted reference fact: sector",
+        "page": null
+      },
+      {
+        "support_id": "S6",
+        "reference_id": "38f6543c913e6155ed935bc93b2eb9adb740b8d292f9afd40065032ca7b62b82",
+        "support_types": [
+          "FACT",
+          "STRUCTURED_METADATA"
+        ],
+        "source_label": "Trusted reference fact: offering",
+        "page": null
+      },
+      {
+        "support_id": "S7",
+        "reference_id": "38f6543c913e6155ed935bc93b2eb9adb740b8d292f9afd40065032ca7b62b82",
+        "support_types": [
+          "FACT",
+          "STRUCTURED_METADATA"
+        ],
+        "source_label": "Trusted reference fact: business_unit",
+        "page": null
+      },
+      {
+        "support_id": "S8",
+        "reference_id": "38f6543c913e6155ed935bc93b2eb9adb740b8d292f9afd40065032ca7b62b82",
+        "support_types": [
+          "STRUCTURED_METADATA",
+          "UNVERIFIED_METADATA"
+        ],
+        "source_label": "Structured catalog scope",
+        "page": null
+      },
+      {
+        "support_id": "S9",
+        "reference_id": "38f6543c913e6155ed935bc93b2eb9adb740b8d292f9afd40065032ca7b62b82",
+        "support_types": [
+          "CLIENT_ATTESTATION",
+          "COMPLETED_WORK_EVIDENCE"
+        ],
+        "source_label": "Opérationnalisation du PCA de la BCT.pdf",
+        "page": 1
+      }
+    ],
+    "structured_output_retry_count": 0,
+    "validation_warning_codes": [
+      "WEAK_SOURCE_SUPPORT",
+      "WEAK_SOURCE_SUPPORT",
+      "UNAVAILABLE_FIELD_LEFT_EMPTY"
+    ]
+  },
+  "language": "ar",
+  "schema_success": true,
+  "language_compliance": {
+    "target_language": "ar",
+    "detected_language": "ar",
+    "compliant": true,
+    "target_language_ratio": 0.9818731117824774,
+    "analyzed_letter_count": 331,
+    "reason": "Arabic-script share must be at least 60% of Arabic and Latin letters."
+  },
+  "completeness": {
+    "eligible_field_count": 5,
+    "populated_eligible_field_count": 0,
+    "usable_eligible_field_count": 0,
+    "empty_eligible_field_count": 5,
+    "unusable_eligible_field_count": 0,
+    "eligible_field_population_rate": 0.0
+  },
+  "factual_drift_count": 0,
+  "model_quality_failures": []
+}

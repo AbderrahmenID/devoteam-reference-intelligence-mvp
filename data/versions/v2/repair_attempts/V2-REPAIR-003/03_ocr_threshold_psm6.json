@@ -1,0 +1,44 @@
+{
+  "repair_id": "V2-REPAIR-003",
+  "strategy": "ocr_threshold_psm6",
+  "strategy_order": 3,
+  "psm": 6,
+  "render_dpi": 300,
+  "ocr_languages": "fra+eng+ara",
+  "ocr_confidence": 88.217391,
+  "diagnostics": {
+    "character_count": 405,
+    "word_count": 69,
+    "text_sha256": "328c76b4f84a9c13826c03cb56e09d8d283a3c66c54123d6177c23e460c2106e",
+    "detected_language": "fr",
+    "scripts": [
+      "Latin"
+    ],
+    "rtl": false,
+    "chunk_count": 1,
+    "quality_passing_chunks": 0,
+    "quality_pass_rate": 0.0,
+    "mean_quality_score": 0.842864,
+    "minimum_quality_score": 0.842864,
+    "rejection_reason_counts": {
+      "EXCESSIVE_FRAGMENTATION": 1,
+      "OCR_GIBBERISH": 1
+    }
+  },
+  "display_diagnostics": {
+    "character_count": 405,
+    "word_count": 69,
+    "text_sha256": "5effac9f4a45a40a736f74cda3182279b8a657d3674f8eeacb38a78b0b46d851",
+    "detected_language": "fr",
+    "scripts": [
+      "Latin"
+    ],
+    "rtl": false,
+    "chunk_count": 1,
+    "quality_passing_chunks": 1,
+    "quality_pass_rate": 1.0,
+    "mean_quality_score": 0.931285,
+    "minimum_quality_score": 0.931285,
+    "rejection_reason_counts": {}
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "repair_id": "V2-REPAIR-012",
+  "strategy": "ocr_gray_autocontrast_psm3",
+  "strategy_order": 2,
+  "psm": 3,
+  "render_dpi": 300,
+  "ocr_languages": "fra+eng+ara",
+  "ocr_confidence": 86.493088,
+  "diagnostics": {
+    "character_count": 1175,
+    "word_count": 215,
+    "text_sha256": "792e65c98881dfe9ac221d8dc781de50abbf7704326490150ec8fdee4f7ec4de",
+    "detected_language": "mixed",
+    "scripts": [
+      "Latin",
+      "Arabic"
+    ],
+    "rtl": false,
+    "chunk_count": 2,
+    "quality_passing_chunks": 2,
+    "quality_pass_rate": 1.0,
+    "mean_quality_score": 0.900556,
+    "minimum_quality_score": 0.873008,
+    "rejection_reason_counts": {}
+  },
+  "display_diagnostics": {
+    "character_count": 1175,
+    "word_count": 215,
+    "text_sha256": "2e883b859fbc1097e539afe405cc10cc8e9c8c0fb59942684bba5c97f62087ab",
+    "detected_language": "mixed",
+    "scripts": [
+      "Latin",
+      "Arabic"
+    ],
+    "rtl": false,
+    "chunk_count": 2,
+    "quality_passing_chunks": 2,
+    "quality_pass_rate": 1.0,
+    "mean_quality_score": 0.961806,
+    "minimum_quality_score": 0.943008,
+    "rejection_reason_counts": {}
+  }
+}

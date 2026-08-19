@@ -1,0 +1,165 @@
+template_id: DEVOTEAM_REFERENCE_PACK_V1
+version: 1.0.0
+source_pdf: templates/reference_pack/source/OT_DVT_SDSI__OrangeBANK.pdf
+source_pdf_sha256: bc01334088c95c3796f1b98586e4980c66fd084c45174eec23ff03195bb39334
+
+slide:
+  width_inches: 13.333333
+  height_inches: 7.5
+  aspect_ratio: "16:9"
+  margin_left: 0.55
+  margin_right: 0.55
+  margin_top: 0.42
+  margin_bottom: 0.42
+
+colors:
+  background: "FFFFFF"
+  coral: "F8475E"
+  coral_dark: "E93E55"
+  heading: "161616"
+  body: "4E4E52"
+  muted: "74747A"
+  border: "E5E5E8"
+  panel: "F5F5F6"
+  panel_alt: "FBFBFC"
+  white: "FFFFFF"
+
+typography:
+  latin_font: Verdana
+  arabic_font: Arial
+  cover_title_pt: 30
+  section_number_pt: 96
+  section_title_pt: 28
+  slide_title_pt: 24
+  card_title_pt: 13
+  body_pt: 11
+  body_min_pt: 10
+  evidence_pt: 11
+  evidence_min_pt: 10
+  evidence_title_pt: 13
+  metadata_pt: 9
+  footer_pt: 8
+  slide_number_pt: 10
+
+footer:
+  logo_path: templates/reference_pack/v1/assets/devoteam_logo.png
+  logo_x: 0.67
+  logo_y: 7.08
+  logo_width: 1.35
+  slide_number_x: 12.55
+  slide_number_y: 7.07
+  slide_number_width: 0.32
+  slide_number_height: 0.20
+
+title:
+  x: 0.56
+  y: 0.38
+  width: 12.2
+  height: 0.46
+  underline_x: 0.56
+  underline_y: 0.88
+  underline_width: 1.35
+  underline_height: 0.07
+
+cover:
+  accent_x: 0.0
+  accent_y: 0.0
+  accent_width: 0.24
+  accent_height: 7.5
+  title_x: 0.95
+  title_y: 1.35
+  title_width: 8.75
+  title_height: 1.45
+  client_x: 0.98
+  client_y: 3.10
+  client_width: 7.9
+  client_height: 0.55
+  subtitle_x: 0.98
+  subtitle_y: 3.78
+  subtitle_width: 8.2
+  subtitle_height: 0.75
+  date_x: 0.98
+  date_y: 5.72
+  date_width: 4.8
+  date_height: 0.35
+  visual_x: 10.25
+  visual_y: 0.0
+  visual_width: 3.083333
+  visual_height: 7.5
+
+section_divider:
+  number_x: 0.72
+  number_y: 1.90
+  number_width: 2.25
+  number_height: 1.55
+  title_x: 3.35
+  title_y: 2.35
+  title_width: 6.9
+  title_height: 1.35
+  visual_x: 10.35
+  visual_y: 4.55
+  visual_width: 2.98
+  visual_height: 2.95
+
+summary:
+  cards_per_slide: 3
+  first_y: 1.20
+  card_height: 1.70
+  card_gap: 0.18
+  mission_x: 0.56
+  mission_width: 2.20
+  content_x: 2.86
+  content_width: 7.95
+  client_x: 10.92
+  client_width: 1.85
+  inner_padding: 0.15
+  maximum_bullets: 6
+  maximum_bullet_characters: 105
+
+detail:
+  left_x: 0.56
+  left_width: 4.02
+  right_x: 4.78
+  right_width: 8.00
+  content_y: 1.18
+  content_height: 5.62
+  panel_gap: 0.16
+  maximum_service_bullets: 6
+  maximum_why_bullets: 3
+
+evidence:
+  items_per_slide: 1
+  content_y: 1.12
+  reference_title_height: 0.62
+  subtitle_y: 1.74
+  subtitle_height: 0.30
+  image_x: 0.78
+  image_y: 2.04
+  image_width: 11.77
+  image_height: 4.54
+  citation_y: 6.64
+  citation_height: 0.30
+  maximum_characters: 520
+  minimum_readable_font_pt: 10
+  allow_full_pages: true
+  local_source_roots:
+    - .runtime/reference_pack_sources
+  render_scale: 3.0
+  white_margin_threshold: 247
+  crop_padding_px: 28
+
+logos:
+  include_devoteam: true
+  client_registry: templates/reference_pack/v1/logo_registry.yaml
+  client_fallback: name_card
+  preserve_aspect_ratio: true
+
+generation:
+  max_references: 161
+  summary_references_per_slide: 3
+  evidence_items_per_slide: 2
+  output_root: generated/reference_packs
+  preview_root: audit/reference_pack/previews
+  libreoffice_candidates:
+    - C:/Program Files/LibreOffice/program/soffice.exe
+    - C:/Program Files (x86)/LibreOffice/program/soffice.exe

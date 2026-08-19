@@ -1,0 +1,614 @@
+{
+  "classification": "DEVELOPMENT / NON-PRODUCTION",
+  "case_id": "sparse_bmci_french",
+  "title": "Sparse catalog-only reference in French",
+  "description": "Repeats the sparse evidence boundary in the primary proposal language.",
+  "request": {
+    "selected_reference_ids": [
+      "d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24"
+    ],
+    "opportunity_title": "Définition d'une stratégie des systèmes d'information",
+    "opportunity_description": "Référence courte pour un dossier de consultation bancaire.",
+    "requirements": [
+      "Laisser vides les réalisations non prouvées",
+      "Ne pas inventer de bénéfices"
+    ],
+    "target_language": "fr",
+    "tone": "concise",
+    "audience": "procurement",
+    "detail_level": "short"
+  },
+  "status": "completed",
+  "provider": "ollama",
+  "model": "qwen3.5:9b",
+  "latency_ms": 19662.760899984278,
+  "schema_failure_count": 0,
+  "structured_output_retry_count": 0,
+  "generation_usage": {
+    "call_count": 2,
+    "prompt_token_count": 1277,
+    "generated_token_count": 172,
+    "calls": [
+      {
+        "prompt_token_count": 927,
+        "generated_token_count": 77,
+        "total_duration_ns": 8878545400,
+        "load_duration_ns": 354741200,
+        "prompt_eval_duration_ns": 1708050000,
+        "eval_duration_ns": 6771951000
+      },
+      {
+        "prompt_token_count": 350,
+        "generated_token_count": 95,
+        "total_duration_ns": 10685658700,
+        "load_duration_ns": 353024500,
+        "prompt_eval_duration_ns": 1305469000,
+        "eval_duration_ns": 8967358000
+      }
+    ]
+  },
+  "narrative": {
+    "section_intro": {
+      "text": "",
+      "support_ids": []
+    },
+    "overall_storyline": {
+      "text": "Cette référence illustre l'impulsion numérique et la gestion d'API au sein du secteur bancaire en Mauritanie.",
+      "support_ids": [
+        "S2",
+        "S5",
+        "S3",
+        "S4",
+        "S6",
+        "S7",
+        "S8"
+      ]
+    },
+    "why_these_references": {
+      "text": "Ces éléments sont sélectionnés pour étayer une stratégie des systèmes d'information fondée sur des capacités avérées dans le cadre de missions AMOA entre 2022 et aujourd'hui, sans extrapolation de résultats non documentés.",
+      "support_ids": [
+        "S2",
+        "S5",
+        "S3",
+        "S4",
+        "S6",
+        "S7",
+        "S8"
+      ]
+    },
+    "references": [
+      {
+        "reference_id": "d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24",
+        "headline": {
+          "text": "Accompagnement de la BMCI dans la définition",
+          "support_ids": [
+            "S1",
+            "S2"
+          ]
+        },
+        "short_description": {
+          "text": "La Banque Mauritanienne pour le Commerce International (BMCI) : API management",
+          "support_ids": [
+            "S1",
+            "S2",
+            "S8"
+          ]
+        },
+        "challenge": {
+          "text": "",
+          "support_ids": []
+        },
+        "devoteam_contribution": {
+          "text": "",
+          "support_ids": []
+        },
+        "realisations": [],
+        "benefits": [],
+        "why_relevant_to_opportunity": {
+          "text": "mission_title: Accompagnement de la BMCI dans la définition\noffering: AMOA",
+          "support_ids": [
+            "S1",
+            "S6"
+          ]
+        },
+        "warnings": []
+      }
+    ]
+  },
+  "validation": {
+    "valid": true,
+    "export_blocked": false,
+    "export_eligible": true,
+    "warnings": [
+      {
+        "code": "WEAK_SOURCE_SUPPORT",
+        "message": "The claim is supported only by catalog, proposal, contractual, or unverified evidence.",
+        "severity": "WARNING",
+        "blocking": false,
+        "field_path": "overall_storyline",
+        "reference_id": null,
+        "support_ids": [
+          "S2",
+          "S5",
+          "S3",
+          "S4",
+          "S6",
+          "S7",
+          "S8"
+        ]
+      },
+      {
+        "code": "WEAK_SOURCE_SUPPORT",
+        "message": "The claim is supported only by catalog, proposal, contractual, or unverified evidence.",
+        "severity": "WARNING",
+        "blocking": false,
+        "field_path": "why_these_references",
+        "reference_id": null,
+        "support_ids": [
+          "S2",
+          "S5",
+          "S3",
+          "S4",
+          "S6",
+          "S7",
+          "S8"
+        ]
+      },
+      {
+        "code": "WEAK_SOURCE_SUPPORT",
+        "message": "The claim is supported only by catalog, proposal, contractual, or unverified evidence.",
+        "severity": "WARNING",
+        "blocking": false,
+        "field_path": "references[0].headline",
+        "reference_id": "d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24",
+        "support_ids": [
+          "S1",
+          "S2"
+        ]
+      },
+      {
+        "code": "WEAK_SOURCE_SUPPORT",
+        "message": "The claim is supported only by catalog, proposal, contractual, or unverified evidence.",
+        "severity": "WARNING",
+        "blocking": false,
+        "field_path": "references[0].short_description",
+        "reference_id": "d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24",
+        "support_ids": [
+          "S1",
+          "S2",
+          "S8"
+        ]
+      },
+      {
+        "code": "WEAK_SOURCE_SUPPORT",
+        "message": "The claim is supported only by catalog, proposal, contractual, or unverified evidence.",
+        "severity": "WARNING",
+        "blocking": false,
+        "field_path": "references[0].why_relevant_to_opportunity",
+        "reference_id": "d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24",
+        "support_ids": [
+          "S1",
+          "S6"
+        ]
+      },
+      {
+        "code": "UNAVAILABLE_FIELD_LEFT_EMPTY",
+        "message": "The unavailable benefits field was intentionally left empty.",
+        "severity": "INFO",
+        "blocking": false,
+        "field_path": null,
+        "reference_id": "d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24",
+        "support_ids": []
+      }
+    ]
+  },
+  "warnings": [
+    {
+      "code": "WEAK_SOURCE_SUPPORT",
+      "message": "The claim is supported only by catalog, proposal, contractual, or unverified evidence.",
+      "severity": "WARNING",
+      "blocking": false,
+      "field_path": "overall_storyline",
+      "reference_id": null,
+      "support_ids": [
+        "S2",
+        "S5",
+        "S3",
+        "S4",
+        "S6",
+        "S7",
+        "S8"
+      ]
+    },
+    {
+      "code": "WEAK_SOURCE_SUPPORT",
+      "message": "The claim is supported only by catalog, proposal, contractual, or unverified evidence.",
+      "severity": "WARNING",
+      "blocking": false,
+      "field_path": "why_these_references",
+      "reference_id": null,
+      "support_ids": [
+        "S2",
+        "S5",
+        "S3",
+        "S4",
+        "S6",
+        "S7",
+        "S8"
+      ]
+    },
+    {
+      "code": "WEAK_SOURCE_SUPPORT",
+      "message": "The claim is supported only by catalog, proposal, contractual, or unverified evidence.",
+      "severity": "WARNING",
+      "blocking": false,
+      "field_path": "references[0].headline",
+      "reference_id": "d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24",
+      "support_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "code": "WEAK_SOURCE_SUPPORT",
+      "message": "The claim is supported only by catalog, proposal, contractual, or unverified evidence.",
+      "severity": "WARNING",
+      "blocking": false,
+      "field_path": "references[0].short_description",
+      "reference_id": "d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24",
+      "support_ids": [
+        "S1",
+        "S2",
+        "S8"
+      ]
+    },
+    {
+      "code": "WEAK_SOURCE_SUPPORT",
+      "message": "The claim is supported only by catalog, proposal, contractual, or unverified evidence.",
+      "severity": "WARNING",
+      "blocking": false,
+      "field_path": "references[0].why_relevant_to_opportunity",
+      "reference_id": "d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24",
+      "support_ids": [
+        "S1",
+        "S6"
+      ]
+    },
+    {
+      "code": "UNAVAILABLE_FIELD_LEFT_EMPTY",
+      "message": "The unavailable benefits field was intentionally left empty.",
+      "severity": "INFO",
+      "blocking": false,
+      "field_path": null,
+      "reference_id": "d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24",
+      "support_ids": []
+    }
+  ],
+  "warning_counts": {
+    "INFO": 1,
+    "WARNING": 5,
+    "BLOCKING": 0
+  },
+  "backend_guarantees": {
+    "reference_identity_count": 1,
+    "expected_reference_count": 1,
+    "reference_identity_coverage": 1.0,
+    "eligible_populated_field_count": 5,
+    "deterministically_supported_field_count": 5,
+    "deterministic_support_coverage": 1.0,
+    "unknown_support_id_count": 0,
+    "unselected_support_count": 0,
+    "empty_support_field_violation_count": 0,
+    "blocking_provenance_count": 0
+  },
+  "model_quality": {
+    "populated_field_count": 5,
+    "total_word_count": 76,
+    "maximum_field_word_count": 32,
+    "duplicate_text_count": 0,
+    "conciseness_indicator": "CONCISE",
+    "narrative_usefulness": "HUMAN_REVIEW_REQUIRED",
+    "repetition_review": "NO_EXACT_DUPLICATION_DETECTED",
+    "language_review": "HUMAN_REVIEW_REQUIRED",
+    "target_language": "fr",
+    "latency_ms": 19662.760899984278
+  },
+  "source_supports": [
+    {
+      "support_id": "S1",
+      "reference_id": "d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24",
+      "support_types": [
+        "FACT",
+        "STRUCTURED_METADATA"
+      ],
+      "source_label": "Trusted reference fact: mission_title",
+      "page": null
+    },
+    {
+      "support_id": "S2",
+      "reference_id": "d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24",
+      "support_types": [
+        "FACT",
+        "STRUCTURED_METADATA"
+      ],
+      "source_label": "Trusted reference fact: client",
+      "page": null
+    },
+    {
+      "support_id": "S3",
+      "reference_id": "d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24",
+      "support_types": [
+        "FACT",
+        "STRUCTURED_METADATA"
+      ],
+      "source_label": "Trusted reference fact: country",
+      "page": null
+    },
+    {
+      "support_id": "S4",
+      "reference_id": "d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24",
+      "support_types": [
+        "FACT",
+        "STRUCTURED_METADATA"
+      ],
+      "source_label": "Trusted reference fact: period",
+      "page": null
+    },
+    {
+      "support_id": "S5",
+      "reference_id": "d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24",
+      "support_types": [
+        "FACT",
+        "STRUCTURED_METADATA"
+      ],
+      "source_label": "Trusted reference fact: sector",
+      "page": null
+    },
+    {
+      "support_id": "S6",
+      "reference_id": "d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24",
+      "support_types": [
+        "FACT",
+        "STRUCTURED_METADATA"
+      ],
+      "source_label": "Trusted reference fact: offering",
+      "page": null
+    },
+    {
+      "support_id": "S7",
+      "reference_id": "d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24",
+      "support_types": [
+        "FACT",
+        "STRUCTURED_METADATA"
+      ],
+      "source_label": "Trusted reference fact: business_unit",
+      "page": null
+    },
+    {
+      "support_id": "S8",
+      "reference_id": "d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24",
+      "support_types": [
+        "STRUCTURED_METADATA",
+        "UNVERIFIED_METADATA"
+      ],
+      "source_label": "Trusted reference fact: technology",
+      "page": null
+    },
+    {
+      "support_id": "S9",
+      "reference_id": "d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24",
+      "support_types": [
+        "STRUCTURED_METADATA",
+        "UNVERIFIED_METADATA"
+      ],
+      "source_label": "Structured catalog scope",
+      "page": null
+    },
+    {
+      "support_id": "S10",
+      "reference_id": "d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24",
+      "support_types": [
+        "UNVERIFIED_METADATA"
+      ],
+      "source_label": "BC-BMCI.pdf",
+      "page": 1
+    }
+  ],
+  "support_plan": {
+    "references": [
+      {
+        "reference_id": "d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24",
+        "headline": [
+          "S1",
+          "S2"
+        ],
+        "short_description": [
+          "S1",
+          "S2",
+          "S8"
+        ],
+        "challenge": [
+          "S9"
+        ],
+        "devoteam_contribution": [
+          "S8"
+        ],
+        "realisations": [],
+        "benefits": [],
+        "why_relevant_to_opportunity": [
+          "S1",
+          "S6"
+        ]
+      }
+    ],
+    "section": {
+      "section_intro": [
+        "S2",
+        "S5",
+        "S3",
+        "S4",
+        "S6",
+        "S7",
+        "S8"
+      ],
+      "overall_storyline": [
+        "S2",
+        "S5",
+        "S3",
+        "S4",
+        "S6",
+        "S7",
+        "S8"
+      ],
+      "why_these_references": [
+        "S2",
+        "S5",
+        "S3",
+        "S4",
+        "S6",
+        "S7",
+        "S8"
+      ]
+    }
+  },
+  "provenance": {
+    "generated_at_utc": "2026-08-14T16:18:04.371633Z",
+    "provider": "ollama",
+    "model": "qwen3.5:9b",
+    "prompt_version": "reference-narrative-phase2.1-prose-v1",
+    "prompt_sha256": "0a8dd735c114ab0f0f83f05878ad3562e8d20849ee6795a52fef2e5a6ff7f050",
+    "selected_reference_ids": [
+      "d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24"
+    ],
+    "source_supports": [
+      {
+        "support_id": "S1",
+        "reference_id": "d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24",
+        "support_types": [
+          "FACT",
+          "STRUCTURED_METADATA"
+        ],
+        "source_label": "Trusted reference fact: mission_title",
+        "page": null
+      },
+      {
+        "support_id": "S2",
+        "reference_id": "d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24",
+        "support_types": [
+          "FACT",
+          "STRUCTURED_METADATA"
+        ],
+        "source_label": "Trusted reference fact: client",
+        "page": null
+      },
+      {
+        "support_id": "S3",
+        "reference_id": "d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24",
+        "support_types": [
+          "FACT",
+          "STRUCTURED_METADATA"
+        ],
+        "source_label": "Trusted reference fact: country",
+        "page": null
+      },
+      {
+        "support_id": "S4",
+        "reference_id": "d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24",
+        "support_types": [
+          "FACT",
+          "STRUCTURED_METADATA"
+        ],
+        "source_label": "Trusted reference fact: period",
+        "page": null
+      },
+      {
+        "support_id": "S5",
+        "reference_id": "d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24",
+        "support_types": [
+          "FACT",
+          "STRUCTURED_METADATA"
+        ],
+        "source_label": "Trusted reference fact: sector",
+        "page": null
+      },
+      {
+        "support_id": "S6",
+        "reference_id": "d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24",
+        "support_types": [
+          "FACT",
+          "STRUCTURED_METADATA"
+        ],
+        "source_label": "Trusted reference fact: offering",
+        "page": null
+      },
+      {
+        "support_id": "S7",
+        "reference_id": "d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24",
+        "support_types": [
+          "FACT",
+          "STRUCTURED_METADATA"
+        ],
+        "source_label": "Trusted reference fact: business_unit",
+        "page": null
+      },
+      {
+        "support_id": "S8",
+        "reference_id": "d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24",
+        "support_types": [
+          "STRUCTURED_METADATA",
+          "UNVERIFIED_METADATA"
+        ],
+        "source_label": "Trusted reference fact: technology",
+        "page": null
+      },
+      {
+        "support_id": "S9",
+        "reference_id": "d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24",
+        "support_types": [
+          "STRUCTURED_METADATA",
+          "UNVERIFIED_METADATA"
+        ],
+        "source_label": "Structured catalog scope",
+        "page": null
+      },
+      {
+        "support_id": "S10",
+        "reference_id": "d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24",
+        "support_types": [
+          "UNVERIFIED_METADATA"
+        ],
+        "source_label": "BC-BMCI.pdf",
+        "page": 1
+      }
+    ],
+    "structured_output_retry_count": 0,
+    "validation_warning_codes": [
+      "WEAK_SOURCE_SUPPORT",
+      "WEAK_SOURCE_SUPPORT",
+      "WEAK_SOURCE_SUPPORT",
+      "WEAK_SOURCE_SUPPORT",
+      "WEAK_SOURCE_SUPPORT",
+      "UNAVAILABLE_FIELD_LEFT_EMPTY"
+    ]
+  },
+  "language": "fr",
+  "schema_success": true,
+  "language_compliance": {
+    "target_language": "fr",
+    "detected_language": "fr",
+    "compliant": true,
+    "target_language_ratio": 1.0,
+    "analyzed_letter_count": 439,
+    "reason": "Target-language function-word share must be at least 60% with three or more markers."
+  },
+  "completeness": {
+    "eligible_field_count": 5,
+    "populated_eligible_field_count": 3,
+    "usable_eligible_field_count": 3,
+    "empty_eligible_field_count": 2,
+    "unusable_eligible_field_count": 0,
+    "eligible_field_population_rate": 0.6
+  },
+  "factual_drift_count": 0,
+  "model_quality_failures": []
+}

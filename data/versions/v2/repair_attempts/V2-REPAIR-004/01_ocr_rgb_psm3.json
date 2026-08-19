@@ -1,0 +1,48 @@
+{
+  "repair_id": "V2-REPAIR-004",
+  "strategy": "ocr_rgb_psm3",
+  "strategy_order": 1,
+  "psm": 3,
+  "render_dpi": 300,
+  "ocr_languages": "fra+eng+ara",
+  "ocr_confidence": 76.361111,
+  "diagnostics": {
+    "character_count": 1123,
+    "word_count": 213,
+    "text_sha256": "b5b531011e803aedb8c4a81c1de4f7caeeeca667bb4d7edd37d249a18263ec54",
+    "detected_language": "mixed",
+    "scripts": [
+      "Latin",
+      "Arabic"
+    ],
+    "rtl": false,
+    "chunk_count": 2,
+    "quality_passing_chunks": 0,
+    "quality_pass_rate": 0.0,
+    "mean_quality_score": 0.830863,
+    "minimum_quality_score": 0.791504,
+    "rejection_reason_counts": {
+      "EXCESSIVE_SINGLE_CHARACTER_TOKENS": 1,
+      "OCR_GIBBERISH": 1
+    }
+  },
+  "display_diagnostics": {
+    "character_count": 1064,
+    "word_count": 205,
+    "text_sha256": "f419c72b5562f0eb61686e013b0346f1ef5b8bfbef2a16493087d104161ed80e",
+    "detected_language": "mixed",
+    "scripts": [
+      "Latin",
+      "Arabic"
+    ],
+    "rtl": false,
+    "chunk_count": 2,
+    "quality_passing_chunks": 1,
+    "quality_pass_rate": 0.5,
+    "mean_quality_score": 0.871663,
+    "minimum_quality_score": 0.831467,
+    "rejection_reason_counts": {
+      "EXCESSIVE_SINGLE_CHARACTER_TOKENS": 1
+    }
+  }
+}

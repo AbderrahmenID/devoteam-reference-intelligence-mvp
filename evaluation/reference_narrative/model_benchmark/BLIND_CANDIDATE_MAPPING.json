@@ -1,0 +1,8 @@
+{
+  "classification": "CONFIDENTIAL / DEVELOPMENT",
+  "mapping": {
+    "Candidate A": "qwen3.5:9b",
+    "Candidate B": "qwen2.5-coder:7b-instruct",
+    "Candidate C": "qwen3:8b"
+  }
+}

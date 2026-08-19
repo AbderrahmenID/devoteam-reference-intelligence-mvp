@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "authoritative_source": "templates/reference_pack/source/OT_DVT_SDSI__OrangeBANK.pdf",
+  "authoritative_source_sha256": "bc01334088c95c3796f1b98586e4980c66fd084c45174eec23ff03195bb39334",
+  "source_range_powerpoint": [
+    10,
+    29
+  ],
+  "source_range_zero_based": [
+    9,
+    28
+  ],
+  "derived_clone_base": "templates/reference_pack/derived/orange_pdf_pages_10_29.pptx",
+  "derived_clone_base_sha256": "ff97861eadbccd8df23ea3e3721972f21ad47b4b5b98f8cb6e2db575f9592f25",
+  "derived_slide_count": 20,
+  "roles": {
+    "divider": [
+      10
+    ],
+    "compact_summary": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ],
+    "evidence_attestation": [
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29
+    ]
+  }
+}

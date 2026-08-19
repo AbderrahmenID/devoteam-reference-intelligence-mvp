@@ -1,0 +1,130 @@
+{
+  "suite": "reference-narrative-phase2.1-development",
+  "classification": "DEVELOPMENT / NON-PRODUCTION",
+  "cases": [
+    {
+      "case_id": "bct_pca_french",
+      "title": "BCT PCA provenance regression in French",
+      "description": "Checks the accepted BCT source-separation case without promoting catalog details to completed work.",
+      "request": {
+        "selected_reference_ids": ["38f6543c913e6155ed935bc93b2eb9adb740b8d292f9afd40065032ca7b62b82"],
+        "opportunity_title": "Renforcement du plan de continuité d'activité bancaire",
+        "opportunity_description": "Une banque souhaite renforcer la gouvernance, les procédures et les tests de son PCA.",
+        "requirements": ["Présenter uniquement des réalisations démontrées", "Relier la référence à la continuité d'activité"],
+        "target_language": "fr",
+        "tone": "commercial",
+        "audience": "procurement",
+        "detail_level": "medium"
+      }
+    },
+    {
+      "case_id": "rich_bct_governance_french",
+      "title": "Rich single-reference evidence in French",
+      "description": "Exercises a reference with several approved completed-work evidence records.",
+      "request": {
+        "selected_reference_ids": ["3dce0242ae69dfa376a6b45f3b5ceda747ea52ffcbdefdfd2cd98621e1070c24"],
+        "opportunity_title": "Transformation de la gouvernance et de l'organisation SI",
+        "opportunity_description": "Mission de diagnostic et de définition d'une organisation cible pour une institution financière.",
+        "requirements": ["Diagnostic de l'existant", "Gouvernance SI", "Feuille de route réaliste"],
+        "target_language": "fr",
+        "tone": "executive",
+        "audience": "executive",
+        "detail_level": "detailed"
+      }
+    },
+    {
+      "case_id": "sparse_bmci_english",
+      "title": "Sparse catalog-only reference in English",
+      "description": "Verifies safe abstention and weak-evidence warnings when completed-work details are unavailable.",
+      "request": {
+        "selected_reference_ids": ["d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24"],
+        "opportunity_title": "Banking information systems strategy",
+        "opportunity_description": "The client needs a concise reference relevant to defining an information systems strategy.",
+        "requirements": ["Do not infer delivered activities", "Keep unavailable outcomes empty"],
+        "target_language": "en",
+        "tone": "concise",
+        "audience": "mixed",
+        "detail_level": "short"
+      }
+    },
+    {
+      "case_id": "multi_reference_french",
+      "title": "Three-reference French section synthesis",
+      "description": "Checks multi-reference ownership and section-level support across selected banking references.",
+      "request": {
+        "selected_reference_ids": [
+          "38f6543c913e6155ed935bc93b2eb9adb740b8d292f9afd40065032ca7b62b82",
+          "3dce0242ae69dfa376a6b45f3b5ceda747ea52ffcbdefdfd2cd98621e1070c24",
+          "cc45d3d63af35d546b38f5680f0cc11c92dab79c9377c8ea27ee23e84790ae2f"
+        ],
+        "opportunity_title": "Programme intégré de résilience et de transformation SI",
+        "opportunity_description": "Une banque recherche des références complémentaires en continuité, gouvernance et schéma directeur SI.",
+        "requirements": ["Synthèse transversale sourcée", "Distinguer clairement chaque client", "Aucun superlatif non démontré"],
+        "target_language": "fr",
+        "tone": "commercial",
+        "audience": "mixed",
+        "detail_level": "medium"
+      }
+    },
+    {
+      "case_id": "cross_language_bct_english",
+      "title": "French evidence to English narrative",
+      "description": "Tests cross-language grounding without changing factual scope.",
+      "request": {
+        "selected_reference_ids": ["38f6543c913e6155ed935bc93b2eb9adb740b8d292f9afd40065032ca7b62b82"],
+        "opportunity_title": "Operational resilience for a central bank",
+        "opportunity_description": "An English proposal needs a grounded reference for business continuity operationalisation.",
+        "requirements": ["English output", "No unsupported delivery detail", "No invented benefit"],
+        "target_language": "en",
+        "tone": "technical",
+        "audience": "technical",
+        "detail_level": "medium"
+      }
+    },
+    {
+      "case_id": "rich_bct_english",
+      "title": "Rich evidence in English",
+      "description": "Tests structured English generation from detailed French evidence.",
+      "request": {
+        "selected_reference_ids": ["3dce0242ae69dfa376a6b45f3b5ceda747ea52ffcbdefdfd2cd98621e1070c24"],
+        "opportunity_title": "IT governance operating model",
+        "opportunity_description": "The procurement team needs a detailed, evidence-backed banking reference.",
+        "requirements": ["Describe only evidenced work", "Use an executive register"],
+        "target_language": "en",
+        "tone": "executive",
+        "audience": "procurement",
+        "detail_level": "detailed"
+      }
+    },
+    {
+      "case_id": "sparse_bmci_french",
+      "title": "Sparse catalog-only reference in French",
+      "description": "Repeats the sparse evidence boundary in the primary proposal language.",
+      "request": {
+        "selected_reference_ids": ["d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24"],
+        "opportunity_title": "Définition d'une stratégie des systèmes d'information",
+        "opportunity_description": "Référence courte pour un dossier de consultation bancaire.",
+        "requirements": ["Laisser vides les réalisations non prouvées", "Ne pas inventer de bénéfices"],
+        "target_language": "fr",
+        "tone": "concise",
+        "audience": "procurement",
+        "detail_level": "short"
+      }
+    },
+    {
+      "case_id": "bct_pca_arabic",
+      "title": "BCT PCA Arabic narrative",
+      "description": "Checks Arabic structured generation against the same trusted French evidence boundary.",
+      "request": {
+        "selected_reference_ids": ["38f6543c913e6155ed935bc93b2eb9adb740b8d292f9afd40065032ca7b62b82"],
+        "opportunity_title": "تعزيز استمرارية الأعمال في القطاع المصرفي",
+        "opportunity_description": "تحتاج مؤسسة مصرفية إلى مرجع موثق حول تفعيل خطة استمرارية الأعمال.",
+        "requirements": ["عدم اختراع نتائج أو منافع", "الاستناد إلى الأدلة المتاحة فقط"],
+        "target_language": "ar",
+        "tone": "commercial",
+        "audience": "executive",
+        "detail_level": "medium"
+      }
+    }
+  ]
+}

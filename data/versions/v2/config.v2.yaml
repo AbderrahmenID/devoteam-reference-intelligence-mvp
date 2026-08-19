@@ -1,0 +1,144 @@
+project:
+  name: devoteam-reference-mvp
+  root: .
+  runtime_dir: .runtime
+data:
+  chunks: data/versions/v2/chunks.parquet
+  reference_catalog: data/versions/v2/reference_catalog.parquet
+  bm25_index: data/versions/v2/indexes/bm25_index.npz
+  bm25_vocabulary: data/versions/v2/indexes/bm25_vocabulary.json
+  embeddings: data/versions/v2/indexes/embeddings.npy
+  chunk_lookup: data/versions/v2/indexes/chunk_lookup.parquet
+  manifest: data/versions/v2/V2_MIGRATION_MANIFEST.json
+model:
+  id: intfloat/multilingual-e5-base
+  revision: a114a4100c6714cf21651971eefe9191a4415dbb
+  local_path: ~/.cache/huggingface/hub/models--intfloat--multilingual-e5-base/snapshots/a114a4100c6714cf21651971eefe9191a4415dbb
+  dimensions: 768
+  query_prefix: 'query: '
+  passage_prefix: 'passage: '
+  normalize_embeddings: true
+  local_files_only: true
+bm25:
+  algorithm: BM25Okapi
+  tokenizer_version: unicode_fold_v1
+  k1: 1.2
+  b: 0.75
+meaningful_terms:
+  minimum_idf: 0.5
+  maximum_document_frequency_ratio: 0.62
+  exact_match_bonus_per_term: 0.04
+  maximum_exact_match_bonus: 0.12
+dense:
+  enabled: true
+  batch_size_cpu: 8
+  candidate_depth: 100
+hybrid:
+  lexical_weight: 0.5
+  dense_weight: 0.5
+  rrf_k: 60
+  candidate_depth: 2000
+  per_candidate_agreement_depth: 50
+  evidence_chunks_per_reference: 3
+evidence_quality:
+  candidate_pool_per_reference: 12
+  maximum_passages_per_reference: 1
+  minimum_quality_score: 0.52
+  minimum_printable_ratio: 0.95
+  minimum_alphabetic_ratio: 0.42
+  minimum_meaningful_tokens: 5
+  maximum_single_character_token_ratio: 0.22
+  maximum_line_fragmentation: 0.58
+  maximum_leading_fragmentation: 0.55
+  maximum_repeated_line_ratio: 0.35
+  maximum_suspicious_symbol_ratio: 0.12
+  minimum_query_term_coverage: 0.15
+  semantic_cross_language_override: 0.78
+search:
+  default_page_size: 20
+  page_sizes:
+  - 10
+  - 20
+  - 50
+  safety_ceiling: 500
+  sorts:
+  - relevance
+  - newest
+  - oldest
+  - project_title
+  - client
+  - country
+filters:
+  supported_exact:
+    country: country_values_json
+    business_unit: business_unit_values_json
+    client: client_values_json
+    sector: sector_values_json
+    service_nature: service_nature_values_json
+    offering: offering_values_json
+    project_year: project_year_values_json
+    attestation_available: attestation_available_values_json
+    document_type: document_type
+    data_quality_status: data_quality_status
+  supported_ranges:
+    year_before: project_year_values_json
+    year_after: project_year_values_json
+  allowed_security_classifications:
+  - INTERNAL
+export:
+  enabled: true
+  template_path: templates/reference_template.docx
+  template_sha256: a58e409010992f9a8b7a958ebbc7bf7d3fe06dc1043287fd2db72bedca5334da
+  output_dir: .runtime/exports
+  filename_prefix: devoteam-references
+  include_evidence_links: true
+  include_evidence_images: false
+  max_embedded_evidence_pages_per_reference: 2
+  maximum_references_per_export: 161
+abstention:
+  minimum_query_tokens: 1
+  minimum_best_bm25: 1.2
+  minimum_best_dense: 0.7
+  strong_dense_score: 0.82
+  minimum_semantic_only_dense: 0.76
+  minimum_query_term_coverage: 0.18
+  minimum_mean_top_dense: 0.64
+  minimum_rrf_agreement: 1
+  exact_term_override_bm25: 4.0
+  minimum_independent_passages: 1
+  minimum_evidence_quality_score: 0.52
+  unsupported_scope_terms:
+  - recette de cuisine
+  - football score
+  - horoscope
+  - diagnostic médical
+  - medical diagnosis
+languages:
+  supported:
+  - fr
+  - en
+  - ar
+  - mixed
+  - und
+  ocr_languages: fra+eng+ara
+extraction:
+  digital_text_min_characters: 80
+  digital_text_min_words: 10
+  pdf_render_dpi: 300
+  tesseract_psm: 3
+  blank_ink_ratio_threshold: 0.001
+  preview_max_bytes: 5000000
+  preview_max_pages: 3
+  chunk_max_characters: 900
+  chunk_overlap_characters: 120
+  chunk_min_characters: 120
+api:
+  host: 127.0.0.1
+  port: 8000
+  frontend_port: 3000
+  query_length_limit: 1000
+  debug: false
+  cors_origins:
+  - http://127.0.0.1:3000
+  - http://localhost:3000
+reranker_enabled: false

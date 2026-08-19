@@ -1,0 +1,26 @@
+schema_version: 1
+templates:
+  orange_bank_compact:
+    display_name: Compact References - Orange Bank style
+    source_file: templates/reference_pack/source/OT_DVT_SDSI__OrangeBANK.pdf
+    source_sha256: bc01334088c95c3796f1b98586e4980c66fd084c45174eec23ff03195bb39334
+    derived_clone_file: templates/reference_pack/derived/orange_pdf_pages_10_29.pptx
+    derived_clone_manifest: templates/reference_pack/derived/orange_pdf_pages_10_29.json
+    source_range_powerpoint: [10, 29]
+    source_range_zero_based: [9, 28]
+    divider_source_slides: [10]
+    compact_summary_source_slides: [11, 12, 13, 14, 15, 16, 17]
+    evidence_source_slides: [18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+    mapping_file: templates/reference_pack/v1/template_config.yaml
+    aspect_ratio: "16:9"
+    width_inches: 13.333333
+    height_inches: 7.5
+  detailed_reference:
+    display_name: Challenges / Réalisations / Bénéfices
+    source_file: templates/reference_pack/source/references sapmple and template.pptx
+    source_sha256: b8dbea1191e2fa88f672f65bbf37424a7951f70af5bc0e5bd7a253f21565c831
+    mapping_file: templates/reference_pack/qwen_studio/template_d_mapping.yaml
+    source_slide: 2
+    aspect_ratio: "16:9"
+    width_inches: 10.0
+    height_inches: 5.625

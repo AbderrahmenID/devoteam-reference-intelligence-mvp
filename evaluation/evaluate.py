@@ -64,7 +64,7 @@ def evaluate(queries_path: Path, qrels_path: Path, root: Path) -> dict[str, Any]
         no_answer = _truthy(row["no_answer_expected"])
         if not no_answer and not graded:
             continue
-        result = service.search(str(row["query_text"]), top_k=3)
+        result = service.search(str(row["query_text"]), page=1, page_size=20)
         ranked = service.rank_reference_ids(str(row["query_text"]), limit=20)
         latency.append(float(result.latency_ms))
         language_counts[str(row["query_language"] or "und")] += 1
@@ -113,4 +113,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

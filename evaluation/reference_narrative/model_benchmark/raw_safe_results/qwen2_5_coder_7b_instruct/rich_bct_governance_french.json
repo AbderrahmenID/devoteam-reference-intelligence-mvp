@@ -1,0 +1,611 @@
+{
+  "classification": "DEVELOPMENT / NON-PRODUCTION",
+  "case_id": "rich_bct_governance_french",
+  "title": "Rich single-reference evidence in French",
+  "description": "Exercises a reference with several approved completed-work evidence records.",
+  "request": {
+    "selected_reference_ids": [
+      "3dce0242ae69dfa376a6b45f3b5ceda747ea52ffcbdefdfd2cd98621e1070c24"
+    ],
+    "opportunity_title": "Transformation de la gouvernance et de l'organisation SI",
+    "opportunity_description": "Mission de diagnostic et de définition d'une organisation cible pour une institution financière.",
+    "requirements": [
+      "Diagnostic de l'existant",
+      "Gouvernance SI",
+      "Feuille de route réaliste"
+    ],
+    "target_language": "fr",
+    "tone": "executive",
+    "audience": "executive",
+    "detail_level": "detailed"
+  },
+  "status": "completed",
+  "provider": "ollama",
+  "model": "qwen2.5-coder:7b-instruct",
+  "latency_ms": 18481.7479000194,
+  "schema_failure_count": 0,
+  "structured_output_retry_count": 0,
+  "generation_usage": {
+    "call_count": 2,
+    "prompt_token_count": 1948,
+    "generated_token_count": 175,
+    "calls": [
+      {
+        "prompt_token_count": 1604,
+        "generated_token_count": 11,
+        "total_duration_ns": 5099946100,
+        "load_duration_ns": 187946100,
+        "prompt_eval_duration_ns": 4059946000,
+        "eval_duration_ns": 815803000
+      },
+      {
+        "prompt_token_count": 344,
+        "generated_token_count": 164,
+        "total_duration_ns": 13289210400,
+        "load_duration_ns": 227209800,
+        "prompt_eval_duration_ns": 813402000,
+        "eval_duration_ns": 12223970000
+      }
+    ]
+  },
+  "narrative": {
+    "section_intro": {
+      "text": "",
+      "support_ids": []
+    },
+    "overall_storyline": {
+      "text": "La transformation de la gouvernance et de l'organisation SI d'une institution financière nécessite une compréhension approfondie de son organisation existante, ainsi que la mise en place d'un plan d'action stratégique. Cette démarche doit être soutenue par un diagnostic rigoureux et une stratégie de gouvernance SI solide.",
+      "support_ids": [
+        "S2",
+        "S5",
+        "S3",
+        "S4",
+        "S6",
+        "S7"
+      ]
+    },
+    "why_these_references": {
+      "text": "La référence à la Banque centrale de Tunisie illustre parfaitement le défi et les opportunités associés à ce type de transformation. Son engagement envers l'innovation numérique et son approche méthodique pour la gestion des ressources informatiques offrent un exemple concret de comment une telle démarche peut aboutir avec succès.",
+      "support_ids": [
+        "S2",
+        "S5",
+        "S3",
+        "S4",
+        "S6",
+        "S7"
+      ]
+    },
+    "references": [
+      {
+        "reference_id": "3dce0242ae69dfa376a6b45f3b5ceda747ea52ffcbdefdfd2cd98621e1070c24",
+        "headline": {
+          "text": "",
+          "support_ids": []
+        },
+        "short_description": {
+          "text": "",
+          "support_ids": []
+        },
+        "challenge": {
+          "text": "",
+          "support_ids": []
+        },
+        "devoteam_contribution": {
+          "text": "",
+          "support_ids": []
+        },
+        "realisations": [],
+        "benefits": [],
+        "why_relevant_to_opportunity": {
+          "text": "",
+          "support_ids": []
+        },
+        "warnings": []
+      }
+    ]
+  },
+  "validation": {
+    "valid": false,
+    "export_blocked": true,
+    "export_eligible": false,
+    "warnings": [
+      {
+        "code": "UNSUPPORTED_COMPLETION_LANGUAGE",
+        "message": "Completion language is not supported by completed-work evidence.",
+        "severity": "BLOCKING",
+        "blocking": true,
+        "field_path": "overall_storyline",
+        "reference_id": null,
+        "support_ids": [
+          "S2",
+          "S5",
+          "S3",
+          "S4",
+          "S6",
+          "S7"
+        ]
+      },
+      {
+        "code": "WEAK_SOURCE_SUPPORT",
+        "message": "The claim is supported only by catalog, proposal, contractual, or unverified evidence.",
+        "severity": "WARNING",
+        "blocking": false,
+        "field_path": "overall_storyline",
+        "reference_id": null,
+        "support_ids": [
+          "S2",
+          "S5",
+          "S3",
+          "S4",
+          "S6",
+          "S7"
+        ]
+      },
+      {
+        "code": "UNSUPPORTED_SUCCESS_CLAIM",
+        "message": "The narrative describes delivery as successful without direct support.",
+        "severity": "BLOCKING",
+        "blocking": true,
+        "field_path": "why_these_references",
+        "reference_id": null,
+        "support_ids": [
+          "S2",
+          "S5",
+          "S3",
+          "S4",
+          "S6",
+          "S7"
+        ]
+      },
+      {
+        "code": "WEAK_SOURCE_SUPPORT",
+        "message": "The claim is supported only by catalog, proposal, contractual, or unverified evidence.",
+        "severity": "WARNING",
+        "blocking": false,
+        "field_path": "why_these_references",
+        "reference_id": null,
+        "support_ids": [
+          "S2",
+          "S5",
+          "S3",
+          "S4",
+          "S6",
+          "S7"
+        ]
+      },
+      {
+        "code": "UNAVAILABLE_FIELD_LEFT_EMPTY",
+        "message": "The unavailable benefits field was intentionally left empty.",
+        "severity": "INFO",
+        "blocking": false,
+        "field_path": null,
+        "reference_id": "3dce0242ae69dfa376a6b45f3b5ceda747ea52ffcbdefdfd2cd98621e1070c24",
+        "support_ids": []
+      }
+    ]
+  },
+  "warnings": [
+    {
+      "code": "UNSUPPORTED_COMPLETION_LANGUAGE",
+      "message": "Completion language is not supported by completed-work evidence.",
+      "severity": "BLOCKING",
+      "blocking": true,
+      "field_path": "overall_storyline",
+      "reference_id": null,
+      "support_ids": [
+        "S2",
+        "S5",
+        "S3",
+        "S4",
+        "S6",
+        "S7"
+      ]
+    },
+    {
+      "code": "WEAK_SOURCE_SUPPORT",
+      "message": "The claim is supported only by catalog, proposal, contractual, or unverified evidence.",
+      "severity": "WARNING",
+      "blocking": false,
+      "field_path": "overall_storyline",
+      "reference_id": null,
+      "support_ids": [
+        "S2",
+        "S5",
+        "S3",
+        "S4",
+        "S6",
+        "S7"
+      ]
+    },
+    {
+      "code": "UNSUPPORTED_SUCCESS_CLAIM",
+      "message": "The narrative describes delivery as successful without direct support.",
+      "severity": "BLOCKING",
+      "blocking": true,
+      "field_path": "why_these_references",
+      "reference_id": null,
+      "support_ids": [
+        "S2",
+        "S5",
+        "S3",
+        "S4",
+        "S6",
+        "S7"
+      ]
+    },
+    {
+      "code": "WEAK_SOURCE_SUPPORT",
+      "message": "The claim is supported only by catalog, proposal, contractual, or unverified evidence.",
+      "severity": "WARNING",
+      "blocking": false,
+      "field_path": "why_these_references",
+      "reference_id": null,
+      "support_ids": [
+        "S2",
+        "S5",
+        "S3",
+        "S4",
+        "S6",
+        "S7"
+      ]
+    },
+    {
+      "code": "UNAVAILABLE_FIELD_LEFT_EMPTY",
+      "message": "The unavailable benefits field was intentionally left empty.",
+      "severity": "INFO",
+      "blocking": false,
+      "field_path": null,
+      "reference_id": "3dce0242ae69dfa376a6b45f3b5ceda747ea52ffcbdefdfd2cd98621e1070c24",
+      "support_ids": []
+    }
+  ],
+  "warning_counts": {
+    "INFO": 1,
+    "WARNING": 2,
+    "BLOCKING": 2
+  },
+  "backend_guarantees": {
+    "reference_identity_count": 1,
+    "expected_reference_count": 1,
+    "reference_identity_coverage": 1.0,
+    "eligible_populated_field_count": 2,
+    "deterministically_supported_field_count": 2,
+    "deterministic_support_coverage": 1.0,
+    "unknown_support_id_count": 0,
+    "unselected_support_count": 0,
+    "empty_support_field_violation_count": 0,
+    "blocking_provenance_count": 0
+  },
+  "model_quality": {
+    "populated_field_count": 2,
+    "total_word_count": 95,
+    "maximum_field_word_count": 49,
+    "duplicate_text_count": 0,
+    "conciseness_indicator": "CONCISE",
+    "narrative_usefulness": "HUMAN_REVIEW_REQUIRED",
+    "repetition_review": "NO_EXACT_DUPLICATION_DETECTED",
+    "language_review": "HUMAN_REVIEW_REQUIRED",
+    "target_language": "fr",
+    "latency_ms": 18481.7479000194
+  },
+  "source_supports": [
+    {
+      "support_id": "S1",
+      "reference_id": "3dce0242ae69dfa376a6b45f3b5ceda747ea52ffcbdefdfd2cd98621e1070c24",
+      "support_types": [
+        "FACT",
+        "STRUCTURED_METADATA"
+      ],
+      "source_label": "Trusted reference fact: mission_title",
+      "page": null
+    },
+    {
+      "support_id": "S2",
+      "reference_id": "3dce0242ae69dfa376a6b45f3b5ceda747ea52ffcbdefdfd2cd98621e1070c24",
+      "support_types": [
+        "FACT",
+        "STRUCTURED_METADATA"
+      ],
+      "source_label": "Trusted reference fact: client",
+      "page": null
+    },
+    {
+      "support_id": "S3",
+      "reference_id": "3dce0242ae69dfa376a6b45f3b5ceda747ea52ffcbdefdfd2cd98621e1070c24",
+      "support_types": [
+        "FACT",
+        "STRUCTURED_METADATA"
+      ],
+      "source_label": "Trusted reference fact: country",
+      "page": null
+    },
+    {
+      "support_id": "S4",
+      "reference_id": "3dce0242ae69dfa376a6b45f3b5ceda747ea52ffcbdefdfd2cd98621e1070c24",
+      "support_types": [
+        "FACT",
+        "STRUCTURED_METADATA"
+      ],
+      "source_label": "Trusted reference fact: period",
+      "page": null
+    },
+    {
+      "support_id": "S5",
+      "reference_id": "3dce0242ae69dfa376a6b45f3b5ceda747ea52ffcbdefdfd2cd98621e1070c24",
+      "support_types": [
+        "FACT",
+        "STRUCTURED_METADATA"
+      ],
+      "source_label": "Trusted reference fact: sector",
+      "page": null
+    },
+    {
+      "support_id": "S6",
+      "reference_id": "3dce0242ae69dfa376a6b45f3b5ceda747ea52ffcbdefdfd2cd98621e1070c24",
+      "support_types": [
+        "FACT",
+        "STRUCTURED_METADATA"
+      ],
+      "source_label": "Trusted reference fact: offering",
+      "page": null
+    },
+    {
+      "support_id": "S7",
+      "reference_id": "3dce0242ae69dfa376a6b45f3b5ceda747ea52ffcbdefdfd2cd98621e1070c24",
+      "support_types": [
+        "FACT",
+        "STRUCTURED_METADATA"
+      ],
+      "source_label": "Trusted reference fact: business_unit",
+      "page": null
+    },
+    {
+      "support_id": "S8",
+      "reference_id": "3dce0242ae69dfa376a6b45f3b5ceda747ea52ffcbdefdfd2cd98621e1070c24",
+      "support_types": [
+        "STRUCTURED_METADATA",
+        "UNVERIFIED_METADATA"
+      ],
+      "source_label": "Structured catalog scope",
+      "page": null
+    },
+    {
+      "support_id": "S9",
+      "reference_id": "3dce0242ae69dfa376a6b45f3b5ceda747ea52ffcbdefdfd2cd98621e1070c24",
+      "support_types": [
+        "CLIENT_ATTESTATION",
+        "COMPLETED_WORK_EVIDENCE"
+      ],
+      "source_label": "attestation de référence Banque central (1).pdf",
+      "page": 1
+    },
+    {
+      "support_id": "S10",
+      "reference_id": "3dce0242ae69dfa376a6b45f3b5ceda747ea52ffcbdefdfd2cd98621e1070c24",
+      "support_types": [
+        "CLIENT_ATTESTATION",
+        "COMPLETED_WORK_EVIDENCE"
+      ],
+      "source_label": "attestation de référence Banque central (1).pdf",
+      "page": 1
+    },
+    {
+      "support_id": "S11",
+      "reference_id": "3dce0242ae69dfa376a6b45f3b5ceda747ea52ffcbdefdfd2cd98621e1070c24",
+      "support_types": [
+        "CLIENT_ATTESTATION",
+        "COMPLETED_WORK_EVIDENCE"
+      ],
+      "source_label": "attestation de référence Banque central (1).pdf",
+      "page": 1
+    }
+  ],
+  "support_plan": {
+    "references": [
+      {
+        "reference_id": "3dce0242ae69dfa376a6b45f3b5ceda747ea52ffcbdefdfd2cd98621e1070c24",
+        "headline": [
+          "S1",
+          "S2"
+        ],
+        "short_description": [
+          "S1",
+          "S2",
+          "S10"
+        ],
+        "challenge": [
+          "S8"
+        ],
+        "devoteam_contribution": [
+          "S10"
+        ],
+        "realisations": [
+          "S10"
+        ],
+        "benefits": [],
+        "why_relevant_to_opportunity": [
+          "S1",
+          "S6"
+        ]
+      }
+    ],
+    "section": {
+      "section_intro": [
+        "S2",
+        "S5",
+        "S3",
+        "S4",
+        "S6",
+        "S7"
+      ],
+      "overall_storyline": [
+        "S2",
+        "S5",
+        "S3",
+        "S4",
+        "S6",
+        "S7"
+      ],
+      "why_these_references": [
+        "S2",
+        "S5",
+        "S3",
+        "S4",
+        "S6",
+        "S7"
+      ]
+    }
+  },
+  "provenance": {
+    "generated_at_utc": "2026-08-14T15:56:52.070883Z",
+    "provider": "ollama",
+    "model": "qwen2.5-coder:7b-instruct",
+    "prompt_version": "reference-narrative-phase2.1-prose-v1",
+    "prompt_sha256": "bd846afc3c53fe53f94086ce9a9ac33f8ed54c584d0714942851f6112055f6c8",
+    "selected_reference_ids": [
+      "3dce0242ae69dfa376a6b45f3b5ceda747ea52ffcbdefdfd2cd98621e1070c24"
+    ],
+    "source_supports": [
+      {
+        "support_id": "S1",
+        "reference_id": "3dce0242ae69dfa376a6b45f3b5ceda747ea52ffcbdefdfd2cd98621e1070c24",
+        "support_types": [
+          "FACT",
+          "STRUCTURED_METADATA"
+        ],
+        "source_label": "Trusted reference fact: mission_title",
+        "page": null
+      },
+      {
+        "support_id": "S2",
+        "reference_id": "3dce0242ae69dfa376a6b45f3b5ceda747ea52ffcbdefdfd2cd98621e1070c24",
+        "support_types": [
+          "FACT",
+          "STRUCTURED_METADATA"
+        ],
+        "source_label": "Trusted reference fact: client",
+        "page": null
+      },
+      {
+        "support_id": "S3",
+        "reference_id": "3dce0242ae69dfa376a6b45f3b5ceda747ea52ffcbdefdfd2cd98621e1070c24",
+        "support_types": [
+          "FACT",
+          "STRUCTURED_METADATA"
+        ],
+        "source_label": "Trusted reference fact: country",
+        "page": null
+      },
+      {
+        "support_id": "S4",
+        "reference_id": "3dce0242ae69dfa376a6b45f3b5ceda747ea52ffcbdefdfd2cd98621e1070c24",
+        "support_types": [
+          "FACT",
+          "STRUCTURED_METADATA"
+        ],
+        "source_label": "Trusted reference fact: period",
+        "page": null
+      },
+      {
+        "support_id": "S5",
+        "reference_id": "3dce0242ae69dfa376a6b45f3b5ceda747ea52ffcbdefdfd2cd98621e1070c24",
+        "support_types": [
+          "FACT",
+          "STRUCTURED_METADATA"
+        ],
+        "source_label": "Trusted reference fact: sector",
+        "page": null
+      },
+      {
+        "support_id": "S6",
+        "reference_id": "3dce0242ae69dfa376a6b45f3b5ceda747ea52ffcbdefdfd2cd98621e1070c24",
+        "support_types": [
+          "FACT",
+          "STRUCTURED_METADATA"
+        ],
+        "source_label": "Trusted reference fact: offering",
+        "page": null
+      },
+      {
+        "support_id": "S7",
+        "reference_id": "3dce0242ae69dfa376a6b45f3b5ceda747ea52ffcbdefdfd2cd98621e1070c24",
+        "support_types": [
+          "FACT",
+          "STRUCTURED_METADATA"
+        ],
+        "source_label": "Trusted reference fact: business_unit",
+        "page": null
+      },
+      {
+        "support_id": "S8",
+        "reference_id": "3dce0242ae69dfa376a6b45f3b5ceda747ea52ffcbdefdfd2cd98621e1070c24",
+        "support_types": [
+          "STRUCTURED_METADATA",
+          "UNVERIFIED_METADATA"
+        ],
+        "source_label": "Structured catalog scope",
+        "page": null
+      },
+      {
+        "support_id": "S9",
+        "reference_id": "3dce0242ae69dfa376a6b45f3b5ceda747ea52ffcbdefdfd2cd98621e1070c24",
+        "support_types": [
+          "CLIENT_ATTESTATION",
+          "COMPLETED_WORK_EVIDENCE"
+        ],
+        "source_label": "attestation de référence Banque central (1).pdf",
+        "page": 1
+      },
+      {
+        "support_id": "S10",
+        "reference_id": "3dce0242ae69dfa376a6b45f3b5ceda747ea52ffcbdefdfd2cd98621e1070c24",
+        "support_types": [
+          "CLIENT_ATTESTATION",
+          "COMPLETED_WORK_EVIDENCE"
+        ],
+        "source_label": "attestation de référence Banque central (1).pdf",
+        "page": 1
+      },
+      {
+        "support_id": "S11",
+        "reference_id": "3dce0242ae69dfa376a6b45f3b5ceda747ea52ffcbdefdfd2cd98621e1070c24",
+        "support_types": [
+          "CLIENT_ATTESTATION",
+          "COMPLETED_WORK_EVIDENCE"
+        ],
+        "source_label": "attestation de référence Banque central (1).pdf",
+        "page": 1
+      }
+    ],
+    "structured_output_retry_count": 0,
+    "validation_warning_codes": [
+      "UNSUPPORTED_COMPLETION_LANGUAGE",
+      "WEAK_SOURCE_SUPPORT",
+      "UNSUPPORTED_SUCCESS_CLAIM",
+      "WEAK_SOURCE_SUPPORT",
+      "UNAVAILABLE_FIELD_LEFT_EMPTY"
+    ]
+  },
+  "language": "fr",
+  "schema_success": true,
+  "language_compliance": {
+    "target_language": "fr",
+    "detected_language": "fr",
+    "compliant": true,
+    "target_language_ratio": 1.0,
+    "analyzed_letter_count": 552,
+    "reason": "Target-language function-word share must be at least 60% with three or more markers."
+  },
+  "completeness": {
+    "eligible_field_count": 6,
+    "populated_eligible_field_count": 0,
+    "usable_eligible_field_count": 0,
+    "empty_eligible_field_count": 6,
+    "unusable_eligible_field_count": 0,
+    "eligible_field_population_rate": 0.0
+  },
+  "factual_drift_count": 2,
+  "model_quality_failures": [
+    "FACTUAL_DRIFT"
+  ]
+}

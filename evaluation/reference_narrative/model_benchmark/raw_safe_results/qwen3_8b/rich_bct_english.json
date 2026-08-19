@@ -1,0 +1,43 @@
+{
+  "classification": "DEVELOPMENT / NON-PRODUCTION",
+  "case_id": "rich_bct_english",
+  "title": "Rich evidence in English",
+  "description": "Tests structured English generation from detailed French evidence.",
+  "request": {
+    "selected_reference_ids": [
+      "3dce0242ae69dfa376a6b45f3b5ceda747ea52ffcbdefdfd2cd98621e1070c24"
+    ],
+    "opportunity_title": "IT governance operating model",
+    "opportunity_description": "The procurement team needs a detailed, evidence-backed banking reference.",
+    "requirements": [
+      "Describe only evidenced work",
+      "Use an executive register"
+    ],
+    "target_language": "en",
+    "tone": "executive",
+    "audience": "procurement",
+    "detail_level": "detailed"
+  },
+  "status": "failed",
+  "provider": "ollama",
+  "model": "qwen3:8b",
+  "latency_ms": 120057.05679999664,
+  "schema_failure_count": 0,
+  "structured_output_retry_count": 0,
+  "generation_usage": {
+    "call_count": 0,
+    "prompt_token_count": null,
+    "generated_token_count": null,
+    "calls": []
+  },
+  "error_type": "NarrativeProviderTimeoutError",
+  "error": "The local Ollama generation request timed out",
+  "language": "en",
+  "schema_success": false,
+  "language_compliance": null,
+  "completeness": null,
+  "factual_drift_count": null,
+  "model_quality_failures": [
+    "SCHEMA_FAILURE"
+  ]
+}

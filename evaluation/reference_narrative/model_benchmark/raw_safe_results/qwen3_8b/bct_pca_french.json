@@ -1,0 +1,52 @@
+{
+  "classification": "DEVELOPMENT / NON-PRODUCTION",
+  "case_id": "bct_pca_french",
+  "title": "BCT PCA provenance regression in French",
+  "description": "Checks the accepted BCT source-separation case without promoting catalog details to completed work.",
+  "request": {
+    "selected_reference_ids": [
+      "38f6543c913e6155ed935bc93b2eb9adb740b8d292f9afd40065032ca7b62b82"
+    ],
+    "opportunity_title": "Renforcement du plan de continuité d'activité bancaire",
+    "opportunity_description": "Une banque souhaite renforcer la gouvernance, les procédures et les tests de son PCA.",
+    "requirements": [
+      "Présenter uniquement des réalisations démontrées",
+      "Relier la référence à la continuité d'activité"
+    ],
+    "target_language": "fr",
+    "tone": "commercial",
+    "audience": "procurement",
+    "detail_level": "medium"
+  },
+  "status": "failed",
+  "provider": "ollama",
+  "model": "qwen3:8b",
+  "latency_ms": 139151.51989995502,
+  "schema_failure_count": 0,
+  "structured_output_retry_count": 0,
+  "generation_usage": {
+    "call_count": 1,
+    "prompt_token_count": 979,
+    "generated_token_count": 18,
+    "calls": [
+      {
+        "prompt_token_count": 979,
+        "generated_token_count": 18,
+        "total_duration_ns": 19081090800,
+        "load_duration_ns": 15029156300,
+        "prompt_eval_duration_ns": 2566935000,
+        "eval_duration_ns": 1473602000
+      }
+    ]
+  },
+  "error_type": "NarrativeProviderTimeoutError",
+  "error": "The local Ollama generation request timed out",
+  "language": "fr",
+  "schema_success": false,
+  "language_compliance": null,
+  "completeness": null,
+  "factual_drift_count": null,
+  "model_quality_failures": [
+    "SCHEMA_FAILURE"
+  ]
+}

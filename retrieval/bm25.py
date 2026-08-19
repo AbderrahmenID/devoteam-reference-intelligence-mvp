@@ -29,11 +29,18 @@ class BM25Index:
         return int(len(self.document_lengths))
 
     @classmethod
-    def build(cls, texts: Iterable[str], *, k1: float = 1.2, b: float = 0.75) -> "BM25Index":
+    def build(
+        cls,
+        texts: Iterable[str],
+        *,
+        k1: float = 1.2,
+        b: float = 0.75,
+        allow_empty: bool = False,
+    ) -> "BM25Index":
         tokenized = [tokenize_multilingual(text) for text in texts]
         if not tokenized:
             raise ValueError("BM25 corpus may not be empty")
-        if any(not tokens for tokens in tokenized):
+        if not allow_empty and any(not tokens for tokens in tokenized):
             raise ValueError("BM25 corpus contains an empty token sequence")
         lengths = np.asarray([len(tokens) for tokens in tokenized], dtype=np.float32)
         postings: dict[str, list[tuple[int, int]]] = defaultdict(list)
@@ -65,7 +72,13 @@ class BM25Index:
             b=float(b),
         )
 
-    def score(self, query: str, allowed_mask: np.ndarray | None = None) -> np.ndarray:
+    def score(
+        self,
+        query: str,
+        allowed_mask: np.ndarray | None = None,
+        *,
+        query_tokens: Iterable[str] | None = None,
+    ) -> np.ndarray:
         if allowed_mask is not None:
             allowed_mask = np.asarray(allowed_mask, dtype=bool)
             if allowed_mask.shape != (self.document_count,):
@@ -73,7 +86,8 @@ class BM25Index:
         scores = np.zeros(self.document_count, dtype=np.float32)
         vocabulary_lookup = {term: index for index, term in enumerate(self.vocabulary)}
         length_norm = 1.0 - self.b + self.b * self.document_lengths / max(self.average_document_length, 1e-9)
-        for token, query_frequency in Counter(tokenize_multilingual(query)).items():
+        tokens = list(query_tokens) if query_tokens is not None else tokenize_multilingual(query)
+        for token, query_frequency in Counter(tokens).items():
             term_index = vocabulary_lookup.get(token)
             if term_index is None:
                 continue
@@ -129,4 +143,3 @@ class BM25Index:
             raise AssertionError("BM25 posting contains an invalid row")
         if not np.isfinite(self.idf).all() or not np.isfinite(self.document_lengths).all():
             raise AssertionError("BM25 index contains non-finite values")
-

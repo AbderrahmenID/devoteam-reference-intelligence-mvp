@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-08-02T19:51:53.797692+00:00",
+  "input_manifest": "data/versions/v2/TARGETED_REPAIR_MANIFEST.csv",
+  "input_manifest_sha256": "83c8cee80536f65777438e9b9ff99507c81caefd65a24c111b570c674a5f89cb",
+  "tesseract_executable": "C:\\Program Files\\Tesseract-OCR\\tesseract.exe",
+  "tesseract_version": "5.4.0.20240606",
+  "tessdata_prefix": "C:\\Users\\abder\\AppData\\Local\\DevoteamOCR\\tessdata",
+  "ocr_languages": [
+    "fra",
+    "eng",
+    "ara"
+  ],
+  "ocr_language_sha256": {
+    "fra": "ced037562e8c80c13122dece28dd477d399af80911a28791a66a63ac1e3445ca",
+    "eng": "7d4322bd2a7749724879683fc3912cb542f19906c83bcc1a52132556427170b2",
+    "ara": "e3206d3dc87fd50c24a0fb9f01838615911d25168f4e64415244b67d2bb3e729"
+  },
+  "render_dpi": 300,
+  "controlled_strategies": [
+    "digital_text",
+    "ocr_rgb_psm3",
+    "ocr_gray_autocontrast_psm3",
+    "ocr_threshold_psm6",
+    "conditional_latin_dominant_fra_eng_psm3"
+  ],
+  "page_count": 19,
+  "repaired_page_count": 19,
+  "blocked_page_count": 0,
+  "blocked_repair_ids": [],
+  "status": "PASS"
+}

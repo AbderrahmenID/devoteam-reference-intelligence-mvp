@@ -34,10 +34,25 @@ def decide_abstention(query: str, features: dict[str, Any], config: dict) -> Abs
     diagnostics = dict(features)
     diagnostics["query_token_count"] = len(tokens)
     normalized_query = normalize_search_text(query)
-    if any(normalize_search_text(term) in normalized_query for term in settings["unsupported_scope_terms"]):
+    query_tokens = tokenize_multilingual(normalized_query)
+    if any(
+        (lambda wanted: any(
+            query_tokens[index : index + len(wanted)] == wanted
+            for index in range(len(query_tokens) - len(wanted) + 1)
+        ))(tokenize_multilingual(term))
+        for term in settings["unsupported_scope_terms"]
+    ):
         return AbstentionDecision(True, "UNSUPPORTED_PORTFOLIO_SCOPE", diagnostics)
     if features.get("eligible_chunks", 0) == 0 or features.get("candidate_references", 0) == 0:
         return AbstentionDecision(True, "NO_ELIGIBLE_REFERENCE", diagnostics)
+    meaningful_count = int(features.get("meaningful_query_token_count", len(tokens)))
+    if meaningful_count < int(settings.get("minimum_query_tokens", 1)):
+        return AbstentionDecision(True, "NO_MEANINGFUL_QUERY_TERMS", diagnostics)
+    clean_evidence = int(features.get("clean_evidence_passages", features.get("independent_passages", 0)))
+    if clean_evidence == 0:
+        return AbstentionDecision(True, "NO_USABLE_EVIDENCE", diagnostics)
+    if features.get("query_concepts") and not bool(features.get("metadata_compatibility")):
+        return AbstentionDecision(True, "METADATA_MISMATCH", diagnostics)
 
     bm25 = float(features.get("best_bm25", 0.0))
     dense = float(features.get("best_dense", -1.0))
@@ -49,17 +64,25 @@ def decide_abstention(query: str, features: dict[str, Any], config: dict) -> Abs
         dense >= float(settings["strong_dense_score"])
         and mean_dense >= float(settings["minimum_mean_top_dense"])
     )
+    cross_language_override = (
+        bool(features.get("cross_language_evidence"))
+        and float(features.get("best_selected_dense", -1.0))
+        >= float(settings["minimum_semantic_only_dense"])
+    )
     lexical_ok = bm25 >= float(settings["minimum_best_bm25"]) and coverage >= float(
         settings["minimum_query_term_coverage"]
     )
-    semantic_ok = dense >= float(settings["minimum_semantic_only_dense"])
+    evidence_quality = float(features.get("best_evidence_quality", 1.0))
+    semantic_ok = (
+        dense >= float(settings["minimum_semantic_only_dense"])
+        and evidence_quality >= float(settings.get("minimum_evidence_quality_score", 0.0))
+    )
 
-    if not lexical_ok and not semantic_ok and not exact_override and not semantic_override:
+    if not lexical_ok and not semantic_ok and not exact_override and not semantic_override and not cross_language_override:
         reason = "INSUFFICIENT_LEXICAL_EVIDENCE" if dense >= float(settings["minimum_best_dense"]) else "INSUFFICIENT_SEMANTIC_EVIDENCE"
         return AbstentionDecision(True, reason, diagnostics)
-    if not (exact_override or semantic_override) and agreement < int(settings["minimum_rrf_agreement"]):
+    if not (exact_override or semantic_override or cross_language_override) and agreement < int(settings["minimum_rrf_agreement"]):
         return AbstentionDecision(True, "LOW_RETRIEVER_AGREEMENT", diagnostics)
     if int(features.get("independent_passages", 0)) < int(settings["minimum_independent_passages"]):
         return AbstentionDecision(True, "NO_ELIGIBLE_REFERENCE", diagnostics)
     return AbstentionDecision(False, "SUFFICIENT_EVIDENCE", diagnostics)
-

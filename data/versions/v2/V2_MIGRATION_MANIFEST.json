@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-08-02T19:59:00.349429+00:00",
+  "pipeline_version": "targeted_repair_v2",
+  "status": "PASS",
+  "inputs": {
+    "v1_chunks": {
+      "path": "data/chunks.parquet",
+      "sha256": "aa6f19e1eddb17505a35b8ff9443ac76385c2d7ed2d7ba414b205cf15e1c9b0e",
+      "bytes": 770872,
+      "rows": 1185
+    },
+    "v1_reference_catalog": {
+      "path": "data/reference_catalog.parquet",
+      "sha256": "13f9605cdd0fd47817e8b4c111a931d61a18413dc67202044e776d4ab4977b30",
+      "bytes": 87067,
+      "rows": 161
+    },
+    "human_review_workbook": {
+      "path": "audit/corpus_quality/HUMAN_CHUNK_REVIEW_FINAL.xlsx",
+      "sha256": "27c495ea6b653fa65f9329a268c7d2fb551cf793aa5c74860099674a7aa4b298",
+      "bytes": 138679,
+      "rows": 180
+    },
+    "full_corpus_audit": {
+      "path": "audit/corpus_quality/CHUNK_QUALITY_AUDIT.csv",
+      "sha256": "dd3c8894d24dec4f95075f6436ddeb3b928e2759c77088bb3180f9383f0bacb4",
+      "bytes": 1976342,
+      "rows": 1185
+    },
+    "repaired_pages": {
+      "path": "data/versions/v2/repaired_pages.parquet",
+      "sha256": "127fac4dad564f70efadf97d385b1c47ecd8afd3348f36e35c60c93aaee4c2bf",
+      "bytes": 134188,
+      "rows": 19
+    },
+    "repair_run_manifest": {
+      "path": "data/versions/v2/PAGE_REPAIR_RUN_MANIFEST.json",
+      "sha256": "e9b7593ec2b822cd3d7d293ef96cc9f4206d6b196c101fdc82b9dc451a09f7e8",
+      "bytes": 1125,
+      "rows": null
+    },
+    "v1_config_sha256": "c64c9cd3148577e6ec971100aaf3dd0404d402735ace67a795d241ff2faa729b"
+  },
+  "counts": {
+    "v1_chunks": 1185,
+    "v2_retrieval_chunks": 1125,
+    "unchanged_v1_chunks_retained": 1056,
+    "new_repaired_chunks": 69,
+    "repaired_chunks_rejected": 1,
+    "quarantined_rows": 53,
+    "v1_references": 161,
+    "v2_retrieval_eligible_references": 138,
+    "repair_pages": 19
+  },
+  "policy_counts": {
+    "HUMAN_CONFIRMATION_QUARANTINE": 37,
+    "LINKAGE_REVIEW": 1,
+    "NEW_REPAIRED_CHUNK": 69,
+    "REMOVED_GENERIC": 14,
+    "REPLACED": 77,
+    "RETRIEVAL_ONLY": 35,
+    "UNCHANGED_RETAINED": 1021
+  },
+  "artifacts": [
+    {
+      "path": "data/versions/v2/chunks.parquet",
+      "sha256": "94c9e34a3c3ae7c131a2b6248f925d15a0a76fd703a681361fdd98734abda2bd",
+      "bytes": 1943402,
+      "rows": 1125
+    },
+    {
+      "path": "data/versions/v2/reference_catalog.parquet",
+      "sha256": "72f45e6d338c990f895a29c65a9974ab9adc35e2085b024ac31ef057f433137b",
+      "bytes": 87109,
+      "rows": 161
+    },
+    {
+      "path": "data/versions/v2/chunk_policy.parquet",
+      "sha256": "a6f90c787fd4575d0b2e375c257711beaf3dd3b14775a2e68bfafa513273e510",
+      "bytes": 92305,
+      "rows": 1254
+    },
+    {
+      "path": "data/versions/v2/quarantined_chunks.parquet",
+      "sha256": "d5f6d043a4f4cb8f6c12b1edc1c79e8827c79ea7c1e235dd78fb81a98c794818",
+      "bytes": 105507,
+      "rows": 53
+    },
+    {
+      "path": "data/versions/v2/page_repair_provenance.parquet",
+      "sha256": "6414c72c46af8adf6662c96d83c4f0ffa1df2cd9e6138ea750daea249fddcbf7",
+      "bytes": 32649,
+      "rows": 19
+    },
+    {
+      "path": "data/versions/v2/V1_TO_V2_CHUNK_MAP.csv",
+      "sha256": "3216723fbce11b61ed78d8125d35965626e7346588226f760b553a6990d470c8",
+      "bytes": 326663,
+      "rows": 1254
+    },
+    {
+      "path": "data/versions/v2/indexes/bm25_index.npz",
+      "sha256": "e457db1c5e27f3bcce6f652a03650c823ea93e0378a0363588924bf7d33e558d",
+      "bytes": 168113,
+      "rows": 1125
+    },
+    {
+      "path": "data/versions/v2/indexes/bm25_vocabulary.json",
+      "sha256": "93108838bdd6d4055bb58acd25eb352425779e43dca960fede4592d1e14b230f",
+      "bytes": 140252,
+      "rows": 13315
+    },
+    {
+      "path": "data/versions/v2/indexes/embeddings.npy",
+      "sha256": "bea9dad5e073896f83c476702150be0365b5ea632ba68fd0dd6684c43a87b49b",
+      "bytes": 3456128,
+      "rows": 1125
+    },
+    {
+      "path": "data/versions/v2/indexes/chunk_lookup.parquet",
+      "sha256": "ee3b14f63326ef21a0c4e8dcbd8fa080cafc51099b86e309412f4d169ac3ca6b",
+      "bytes": 2028894,
+      "rows": 1125
+    },
+    {
+      "path": "data/versions/v2/indexes/retrieval_runtime.json",
+      "sha256": "a56e9345577d1fbabcebc53ab72bc7d9cd077e6988cbe8f693c5981d030a836e",
+      "bytes": 447,
+      "rows": null
+    },
+    {
+      "path": "data/versions/v2/config.v2.yaml",
+      "sha256": "97136f15c50955645a12b3f159ce71e8cf99eeecef064cff7a768642482dee61",
+      "bytes": 4107,
+      "rows": null
+    }
+  ],
+  "model": {
+    "schema_version": 1,
+    "pipeline_version": "targeted_repair_v2",
+    "model_id": "intfloat/multilingual-e5-base",
+    "model_revision": "a114a4100c6714cf21651971eefe9191a4415dbb",
+    "dimensions": 768,
+    "query_prefix": "query: ",
+    "passage_prefix": "passage: ",
+    "normalize_embeddings": true,
+    "bm25_k1": 1.2,
+    "bm25_b": 0.75,
+    "hybrid_lexical_weight": 0.5,
+    "hybrid_dense_weight": 0.5,
+    "abstention_unchanged_from_v1": true
+  },
+  "validation": {
+    "v1_mapping_exact": true,
+    "v2_chunk_ids_unique": true,
+    "lookup_order_matches_chunks": true,
+    "bm25_rows": 1125,
+    "embedding_shape": [
+      1125,
+      768
+    ],
+    "embedding_norm_min": 0.9999998807907104,
+    "embedding_norm_max": 1.0000001192092896,
+    "source_project_written": false,
+    "v1_assets_written": false
+  },
+  "reproduction_command": ".\\.venv\\Scripts\\python.exe scripts\\build_corpus_v2.py"
+}

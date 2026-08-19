@@ -1,0 +1,10 @@
+{
+  "status": "HUMAN_JUDGMENTS_REQUIRED",
+  "official_metrics": null,
+  "development_query_count": 0,
+  "development_qrel_count": 0,
+  "experiments_run": 0,
+  "selected_configuration": "VERIFIED_HOTFIX_BASELINE_UNCHANGED",
+  "production_quality_claim_allowed": false,
+  "reason": "No adequate human-judged development set exists."
+}

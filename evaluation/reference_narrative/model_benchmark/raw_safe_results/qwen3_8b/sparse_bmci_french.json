@@ -1,0 +1,52 @@
+{
+  "classification": "DEVELOPMENT / NON-PRODUCTION",
+  "case_id": "sparse_bmci_french",
+  "title": "Sparse catalog-only reference in French",
+  "description": "Repeats the sparse evidence boundary in the primary proposal language.",
+  "request": {
+    "selected_reference_ids": [
+      "d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24"
+    ],
+    "opportunity_title": "Définition d'une stratégie des systèmes d'information",
+    "opportunity_description": "Référence courte pour un dossier de consultation bancaire.",
+    "requirements": [
+      "Laisser vides les réalisations non prouvées",
+      "Ne pas inventer de bénéfices"
+    ],
+    "target_language": "fr",
+    "tone": "concise",
+    "audience": "procurement",
+    "detail_level": "short"
+  },
+  "status": "failed",
+  "provider": "ollama",
+  "model": "qwen3:8b",
+  "latency_ms": 140689.53299999703,
+  "schema_failure_count": 0,
+  "structured_output_retry_count": 0,
+  "generation_usage": {
+    "call_count": 1,
+    "prompt_token_count": 962,
+    "generated_token_count": 123,
+    "calls": [
+      {
+        "prompt_token_count": 962,
+        "generated_token_count": 123,
+        "total_duration_ns": 20589180000,
+        "load_duration_ns": 328856700,
+        "prompt_eval_duration_ns": 1164289000,
+        "eval_duration_ns": 18967824000
+      }
+    ]
+  },
+  "error_type": "NarrativeProviderTimeoutError",
+  "error": "The local Ollama generation request timed out",
+  "language": "fr",
+  "schema_success": false,
+  "language_compliance": null,
+  "completeness": null,
+  "factual_drift_count": null,
+  "model_quality_failures": [
+    "SCHEMA_FAILURE"
+  ]
+}

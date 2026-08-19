@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "pool_version": "development_candidate_pool_v1",
+  "status": "FROZEN_BLINDED_POOL_CSV_AND_PRIVATE_MAPPING",
+  "created_at_utc": "2026-08-02T20:20:56.945756+00:00",
+  "random_seed": "devoteam-development-v1-blind-20260802",
+  "query_count": 50,
+  "candidate_count": 1192,
+  "per_query_candidate_counts": {
+    "DEV-001": 25,
+    "DEV-002": 25,
+    "DEV-003": 25,
+    "DEV-004": 25,
+    "DEV-005": 25,
+    "DEV-006": 25,
+    "DEV-007": 24,
+    "DEV-008": 25,
+    "DEV-009": 25,
+    "DEV-010": 25,
+    "DEV-011": 25,
+    "DEV-012": 20,
+    "DEV-013": 25,
+    "DEV-014": 25,
+    "DEV-015": 25,
+    "DEV-016": 25,
+    "DEV-017": 25,
+    "DEV-018": 25,
+    "DEV-019": 24,
+    "DEV-020": 25,
+    "DEV-021": 25,
+    "DEV-022": 25,
+    "DEV-023": 25,
+    "DEV-024": 25,
+    "DEV-025": 22,
+    "DEV-026": 2,
+    "DEV-027": 25,
+    "DEV-028": 25,
+    "DEV-029": 25,
+    "DEV-030": 25,
+    "DEV-031": 25,
+    "DEV-032": 25,
+    "DEV-033": 25,
+    "DEV-034": 25,
+    "DEV-035": 25,
+    "DEV-036": 25,
+    "DEV-037": 25,
+    "DEV-038": 25,
+    "DEV-039": 25,
+    "DEV-040": 25,
+    "DEV-041": 0,
+    "DEV-042": 25,
+    "DEV-043": 25,
+    "DEV-044": 25,
+    "DEV-045": 25,
+    "DEV-046": 25,
+    "DEV-047": 25,
+    "DEV-048": 25,
+    "DEV-049": 25,
+    "DEV-050": 25
+  },
+  "queries_with_zero_candidates": [
+    "DEV-041"
+  ],
+  "candidate_cap": 25,
+  "pool_depths": {
+    "bm25_per_version": 10,
+    "dense_per_version": 10,
+    "hybrid_per_version": 20
+  },
+  "abstention_used_for_pool_filtering": false,
+  "mandatory_filters_enforced": true,
+  "quarantined_references_excluded": true,
+  "references_without_usable_evidence_excluded": true,
+  "excluded_quarantined_occurrences": 0,
+  "excluded_no_usable_evidence_occurrences": 33,
+  "human_judgment_fields_blank": true,
+  "blinded_view_exposes_system_origin_or_scores": false,
+  "inputs": {
+    "frozen_queries": {
+      "path": "evaluation/judging/frozen/development_queries_v1.csv",
+      "sha256": "fd770a2d2c7cde473cacf9e168cf9df7a2120f7500de4c9493008ae2d6f10d4d"
+    },
+    "v1_manifest": {
+      "path": "data/DATA_MANIFEST.json",
+      "sha256": "fbf932441aa0086644009ceb1190c0525606a00ed096d21c0376b4e8f24c86a5"
+    },
+    "v2_manifest": {
+      "path": "data/versions/v2/V2_MIGRATION_MANIFEST.json",
+      "sha256": "c8433e1e55303b46ae3f23e234874f711f13b6efd6da525335a36fcd88f8581e"
+    }
+  },
+  "outputs": {
+    "blinded_csv": {
+      "path": "evaluation/judging/CANDIDATE_JUDGMENTS_BLINDED.csv",
+      "sha256": "fc1dc4973f46df27e2f5f61661210e72385b376f0c5da79f9207d0b1168f45c0",
+      "rows": 1192
+    },
+    "unblinded_mapping": {
+      "path": "evaluation/judging/private/CANDIDATE_POOL_UNBLINDED.csv",
+      "sha256": "d04da6ab190a4ae46db83bdeee64df645e07b5844302ede2263feee7bcc7dce6",
+      "rows": 1192
+    },
+    "system_contributions": {
+      "path": "evaluation/judging/private/CANDIDATE_POOL_SYSTEM_CONTRIBUTIONS.csv",
+      "sha256": "a8d0954aef581b80c3183d90f58a5443a7a9c885988a97da2b63e13ad1393d02",
+      "rows": 3634
+    }
+  },
+  "contribution_counts": {
+    "v1_bm25": 473,
+    "v1_dense": 471,
+    "v1_hybrid": 880,
+    "v2_bm25": 474,
+    "v2_dense": 472,
+    "v2_hybrid": 864
+  },
+  "unresolved_issues": [
+    "DEV-041 has zero filter-eligible references under the owner-approved strict filter."
+  ],
+  "official_retrieval_metrics_exist": false
+}

@@ -34,11 +34,15 @@ class E5QueryEncoder:
         self.normalize = bool(model_config["normalize_embeddings"])
         self.dimension = int(model_config["dimensions"])
         self.model = SentenceTransformer(str(local_path), device=device, local_files_only=True)
+        self._query_cache: dict[str, np.ndarray] = {}
         actual_dimension = int(self.model.get_sentence_embedding_dimension())
         if actual_dimension != self.dimension:
             raise AssertionError(f"Embedding dimension changed: {actual_dimension}")
 
     def encode_query(self, query: str) -> np.ndarray:
+        cached = self._query_cache.get(query)
+        if cached is not None:
+            return cached.copy()
         vector = self.model.encode(
             [self.prefix + query], normalize_embeddings=self.normalize,
             convert_to_numpy=True, show_progress_bar=False,
@@ -49,6 +53,9 @@ class E5QueryEncoder:
             raise AssertionError("Dense query vector is invalid")
         if self.normalize and not np.isclose(norm, 1.0, atol=1e-4):
             raise AssertionError("Dense query vector is not normalized")
+        if len(self._query_cache) >= 256:
+            self._query_cache.pop(next(iter(self._query_cache)))
+        self._query_cache[query] = vector.copy()
         return vector
 
 
@@ -74,4 +81,3 @@ class DenseIndex:
                 raise ValueError("Dense allowed mask has the wrong shape")
             scores[~mask] = -np.inf
         return scores, vector
-

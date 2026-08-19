@@ -11,6 +11,15 @@
 - A nearest result is not always a relevant result; this is why zero-result abstention exists.
 - Source metadata can contain inconsistencies inherited from the validated corpus.
 - Extraction quality varies on scanned, rotated or mixed-language PDFs.
-- Tesseract and its `fra+eng+ara` packs are absent on the current machine, so scanned-page OCR preview is blocked until installed; retrieval is unaffected.
+- Tesseract and the required `fra+eng+ara` data are available through the validated local paths; scanned-page OCR quality still depends on source scan quality and remains outside reference-pack generation.
 - No corpus rebuild, embedding regeneration, model fine-tuning, LLM answering or cloud deployment is included.
-
+- Project dates are year-precision because the source catalog does not provide reliable months or days.
+- `completed` is a conservative derived label for finite dated records; `ongoing` requires an explicit source marker. The current eligible catalog has no explicit ongoing marker.
+- Technology and template-theme filters are deterministic keyword-derived tags, not expert annotations.
+- The source catalog has no separate authoritative project-title column; the UI/export uses the source `service_nature` description as the mission title.
+- Reference-pack PDF export is implemented through local LibreOffice 26.2.5.2; the separate legacy DOCX export remains unchanged and is not converted to PDF by this feature.
+- The raw source evidence documents are not stored in the authorized MVP. Evidence annexes therefore use display-approved text cards; page-image crops remain fail-closed until an approved local file is hash-matched and reviewed for unrelated confidential material.
+- No client logo is currently registered as an approved local asset. The generator uses client-name cards and never invents or downloads logos.
+- Static interface/headings are localized to French, English and Arabic, but source project content is not machine-translated. Mixed-source-language bullets can therefore remain visible in a pack requested in another language.
+- Arabic uses right-aligned RTL paragraph metadata, but rendering still depends on fonts installed on the receiving PowerPoint/LibreOffice host.
+- Generated packs contain `INTERNAL` evidence and must remain inside the controlled local authorization boundary. The prototype still has no user/tenant document-level ACL service.

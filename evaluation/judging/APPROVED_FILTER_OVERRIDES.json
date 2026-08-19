@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "approval_status": "OWNER_APPROVED",
+  "approved_at_date": "2026-08-02",
+  "approval_source": "Project owner approval in Codex session",
+  "original_workbook_unchanged": true,
+  "overrides": {
+    "DEV-012": {
+      "country": [
+        "Tunisie"
+      ],
+      "period": {
+        "preset": "last_5_years"
+      }
+    },
+    "DEV-026": {
+      "country": [
+        "Côte d’Ivoire",
+        "Mali",
+        "Burkina Faso",
+        "Mauritanie",
+        "Niger",
+        "Sénégal"
+      ],
+      "period": {
+        "preset": "last_5_years"
+      },
+      "sector": [
+        "Banque"
+      ]
+    },
+    "DEV-041": {
+      "country": [
+        "Tunisie"
+      ],
+      "period": {
+        "preset": "last_5_years"
+      },
+      "offering": [
+        "Cloud"
+      ]
+    }
+  }
+}

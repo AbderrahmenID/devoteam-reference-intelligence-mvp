@@ -1,6 +1,8 @@
 # Devoteam multilingual reference retrieval MVP
 
-An internship-scale application that retrieves up to three cited Devoteam references from a validated internal corpus. It combines Unicode BM25 with the pinned local `intfloat/multilingual-e5-base` index, groups evidence at reference level and abstains when evidence is insufficient. It is a retrieval system, not a chatbot, and it never generates fallback results.
+An internship-scale application for multilingual, filtered Devoteam reference retrieval, template-based Word export and deterministic reference-pack generation. The active runtime uses the repaired v2 corpus, field-aware Unicode BM25, exact search with pinned local `intfloat/multilingual-e5-base`, weighted rank fusion, clean reference aggregation and conservative relevance/evidence gates. Hard metadata filters run before ranking, every passing reference is paginated, and insufficient evidence returns zero results. It is a retrieval system, not a chatbot, and it never generates fallback results or export claims.
+
+The interface provides source-derived facets, multi-select filters, interval-aware periods, relevance and metadata sorting, 10/20/50-result pages, summary and detailed views, an ordered session-persistent stable-ID basket, selected DOCX export and editable PPTX/PDF reference-pack generation with source-lineage manifests.
 
 ## Open the project
 
@@ -31,11 +33,42 @@ cd ..\..
 
 The test script runs Python tests (including data integrity and API smoke tests), validates the empty human-evaluation templates, runs frontend lint and produces a frontend build.
 
+Filter and export documentation:
+
+- `docs/FILTERS.md`
+- `docs/TEMPLATE_FIELD_MAPPING.md`
+- `docs/EXPORT.md`
+- `docs/FILTER_AND_EXPORT_RESULTS.md`
+
+Retrieval-quality hotfix documentation:
+
+- `docs/RETRIEVAL_QUALITY_HOTFIX.md`
+- `docs/TEXT_FIELD_LINEAGE.md`
+- `docs/RETRIEVAL_QUALITY_HOTFIX_RESULTS.md`
+
+Current v2 runtime documentation:
+
+- `docs/DIRECT_RETRIEVAL_IMPROVEMENT_RESULTS.md`
+- `docs/RETRIEVAL_RUNTIME_V2.md`
+- `docs/RETRIEVAL_DIAGNOSTIC_GUIDE.md`
+- `docs/SELECTED_RETRIEVAL_CONFIGURATION.md`
+- `docs/REMAINING_LIMITATIONS.md`
+
+Reference-pack documentation:
+
+- `docs/REFERENCE_PACK_GENERATION.md`
+- `docs/REFERENCE_PACK_API.md`
+- `docs/REFERENCE_PACK_TEMPLATE.md`
+- `docs/REFERENCE_PACK_TEST_RESULTS.md`
+- `docs/REFERENCE_PACK_VISUAL_VALIDATION.md`
+
 ## Start and stop the full application
 
 ```powershell
 .\start.ps1
 ```
+
+This starts `config/baselines/SELECTED_RETRIEVAL_CONFIGURATION.yaml` (corpus v2, field-aware retrieval). Set `DEVOTEAM_CONFIG=config/baselines/V1_ROLLBACK.yaml` before startup for a complete v1 rollback; see `docs/V2_MIGRATION_GUIDE.md`.
 
 - Frontend: <http://127.0.0.1:3000>
 - Backend: <http://127.0.0.1:8000>
@@ -77,6 +110,44 @@ With the application started:
 
 These are technical UTF-8 and contract smoke checks, not official relevance judgments.
 
+## Explain one complete retrieval run
+
+```powershell
+$env:PYTHONIOENCODING='utf-8'
+.\.venv\Scripts\python.exe -m retrieval.diagnose --query 'API Gateway Kong' --json
+```
+
+The diagnostic includes fields, chunk candidates, aggregation, evidence decisions, rejections and final abstention. Internal scores are diagnostic-only and are not displayed in the UI.
+
+## API examples
+
+Search with hard filters and pagination:
+
+```powershell
+$body = @{
+  query = 'PCA banque'
+  filters = @{
+    country = @('Tunisie', 'Maroc')
+    offering = @('PCA/PCI')
+    period = @{ start_year = 2020; end_year = 2022 }
+  }
+  page = 1
+  page_size = 20
+  sort = 'relevance'
+} | ConvertTo-Json -Depth 6
+Invoke-RestMethod -Method Post -Uri http://127.0.0.1:8000/api/search -ContentType application/json -Body $body
+```
+
+Facet values and counts:
+
+```powershell
+Invoke-RestMethod http://127.0.0.1:8000/api/facets
+```
+
+Use `POST /api/export/docx` with the current query/filter context and either `selected_reference_ids` or `export_all_filtered: true`. The server re-runs retrieval and rejects IDs outside the retained result set.
+
+Use `POST /api/reference-packs` with explicitly selected stable IDs and presentation options. The server reloads all facts and display evidence from manifest-pinned v2 data; `GET /api/reference-packs/{generation_id}` and its `/download/pptx`, `/download/pdf` and `/download/manifest` routes return the result.
+
 ## Evaluate human-reviewed qrels
 
 Complete the CSV templates under `evaluation/`, then run:
@@ -94,9 +165,11 @@ Empty qrels return `HUMAN_JUDGMENTS_REQUIRED` with `metrics: null`; the evaluato
 - **Tesseract missing:** ordinary search and digital-text PDF preview still work. For scanned PDFs, install Tesseract and the `fra`, `eng`, and `ara` language packs, verify `tesseract --list-langs`, then restart.
 - **Node.js/npm missing:** install a current Node.js release, confirm `node --version` and `npm --version`, then run `npm install` in `app/frontend`.
 - **Backend unavailable in the UI:** inspect `.runtime/backend.err.log` when started through `start.ps1`; the UI deliberately shows the real network/API error and never substitutes fake results.
-- **Ports already used:** free ports 8000/3000 or change both ports in `config.yaml` and the frontend API URL.
+- **Ports already used:** free ports 8000/3000 or change both ports in the selected runtime configuration and the frontend API URL.
+- **DOCX export rejected:** selections are validated against the current query, filters, sort and evidence gate. Re-run the search and export its stable IDs; do not submit catalog IDs directly.
+- **PDF reference pack unavailable:** the editable PPTX is retained and the API returns a warning. Install LibreOffice at `C:\Program Files\LibreOffice\program\soffice.exe`, then retry.
+- **Word rendering:** runtime export generation does not require Microsoft Word. The test suite validates package integrity and reopens generated files with `python-docx`; see `docs/FILTER_AND_EXPORT_RESULTS.md` for host-specific visual-render validation status.
 
 ## Security and scope
 
 The corpus is classified `INTERNAL`. This prototype has no authentication or document-level authorization and must remain in a controlled local demo environment. See `docs/LIMITATIONS.md` before any broader use.
-

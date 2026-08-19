@@ -1,0 +1,53 @@
+{
+  "classification": "DEVELOPMENT / NON-PRODUCTION",
+  "case_id": "cross_language_bct_english",
+  "title": "French evidence to English narrative",
+  "description": "Tests cross-language grounding without changing factual scope.",
+  "request": {
+    "selected_reference_ids": [
+      "38f6543c913e6155ed935bc93b2eb9adb740b8d292f9afd40065032ca7b62b82"
+    ],
+    "opportunity_title": "Operational resilience for a central bank",
+    "opportunity_description": "An English proposal needs a grounded reference for business continuity operationalisation.",
+    "requirements": [
+      "English output",
+      "No unsupported delivery detail",
+      "No invented benefit"
+    ],
+    "target_language": "en",
+    "tone": "technical",
+    "audience": "technical",
+    "detail_level": "medium"
+  },
+  "status": "failed",
+  "provider": "ollama",
+  "model": "qwen3:8b",
+  "latency_ms": 123899.92019999772,
+  "schema_failure_count": 0,
+  "structured_output_retry_count": 0,
+  "generation_usage": {
+    "call_count": 1,
+    "prompt_token_count": 946,
+    "generated_token_count": 17,
+    "calls": [
+      {
+        "prompt_token_count": 946,
+        "generated_token_count": 17,
+        "total_duration_ns": 3803503600,
+        "load_duration_ns": 193029900,
+        "prompt_eval_duration_ns": 818199000,
+        "eval_duration_ns": 2655624000
+      }
+    ]
+  },
+  "error_type": "NarrativeProviderTimeoutError",
+  "error": "The local Ollama generation request timed out",
+  "language": "en",
+  "schema_success": false,
+  "language_compliance": null,
+  "completeness": null,
+  "factual_drift_count": null,
+  "model_quality_failures": [
+    "SCHEMA_FAILURE"
+  ]
+}

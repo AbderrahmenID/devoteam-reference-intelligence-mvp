@@ -1,0 +1,52 @@
+{
+  "classification": "DEVELOPMENT / NON-PRODUCTION",
+  "case_id": "sparse_bmci_english",
+  "title": "Sparse catalog-only reference in English",
+  "description": "Verifies safe abstention and weak-evidence warnings when completed-work details are unavailable.",
+  "request": {
+    "selected_reference_ids": [
+      "d9910e8a1e4ba5b312484efdce47cfe184eb0c0f5ae1b5784a3809d5f0827a24"
+    ],
+    "opportunity_title": "Banking information systems strategy",
+    "opportunity_description": "The client needs a concise reference relevant to defining an information systems strategy.",
+    "requirements": [
+      "Do not infer delivered activities",
+      "Keep unavailable outcomes empty"
+    ],
+    "target_language": "en",
+    "tone": "concise",
+    "audience": "mixed",
+    "detail_level": "short"
+  },
+  "status": "failed",
+  "provider": "ollama",
+  "model": "qwen3:8b",
+  "latency_ms": 128246.36550003197,
+  "schema_failure_count": 0,
+  "structured_output_retry_count": 0,
+  "generation_usage": {
+    "call_count": 1,
+    "prompt_token_count": 945,
+    "generated_token_count": 72,
+    "calls": [
+      {
+        "prompt_token_count": 945,
+        "generated_token_count": 72,
+        "total_duration_ns": 8165448900,
+        "load_duration_ns": 190620800,
+        "prompt_eval_duration_ns": 1804345000,
+        "eval_duration_ns": 6065779000
+      }
+    ]
+  },
+  "error_type": "NarrativeProviderTimeoutError",
+  "error": "The local Ollama generation request timed out",
+  "language": "en",
+  "schema_success": false,
+  "language_compliance": null,
+  "completeness": null,
+  "factual_drift_count": null,
+  "model_quality_failures": [
+    "SCHEMA_FAILURE"
+  ]
+}

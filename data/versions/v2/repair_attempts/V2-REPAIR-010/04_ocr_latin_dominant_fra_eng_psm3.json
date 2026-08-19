@@ -1,0 +1,42 @@
+{
+  "repair_id": "V2-REPAIR-010",
+  "strategy": "ocr_latin_dominant_fra_eng_psm3",
+  "strategy_order": 4,
+  "psm": 3,
+  "render_dpi": 300,
+  "ocr_languages": "fra+eng",
+  "ocr_confidence": 66.261468,
+  "diagnostics": {
+    "character_count": 1172,
+    "word_count": 215,
+    "text_sha256": "8b04fc1e6df3cfc9ae5082182abbacf12854c490aa97aff74a6a6cd459350cbd",
+    "detected_language": "fr",
+    "scripts": [
+      "Latin"
+    ],
+    "rtl": false,
+    "chunk_count": 2,
+    "quality_passing_chunks": 2,
+    "quality_pass_rate": 1.0,
+    "mean_quality_score": 0.945814,
+    "minimum_quality_score": 0.938095,
+    "rejection_reason_counts": {}
+  },
+  "display_diagnostics": {
+    "character_count": 1172,
+    "word_count": 215,
+    "text_sha256": "3659f919afd152de0fc33152336f1276daeca8e7f582f54116c14d6f69ffe61f",
+    "detected_language": "fr",
+    "scripts": [
+      "Latin"
+    ],
+    "rtl": false,
+    "chunk_count": 2,
+    "quality_passing_chunks": 2,
+    "quality_pass_rate": 1.0,
+    "mean_quality_score": 0.973523,
+    "minimum_quality_score": 0.962283,
+    "rejection_reason_counts": {}
+  },
+  "refinement_basis": "mandatory_multilingual_pass_was_at_least_80_percent_latin_alphabetic_characters"
+}

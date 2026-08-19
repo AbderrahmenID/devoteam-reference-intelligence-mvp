@@ -1,0 +1,323 @@
+{
+  "classification": "DEVELOPMENT / NON-PRODUCTION",
+  "suite": "reference-narrative-phase2.1-development",
+  "generated_at_utc": "2026-08-14T14:04:42.446117+00:00",
+  "case_count": 8,
+  "completed_case_count": 8,
+  "failed_case_count": 0,
+  "schema_failure_count": 0,
+  "valid_case_count": 2,
+  "export_eligible_case_count": 2,
+  "backend_guarantees": {
+    "reference_identity_coverage": 1.0,
+    "deterministic_support_coverage": 1.0,
+    "unknown_support_id_count": 0,
+    "unselected_support_count": 0,
+    "empty_support_field_violation_count": 0,
+    "blocking_provenance_count": 0
+  },
+  "model_quality": {
+    "median_latency_ms": 15048.492900037672,
+    "total_word_count": 925,
+    "duplicate_text_count": 0,
+    "human_review_required": true
+  },
+  "case_results": [
+    {
+      "case_id": "bct_pca_french",
+      "status": "completed",
+      "latency_ms": 14827.497699996457,
+      "schema_failure_count": 0,
+      "valid": true,
+      "export_eligible": true,
+      "backend_guarantees": {
+        "reference_identity_count": 1,
+        "expected_reference_count": 1,
+        "reference_identity_coverage": 1.0,
+        "eligible_populated_field_count": 3,
+        "deterministically_supported_field_count": 3,
+        "deterministic_support_coverage": 1.0,
+        "unknown_support_id_count": 0,
+        "unselected_support_count": 0,
+        "empty_support_field_violation_count": 0,
+        "blocking_provenance_count": 0
+      },
+      "model_quality": {
+        "populated_field_count": 3,
+        "total_word_count": 89,
+        "maximum_field_word_count": 51,
+        "duplicate_text_count": 0,
+        "conciseness_indicator": "CONCISE",
+        "narrative_usefulness": "HUMAN_REVIEW_REQUIRED",
+        "repetition_review": "NO_EXACT_DUPLICATION_DETECTED",
+        "language_review": "HUMAN_REVIEW_REQUIRED",
+        "target_language": "fr",
+        "latency_ms": 14827.497699996457
+      },
+      "warning_counts": {
+        "INFO": 1,
+        "WARNING": 3,
+        "BLOCKING": 0
+      }
+    },
+    {
+      "case_id": "rich_bct_governance_french",
+      "status": "completed",
+      "latency_ms": 17673.025500029325,
+      "schema_failure_count": 0,
+      "valid": false,
+      "export_eligible": false,
+      "backend_guarantees": {
+        "reference_identity_count": 1,
+        "expected_reference_count": 1,
+        "reference_identity_coverage": 1.0,
+        "eligible_populated_field_count": 2,
+        "deterministically_supported_field_count": 2,
+        "deterministic_support_coverage": 1.0,
+        "unknown_support_id_count": 0,
+        "unselected_support_count": 0,
+        "empty_support_field_violation_count": 0,
+        "blocking_provenance_count": 0
+      },
+      "model_quality": {
+        "populated_field_count": 2,
+        "total_word_count": 110,
+        "maximum_field_word_count": 56,
+        "duplicate_text_count": 0,
+        "conciseness_indicator": "CONCISE",
+        "narrative_usefulness": "HUMAN_REVIEW_REQUIRED",
+        "repetition_review": "NO_EXACT_DUPLICATION_DETECTED",
+        "language_review": "HUMAN_REVIEW_REQUIRED",
+        "target_language": "fr",
+        "latency_ms": 17673.025500029325
+      },
+      "warning_counts": {
+        "INFO": 1,
+        "WARNING": 2,
+        "BLOCKING": 2
+      }
+    },
+    {
+      "case_id": "sparse_bmci_english",
+      "status": "completed",
+      "latency_ms": 14594.815899967216,
+      "schema_failure_count": 0,
+      "valid": true,
+      "export_eligible": true,
+      "backend_guarantees": {
+        "reference_identity_count": 1,
+        "expected_reference_count": 1,
+        "reference_identity_coverage": 1.0,
+        "eligible_populated_field_count": 3,
+        "deterministically_supported_field_count": 3,
+        "deterministic_support_coverage": 1.0,
+        "unknown_support_id_count": 0,
+        "unselected_support_count": 0,
+        "empty_support_field_violation_count": 0,
+        "blocking_provenance_count": 0
+      },
+      "model_quality": {
+        "populated_field_count": 3,
+        "total_word_count": 121,
+        "maximum_field_word_count": 54,
+        "duplicate_text_count": 0,
+        "conciseness_indicator": "CONCISE",
+        "narrative_usefulness": "HUMAN_REVIEW_REQUIRED",
+        "repetition_review": "NO_EXACT_DUPLICATION_DETECTED",
+        "language_review": "HUMAN_REVIEW_REQUIRED",
+        "target_language": "en",
+        "latency_ms": 14594.815899967216
+      },
+      "warning_counts": {
+        "INFO": 1,
+        "WARNING": 3,
+        "BLOCKING": 0
+      }
+    },
+    {
+      "case_id": "multi_reference_french",
+      "status": "completed",
+      "latency_ms": 36538.60800003167,
+      "schema_failure_count": 0,
+      "valid": false,
+      "export_eligible": false,
+      "backend_guarantees": {
+        "reference_identity_count": 3,
+        "expected_reference_count": 3,
+        "reference_identity_coverage": 1.0,
+        "eligible_populated_field_count": 4,
+        "deterministically_supported_field_count": 4,
+        "deterministic_support_coverage": 1.0,
+        "unknown_support_id_count": 0,
+        "unselected_support_count": 0,
+        "empty_support_field_violation_count": 0,
+        "blocking_provenance_count": 0
+      },
+      "model_quality": {
+        "populated_field_count": 4,
+        "total_word_count": 205,
+        "maximum_field_word_count": 57,
+        "duplicate_text_count": 0,
+        "conciseness_indicator": "CONCISE",
+        "narrative_usefulness": "HUMAN_REVIEW_REQUIRED",
+        "repetition_review": "NO_EXACT_DUPLICATION_DETECTED",
+        "language_review": "HUMAN_REVIEW_REQUIRED",
+        "target_language": "fr",
+        "latency_ms": 36538.60800003167
+      },
+      "warning_counts": {
+        "INFO": 3,
+        "WARNING": 4,
+        "BLOCKING": 4
+      }
+    },
+    {
+      "case_id": "cross_language_bct_english",
+      "status": "completed",
+      "latency_ms": 15269.488100078888,
+      "schema_failure_count": 0,
+      "valid": false,
+      "export_eligible": false,
+      "backend_guarantees": {
+        "reference_identity_count": 1,
+        "expected_reference_count": 1,
+        "reference_identity_coverage": 1.0,
+        "eligible_populated_field_count": 3,
+        "deterministically_supported_field_count": 3,
+        "deterministic_support_coverage": 1.0,
+        "unknown_support_id_count": 0,
+        "unselected_support_count": 0,
+        "empty_support_field_violation_count": 0,
+        "blocking_provenance_count": 0
+      },
+      "model_quality": {
+        "populated_field_count": 3,
+        "total_word_count": 131,
+        "maximum_field_word_count": 64,
+        "duplicate_text_count": 0,
+        "conciseness_indicator": "CONCISE",
+        "narrative_usefulness": "HUMAN_REVIEW_REQUIRED",
+        "repetition_review": "NO_EXACT_DUPLICATION_DETECTED",
+        "language_review": "HUMAN_REVIEW_REQUIRED",
+        "target_language": "en",
+        "latency_ms": 15269.488100078888
+      },
+      "warning_counts": {
+        "INFO": 1,
+        "WARNING": 3,
+        "BLOCKING": 1
+      }
+    },
+    {
+      "case_id": "rich_bct_english",
+      "status": "completed",
+      "latency_ms": 12597.33439993579,
+      "schema_failure_count": 0,
+      "valid": false,
+      "export_eligible": false,
+      "backend_guarantees": {
+        "reference_identity_count": 1,
+        "expected_reference_count": 1,
+        "reference_identity_coverage": 1.0,
+        "eligible_populated_field_count": 2,
+        "deterministically_supported_field_count": 2,
+        "deterministic_support_coverage": 1.0,
+        "unknown_support_id_count": 0,
+        "unselected_support_count": 0,
+        "empty_support_field_violation_count": 0,
+        "blocking_provenance_count": 0
+      },
+      "model_quality": {
+        "populated_field_count": 2,
+        "total_word_count": 73,
+        "maximum_field_word_count": 45,
+        "duplicate_text_count": 0,
+        "conciseness_indicator": "CONCISE",
+        "narrative_usefulness": "HUMAN_REVIEW_REQUIRED",
+        "repetition_review": "NO_EXACT_DUPLICATION_DETECTED",
+        "language_review": "HUMAN_REVIEW_REQUIRED",
+        "target_language": "en",
+        "latency_ms": 12597.33439993579
+      },
+      "warning_counts": {
+        "INFO": 1,
+        "WARNING": 2,
+        "BLOCKING": 1
+      }
+    },
+    {
+      "case_id": "sparse_bmci_french",
+      "status": "completed",
+      "latency_ms": 15347.920099971816,
+      "schema_failure_count": 0,
+      "valid": false,
+      "export_eligible": false,
+      "backend_guarantees": {
+        "reference_identity_count": 1,
+        "expected_reference_count": 1,
+        "reference_identity_coverage": 1.0,
+        "eligible_populated_field_count": 3,
+        "deterministically_supported_field_count": 3,
+        "deterministic_support_coverage": 1.0,
+        "unknown_support_id_count": 0,
+        "unselected_support_count": 0,
+        "empty_support_field_violation_count": 0,
+        "blocking_provenance_count": 0
+      },
+      "model_quality": {
+        "populated_field_count": 3,
+        "total_word_count": 88,
+        "maximum_field_word_count": 44,
+        "duplicate_text_count": 0,
+        "conciseness_indicator": "CONCISE",
+        "narrative_usefulness": "HUMAN_REVIEW_REQUIRED",
+        "repetition_review": "NO_EXACT_DUPLICATION_DETECTED",
+        "language_review": "HUMAN_REVIEW_REQUIRED",
+        "target_language": "fr",
+        "latency_ms": 15347.920099971816
+      },
+      "warning_counts": {
+        "INFO": 1,
+        "WARNING": 3,
+        "BLOCKING": 1
+      }
+    },
+    {
+      "case_id": "bct_pca_arabic",
+      "status": "completed",
+      "latency_ms": 14264.874399988912,
+      "schema_failure_count": 0,
+      "valid": false,
+      "export_eligible": false,
+      "backend_guarantees": {
+        "reference_identity_count": 1,
+        "expected_reference_count": 1,
+        "reference_identity_coverage": 1.0,
+        "eligible_populated_field_count": 3,
+        "deterministically_supported_field_count": 3,
+        "deterministic_support_coverage": 1.0,
+        "unknown_support_id_count": 0,
+        "unselected_support_count": 0,
+        "empty_support_field_violation_count": 0,
+        "blocking_provenance_count": 0
+      },
+      "model_quality": {
+        "populated_field_count": 3,
+        "total_word_count": 108,
+        "maximum_field_word_count": 78,
+        "duplicate_text_count": 0,
+        "conciseness_indicator": "CONCISE",
+        "narrative_usefulness": "HUMAN_REVIEW_REQUIRED",
+        "repetition_review": "NO_EXACT_DUPLICATION_DETECTED",
+        "language_review": "HUMAN_REVIEW_REQUIRED",
+        "target_language": "ar",
+        "latency_ms": 14264.874399988912
+      },
+      "warning_counts": {
+        "INFO": 1,
+        "WARNING": 3,
+        "BLOCKING": 1
+      }
+    }
+  ]
+}

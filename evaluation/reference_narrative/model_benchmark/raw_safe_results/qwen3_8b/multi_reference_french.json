@@ -1,0 +1,63 @@
+{
+  "classification": "DEVELOPMENT / NON-PRODUCTION",
+  "case_id": "multi_reference_french",
+  "title": "Three-reference French section synthesis",
+  "description": "Checks multi-reference ownership and section-level support across selected banking references.",
+  "request": {
+    "selected_reference_ids": [
+      "38f6543c913e6155ed935bc93b2eb9adb740b8d292f9afd40065032ca7b62b82",
+      "3dce0242ae69dfa376a6b45f3b5ceda747ea52ffcbdefdfd2cd98621e1070c24",
+      "cc45d3d63af35d546b38f5680f0cc11c92dab79c9377c8ea27ee23e84790ae2f"
+    ],
+    "opportunity_title": "Programme intégré de résilience et de transformation SI",
+    "opportunity_description": "Une banque recherche des références complémentaires en continuité, gouvernance et schéma directeur SI.",
+    "requirements": [
+      "Synthèse transversale sourcée",
+      "Distinguer clairement chaque client",
+      "Aucun superlatif non démontré"
+    ],
+    "target_language": "fr",
+    "tone": "commercial",
+    "audience": "mixed",
+    "detail_level": "medium"
+  },
+  "status": "failed",
+  "provider": "ollama",
+  "model": "qwen3:8b",
+  "latency_ms": 128270.94159997068,
+  "schema_failure_count": 0,
+  "structured_output_retry_count": 0,
+  "generation_usage": {
+    "call_count": 2,
+    "prompt_token_count": 2666,
+    "generated_token_count": 34,
+    "calls": [
+      {
+        "prompt_token_count": 982,
+        "generated_token_count": 17,
+        "total_duration_ns": 2461510000,
+        "load_duration_ns": 218375800,
+        "prompt_eval_duration_ns": 763430000,
+        "eval_duration_ns": 1381357000
+      },
+      {
+        "prompt_token_count": 1684,
+        "generated_token_count": 17,
+        "total_duration_ns": 5684640900,
+        "load_duration_ns": 193945700,
+        "prompt_eval_duration_ns": 4007098000,
+        "eval_duration_ns": 1436530000
+      }
+    ]
+  },
+  "error_type": "NarrativeProviderTimeoutError",
+  "error": "The local Ollama generation request timed out",
+  "language": "fr",
+  "schema_success": false,
+  "language_compliance": null,
+  "completeness": null,
+  "factual_drift_count": null,
+  "model_quality_failures": [
+    "SCHEMA_FAILURE"
+  ]
+}

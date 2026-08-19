@@ -24,6 +24,8 @@ try {
 
 Push-Location $frontend
 try {
+    & npm.cmd test
+    if ($LASTEXITCODE -ne 0) { throw 'Frontend tests failed.' }
     & npm.cmd run lint
     if ($LASTEXITCODE -ne 0) { throw 'Frontend lint failed.' }
     if (-not $SkipBuild) {
@@ -33,4 +35,3 @@ try {
 } finally { Pop-Location }
 
 Write-Host 'All requested tests passed.' -ForegroundColor Green
-

@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "pipeline_version": "targeted_repair_v2",
+  "model_id": "intfloat/multilingual-e5-base",
+  "model_revision": "a114a4100c6714cf21651971eefe9191a4415dbb",
+  "dimensions": 768,
+  "query_prefix": "query: ",
+  "passage_prefix": "passage: ",
+  "normalize_embeddings": true,
+  "bm25_k1": 1.2,
+  "bm25_b": 0.75,
+  "hybrid_lexical_weight": 0.5,
+  "hybrid_dense_weight": 0.5,
+  "abstention_unchanged_from_v1": true
+}

@@ -1,0 +1,94 @@
+schema_version: 1
+template_id: detailed_reference
+source_slide: 2
+mapping_strategy: source-slide-clone-with-stable-source-shape-ids
+
+shape_ids:
+  mission_title: 79
+  realisations: 80
+  challenge: 81
+  benefits: 82
+  sector: 83
+  sector_icon: 84
+  period_group: 85
+  period_text: 94
+  devoteam_logo: 95
+  sample_background_visual: 96
+  sample_country_flag: 97
+  sample_client_logo: 98
+  page_number: 99
+
+case_delete_shape_ids:
+  - 84
+  - 96
+  - 97
+  - 98
+
+section_delete_shape_ids:
+  - 83
+  - 84
+  - 85
+  - 96
+  - 97
+  - 98
+
+added_text_zones_inches:
+  client: [0.45, 0.66, 2.48, 0.78]
+  country: [0.45, 1.55, 2.48, 0.34]
+  offering: [0.45, 2.03, 2.48, 0.56]
+
+typography:
+  source_latin_font: Montserrat
+  source_light_font: Montserrat Light
+  fallback_font: Montserrat
+  intended_body_pt: 9
+  minimum_body_pt: 9
+  headline_pt: 12
+  minimum_headline_pt: 12
+  section_title_pt: 20
+  minimum_section_title_pt: 16
+  client_pt: 16
+  metadata_pt: 9
+
+labels:
+  fr:
+    section_title: Références Devoteam pertinentes
+    section_intro: Introduction de la section
+    overall_storyline: Fil conducteur
+    why_these_references: Pourquoi ces références
+    challenge: Challenges
+    realisations: Réalisations
+    benefits: Bénéfices
+  en:
+    section_title: Relevant Devoteam References
+    section_intro: Section introduction
+    overall_storyline: Overall storyline
+    why_these_references: Why these references
+    challenge: Challenges
+    realisations: Deliveries
+    benefits: Benefits
+  ar:
+    section_title: مراجع ديفوتيم ذات الصلة
+    section_intro: مقدمة القسم
+    overall_storyline: السرد العام
+    why_these_references: سبب اختيار هذه المراجع
+    challenge: التحديات
+    realisations: الإنجازات
+    benefits: الفوائد
+
+overflow:
+  policy: block
+  allowed_actions:
+    - use_template_font_size
+    - reduce_to_safe_minimum
+    - reduce_paragraph_spacing
+  prohibited_actions:
+    - truncate
+    - remove_bullets
+    - shrink_below_minimum
+
+calibrated_lines:
+  mission_title: 4
+  challenge: 8
+  realisations: 11
+  benefits: 7
