@@ -2368,14 +2368,25 @@ class PresentationCopyService:
                 )
                 final_measurement = self._measure_field(request, field, fallback, reference_index)
                 if not final_measurement.fits:
-                    raise RuntimeError(f"No presentation-safe fallback could fit {field}")
+                    # Extremely dense source text can exceed even the
+                    # deterministic fallback budget. Do not abort an entire
+                    # multi-reference deck for one oversized field: clear only
+                    # that field and keep the remaining trusted sections.
+                    fallback = []
+                    final_measurement = self._measure_field(
+                        request, field, fallback, reference_index
+                    )
+                    field_record["status"] = "EMPTY_TRUSTED_FALLBACK"
+                    field_record["warning"] = (
+                        f"{field} was omitted because no presentation-safe rendering fit the budget."
+                    )
                 updated = self._replace_field(updated, plan, request, field, fallback)
                 field_record["fallback_used"] = True
                 field_record["final_required_lines"] = final_measurement.required_lines
             else:
                 final_measurement = self._measure_field(request, field, values, reference_index)
                 field_record["final_required_lines"] = final_measurement.required_lines
-            field_record["status"] = "FIT"
+            field_record.setdefault("status", "FIT")
             records.append(field_record)
         if request.template_id == "detailed_reference":
             updated = self._deduplicate_detailed_reference(updated, plan)
