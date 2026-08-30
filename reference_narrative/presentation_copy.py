@@ -2555,7 +2555,62 @@ class PresentationCopyService:
             blocked_ids = {warning.reference_id for warning in blocking if warning.reference_id}
             for index, bundle in enumerate(source_result.bundles):
                 if bundle.reference_id in blocked_ids:
-                    references[index] = self._safe_reference(bundle, field_plans[index])
+                    if request.template_id == "detailed_reference":
+                        # Keep independently grounded detailed sections when the
+                        # generic validator rejects one synthesized claim (for
+                        # example an unsupported named entity). Replacing the
+                        # whole reference with the title-only fallback makes a
+                        # recoverable warning fail the detailed completeness
+                        # gate a second time.
+                        current = references[index].detailed_presentation
+                        if current is not None:
+                            candidate = DetailedReferenceCopy(
+                                mission_title=current.mission_title.text,
+                                challenges=[item.text for item in current.challenges],
+                                realisations=[
+                                    DetailedRealisationCopy(
+                                        text=item.text.text,
+                                        subitems=[subitem.text for subitem in item.subitems],
+                                    )
+                                    for item in current.realisations
+                                ],
+                                benefits=[item.text for item in current.benefits],
+                            )
+                            recovered = self._safe_supported_portions(
+                                request,
+                                source_result,
+                                bundle,
+                                field_plans[index],
+                                candidate,
+                            )
+                            recovered = self._recover_missing_source_activities(
+                                request,
+                                source_result,
+                                bundle,
+                                field_plans[index],
+                                recovered,
+                            )
+                            recovered = self._recover_required_source_acronyms(
+                                request,
+                                source_result,
+                                bundle,
+                                field_plans[index],
+                                recovered,
+                            )
+                            recovered = self._recover_missing_supported_sections(
+                                bundle,
+                                field_plans[index],
+                                recovered,
+                            )
+                            recovered.warnings = [
+                                *recovered.warnings,
+                                "One generated claim was removed during trusted-content recovery.",
+                            ]
+                            references[index] = recovered
+                        else:
+                            references[index] = self._safe_reference(bundle, field_plans[index])
+                    else:
+                        references[index] = self._safe_reference(bundle, field_plans[index])
                     records[index]["fallback_used"] = True
                     records[index]["validation_codes"] = [
                         warning.code for warning in blocking if warning.reference_id == bundle.reference_id
@@ -2569,6 +2624,40 @@ class PresentationCopyService:
                 allow_catalog_completion_detail=request.template_id == "detailed_reference",
             )
             if request.template_id == "detailed_reference":
+                recovered_ids = {
+                    record["reference_id"]
+                    for record in records
+                    if record.get("fallback_used")
+                }
+                # The detailed writer has already run the stricter
+                # presentation-specific grounding pass above. Re-apply the
+                # boundary exceptions after rebuilding the generic review so
+                # recoverable AI-only findings do not block export.
+                review.warnings = [
+                    warning
+                    for warning in review.warnings
+                    if not (
+                        warning.code in {
+                            "UNSUPPORTED_BENEFIT",
+                            "PROPOSAL_SCOPE_AS_COMPLETED",
+                            "UNSUPPORTED_COMPLETION_LANGUAGE",
+                        }
+                        or (
+                            warning.code == "UNSUPPORTED_NAMED_ENTITY"
+                            and warning.reference_id in recovered_ids
+                        )
+                    )
+                ]
+                has_blocking = any(
+                    warning.severity == ValidationSeverity.BLOCKING or warning.blocking
+                    for warning in review.warnings
+                )
+                review.validation = NarrativeValidationResult(
+                    valid=not has_blocking,
+                    export_blocked=has_blocking,
+                    export_eligible=not has_blocking,
+                    warnings=review.warnings,
+                )
                 for bundle, plan, reference in zip(
                     source_result.bundles,
                     field_plans,

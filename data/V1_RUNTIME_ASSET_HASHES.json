@@ -36,8 +36,8 @@
     },
     {
       "path": "data/DATA_MANIFEST.json",
-      "bytes": 7448,
-      "sha256": "9e0d496a49084ddc5d74b9c7bf7d60404d74e95b7c2bfb5d3035411f91259079"
+      "bytes": 7574,
+      "sha256": "7babf48adfa5a12520f63608a7eedeccd38ceb39fcb28e284bfefac8b476a4c5"
     },
     {
       "path": "data/source_metadata/PHASE_4_MANIFEST.json",
@@ -56,8 +56,8 @@
     },
     {
       "path": "config.yaml",
-      "bytes": 3864,
-      "sha256": "c64c9cd3148577e6ec971100aaf3dd0404d402735ace67a795d241ff2faa729b"
+      "bytes": 4008,
+      "sha256": "400ffc139f5e29e47d9041053f393bb46e8733f63461c8f19ffa2cdbf7ca5420"
     }
   ]
 }
