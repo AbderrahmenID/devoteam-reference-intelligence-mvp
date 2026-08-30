@@ -297,6 +297,55 @@ def test_missing_trusted_acronyms_are_recovered_from_exact_activity_clauses() ->
     assert ";" not in generated
 
 
+def test_missing_qualitative_benefit_does_not_abort_trusted_fallback() -> None:
+    """A sparse source must still produce an editable detailed reference."""
+    reference_id = "38f6543c913e6155ed935bc93b2eb9adb740b8d292f9afd40065032ca7b62b82"
+    provider = DisabledNarrativeProvider()
+    narrative_service = ReferenceNarrativeService(
+        TrustedV2Repository(PROJECT_ROOT, load_config()), provider
+    )
+    service = PresentationCopyService(narrative_service, provider, PROJECT_ROOT)
+    result = service.generate(
+        DirectPresentationRequest(
+            selected_reference_ids=[reference_id],
+            target_language="fr",
+            template_id="detailed_reference",
+        )
+    )
+
+    assert result.review.validation.export_eligible
+    assert result.generation_records[0]["quality_gate"]["status"] == (
+        "PARTIAL_TRUSTED_FALLBACK"
+    )
+    assert result.review.narrative.references[0].detailed_presentation is not None
+
+
+def test_multiple_sparse_references_complete_as_one_presentation() -> None:
+    """One weak reference must not abort the rest of a selected set."""
+    reference_ids = [
+        "38f6543c913e6155ed935bc93b2eb9adb740b8d292f9afd40065032ca7b62b82",
+        "54b110427999b6eebe2f45331c0f98f70c2f5085e0d81e6fac012c72d3ca4278",
+        "14487247262c61e6abc0ec22c292f435c00759df934fa36376214bbc79130ddd",
+        "647624c5a1758d25a07147463c4f652d15470db496512123252d16f1d30ae3a7",
+    ]
+    provider = DisabledNarrativeProvider()
+    narrative_service = ReferenceNarrativeService(
+        TrustedV2Repository(PROJECT_ROOT, load_config()), provider
+    )
+    service = PresentationCopyService(narrative_service, provider, PROJECT_ROOT)
+    result = service.generate(
+        DirectPresentationRequest(
+            selected_reference_ids=reference_ids,
+            target_language="fr",
+            template_id="detailed_reference",
+        )
+    )
+
+    assert result.review.validation.export_eligible
+    assert [item.reference_id for item in result.review.narrative.references] == reference_ids
+    assert len(result.generation_records) == len(reference_ids)
+
+
 def test_semantic_deduplication_preserves_acronyms_from_merged_items() -> None:
     reference_id = "38f6543c913e6155ed935bc93b2eb9adb740b8d292f9afd40065032ca7b62b82"
     repository = TrustedV2Repository(PROJECT_ROOT, load_config())

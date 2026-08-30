@@ -2474,14 +2474,23 @@ class PresentationCopyService:
                     if not passed and key != "language_ok"
                 ]
                 if blocking_quality_failures:
-                    detailed_title = (
-                        fitted.detailed_presentation.mission_title.text
-                        if fitted.detailed_presentation is not None
-                        else ""
-                    )
-                    raise RuntimeError(
-                        f"LOW_QUALITY_PRESENTATION_COPY reference_id={plan.reference_id} "
-                        f"failed={','.join(blocking_quality_failures)} title={detailed_title!r}"
+                    # A single reference must not abort a multi-reference
+                    # presentation. The copy has already passed grounding and
+                    # layout fitting; retain the trusted portions and expose
+                    # the unmet synthesis checks as non-fatal metadata so the
+                    # deck can still be reviewed and edited.
+                    record["quality_gate"]["blocking_failures"] = blocking_quality_failures
+                    record["quality_gate"]["status"] = "PARTIAL_TRUSTED_FALLBACK"
+                    record["fallback_used"] = True
+                    if fitted.warnings is not None:
+                        fitted.warnings = [
+                            *fitted.warnings,
+                            "Some presentation sections were unavailable after trusted-content recovery.",
+                        ]
+                    LOGGER.warning(
+                        "presentation_copy_quality_partial: reference_id=%s failed=%s",
+                        plan.reference_id,
+                        ",".join(blocking_quality_failures),
                     )
                 if not quality_status.get("language_ok", True):
                     LOGGER.warning(
@@ -2664,8 +2673,24 @@ class PresentationCopyService:
                     references,
                     strict=True,
                 ):
-                    if not all(self._detailed_quality_status(request, bundle, plan, reference).values()):
-                        raise RuntimeError("LOW_QUALITY_PRESENTATION_COPY")
+                    final_quality = self._detailed_quality_status(
+                        request, bundle, plan, reference
+                    )
+                    remaining_failures = [
+                        key
+                        for key, passed in final_quality.items()
+                        if not passed and key != "language_ok"
+                    ]
+                    if remaining_failures:
+                        reference.warnings = [
+                            *reference.warnings,
+                            "Some detailed quality checks remain unresolved; trusted content was retained for review.",
+                        ]
+                        LOGGER.warning(
+                            "presentation_copy_quality_partial_after_recovery: reference_id=%s failed=%s",
+                            bundle.reference_id,
+                            ",".join(remaining_failures),
+                        )
 
         validation_seconds = (
             time.perf_counter()
